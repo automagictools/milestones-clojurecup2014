@@ -23,7 +23,7 @@
                                   [ring-mock "0.1.5"]]}}
 
   :main milestones.core
-;;:aot :all
+  :aot :all
 
   :ring {:handler core/app}
   )

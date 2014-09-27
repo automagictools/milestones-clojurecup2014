@@ -5,9 +5,10 @@
             [org.httpkit.server :refer :all]
             [ring.middleware.resource :as resource]
             [ring.middleware.json :as json]
+            [ring.util.response :as resp]
             [taoensso.timbre :as timbre]
-            [cheshire.core :refer :all]))
- ;;(:gen-class))
+            [cheshire.core :refer :all])
+ (:gen-class))
 
 ;;; logging with timbre
 (timbre/refer-timbre)
@@ -25,7 +26,10 @@
 (defroutes app-routes
            (GET "/ver" []
                 (str "MileStones v " version " by tnteam - clojurecup 2014"))
+           (GET "/" [] (resp/redirect "index.html"))
            (route/not-found "Not Found!"))
+
+
 
 (def app
           (->(handler/site app-routes)
@@ -36,6 +40,7 @@
 ;;(def ip "31.171.251.104")
 (def ip "0.0.0.0")
 (def port "8080")
+
 (defn -main []
   (let [_ (.addShutdownHook (Runtime/getRuntime)
                             (Thread. (fn []
@@ -45,5 +50,4 @@
                                     :port (Integer/parseInt port)})]
     (info
      (str "MileStones Server Started - Listening on " ip ":" port ))
-
     fn-stop-server)) ;this function, returned by main, will be used to stop the server.
