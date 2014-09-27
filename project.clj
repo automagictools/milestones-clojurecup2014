@@ -35,14 +35,10 @@
                                                          :optimizations :simple
                                                          :pretty-print  true}}
 
-
-
-
                    :cljsbuild {:builds [{:source-paths ["src/milestones"]
                                          :compiler {:output-to "resources/public/milestones.js"
                                                     :optimizations :simple
                                                     :pretty-print true}}]}
-
                                          ]  }}}
 
 

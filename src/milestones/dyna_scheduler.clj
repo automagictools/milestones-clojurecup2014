@@ -86,8 +86,26 @@
   "returns true if task is work-in-progress,
   i.e, is in the head of the work queue, and is not at full length"
   [tasks
-    work-flow
+   work-flow
    the-task-id]
   (not= (get tasks the-task-id :duration)
         (work-in-progress-count work-flow the-task-id)))
 
+
+
+
+
+
+(defn all-predecessors-complete?
+  "a predicate that returns true if ak "
+  [tasks
+   task-id
+   output-schedule]
+
+  (let [the-task (get tasks task-id)
+        preds (get the-task :predecessors)]
+
+    (every? (partial task-complete?
+                     tasks
+                     output-schedule)
+            preds)))
