@@ -24,8 +24,6 @@
 
 ;; app-routes
 
-
-
 (defroutes app-routes
            (GET "/ver" []
                 (str "MileStones v " version " by tnteam - clojurecup 2014"))
@@ -33,8 +31,6 @@
            (GET "/specify-tasks" [] (resp/redirect "tasks-specifier.html"))
            (GET "/diagram" [] (resp/redirect "diagram.html"))
            (route/not-found "Not Found!"))
-
-
 
 (def app
           (->(handler/site app-routes)
