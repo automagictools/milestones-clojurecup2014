@@ -6,6 +6,7 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  [org.clojure/clojurescript "0.0-2356"]
+                 [lein-cljsbuild "1.0.3"]
                  [instaparse "1.3.4"]
                  [http-kit "2.1.18"]
                  [compojure "1.1.8"]
@@ -20,11 +21,14 @@
                              [lein-expectations "0.0.8"]]
 
                    :dependencies [[javax.servlet/servlet-api "2.5"]
-                                  [ring-mock "0.1.5"]]}}
+                                  [ring-mock "0.1.5"]]
+
+                   :cljsbuild {:builds [{:source-paths ["src/milestones"]
+                                         :compiler {:output-to "target/classes/public/milestones.js"
+                                                    :optimizations :simple
+                                                    :pretty-print true}}]}}}
 
   :main milestones.core
-  :aot :all
-
-  :ring {:handler core/app}
-  )
+  ;;:aot :all
+  :ring {:handler core/app})
 

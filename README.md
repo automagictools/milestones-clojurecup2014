@@ -194,5 +194,5 @@ rather limited number of tasks are involved. Besides, the
 programming-like interface might be more handy for more complicated
 use cases.
 
-Hope you enjoy it !
+Hope you enjoy it ! - By tnteam
 
