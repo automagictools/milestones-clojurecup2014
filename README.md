@@ -56,17 +56,24 @@ Architecture of the Dynamic Scheduler
 ## Tasks
 The scheduler basically takes tasks specified as maps like so
 
-	{ :task-id 1 
-	:task-name "A description about this task"
-	;; the resource that'll be booked doing the task
-	:resource-id 3 
-	;; the duration that this resource will be booked
-		during this task
-	:duration 3  
-	;; priority : less is higher priority
-	:priority 1
-	;; predecessors : if they are not complete, task cannot be fired.
-	:predecessors [2 4]}
+	{
+                 1 {:task-name "A description about this task"
+                   :resource-id 2
+                   :duration 5
+                   :priority 1
+                   :predecessors [2 5 6]}
+    
+                 2 {:task-name "A description about this task"
+                  :resource-id 1
+                  :duration 4
+                  :priority 1
+                  :predecessors [1 3 4]}
+    
+                 3 {:task-name "A description about this task"
+                  :resource-id 4
+                  :duration 3
+                  :priority 1
+                  :predecessors [2 4]}}
 
 ## Processing Steps
 

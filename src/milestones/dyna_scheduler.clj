@@ -1,7 +1,7 @@
 ;;; The Dynamic Scheduler,
 ;;; Using core.async channels, it will plan tasks.
 ;;; input is a seq of tasks like:
-;;;           {:task-id 1
+;;;           1 {
 ;;;            :task-name "A description about this task"
 ;;;                   ;the resource that'll be booked doing the task
 ;;;            :resource-id 3
@@ -30,3 +30,4 @@
                   (repeat (:duration the-task) the-id)))
   (vec)))
 
+(defn )
