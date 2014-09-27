@@ -28,7 +28,7 @@
 
 
                    :cljsbuild {:builds [{:source-paths ["src/milestones"]
-                                         :compiler {:output-to "public/milestones.js"
+                                         :compiler {:output-to "resources/public/milestones.js"
                                                     :optimizations :simple
                                                     :pretty-print true}}]}}}
 

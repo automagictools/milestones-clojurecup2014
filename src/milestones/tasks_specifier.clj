@@ -8,7 +8,7 @@
 
 (def defaults {:duration 1 :predecessors [] :priority 2})
 
-(insta/set-default-output-format! :enlive)
+(insta/set-default-output-format! :hiccup)
 ;;task description grammar
 (def description-grammar 
     "description = [<description-prefix>]<whitespace> task-id <whitespace> [<description-postfix>] <whitespace> task-name | 
@@ -80,3 +80,4 @@
   (let [tasks-list (tasks-specifier tasks)]
     (insta/failure? {:error tasks-list})
     (formatted-tasks-list tasks-list)))
+
