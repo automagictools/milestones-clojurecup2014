@@ -66,12 +66,15 @@
   [tasks
    output-schedule
    the-task-id]
-  (= task-completion-rate 1))
+  (= (task-completion-rate tasks
+                           output-schedule
+                           the-task-id)
+     1))
 
-(defn potential-work-in-progress
-  "work in progress is a task at the peek of the work flowd [ 1 1 2 2 2 ...],
+(defn work-in-progress-count
+  "work in progress is a task at the peek of the work flow [ 1 1 2 2 2 ...],
   that a resource begun treating went to the channel. in the non preemptive
-  mode, we don't imply this task in the reordering.
+  mode, we don't involve this task in the reordering.
   However, if the length of this task is equal to the original task duration,
   it has not yet been processed, and then can be preempted"
   [work-flow
@@ -81,10 +84,10 @@
 
 (defn task-in-work-in-progress?
   "returns true if task is work-in-progress,
-  i.e, is in the head of the work queue, and at leas 1 task unit is gone"
+  i.e, is in the head of the work queue, and is not at full length"
   [tasks
     work-flow
    the-task-id]
-  (= (get tasks the-task-id ))
-    )
+  (not= (get tasks the-task-id :duration)
+        (work-in-progress-count work-flow the-task-id)))
 

@@ -9,6 +9,7 @@
 (def defaults {:duration 1 :predecessors [] :priority 2})
 
 (insta/set-default-output-format! :hiccup)
+
 ;;task description grammar
 (def description-grammar 
     "description = [<description-prefix>]<whitespace> task-id <whitespace> [<description-postfix>] <whitespace> task-name | 
@@ -81,3 +82,45 @@
     (insta/failure? {:error tasks-list})
     (formatted-tasks-list tasks-list)))
 
+(defn task-to-sched
+  [insta-task]
+  "Given the hiccup output, we hardcode a transformation
+  to get our map
+  NOw it is hard-coded, but we must definitely do better
+  if we open source it."
+  (let [desc (insta-task 1)
+        resource (insta-task 2)
+        duration (insta-task 3)
+        priority (insta-task 4)
+        preds (insta-task 5)
+        task-id (-> desc (get 1) (get 1) )
+        task-name (reduce str (interleave (-> desc (get 2) (rest))
+                                          (repeat " ")))
+        ]
+    {(Integer/parseInt task-id) {
+     :task-name task-name
+     :resource (-> resource (get 1) (get 1))
+     ;;TODO  a test to support months, etc...
+     :duration (-> duration (get 1)
+                   (get 1)
+                   (Integer/parseInt))
+
+     :priority (let [strpri (-> priority (get 1))]
+                 (cond
+                   (= "low" strpri) 4
+                   (= "normal" strpri) 3
+                   (= "medium" strpri) 2
+                   (= "high" strpri ) 1))
+
+     :predecessors (-> (mapv #(Integer/parseInt %)
+                             (rest preds))) }}))
+
+
+
+
+(defn all-tasks-to-sched
+  "Self explanatory. Navigate the vector of instatsks
+  and generate the final map to be passed to the scheduler"
+  [insta-tasks]
+  (let [tasks-to-be-processed (rest insta-tasks)]
+    (into {} (map task-to-sched tasks-to-be-processed))))
