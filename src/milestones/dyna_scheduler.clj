@@ -30,4 +30,19 @@
                   (repeat (:duration the-task) the-id)))
   (vec)))
 
-(defn )
+(defn task-completion-rate
+  "Given tasks description, a schedule-output
+  [{:task-id 1 :resource-id 1 :time 2}
+  {:task-id 1 :resource-id 1 :time 2} ...]
+  and a task-id, returns the completion-rate,i.e,
+  nb of units in output / duration of task  "
+  [tasks
+   output-schedule
+   the-task-id]
+  (let [the-task (get tasks the-task-id)
+        duration (the-task :duration)
+        nb-task-units-in-output (count
+                                  (filter #(= (% :task-id ) the-task-id )
+                                          output-schedule ))]
+    (try (/ nb-task-units-in-output duration)
+         (catch Exception e 1))))
