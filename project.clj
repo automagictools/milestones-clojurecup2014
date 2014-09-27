@@ -9,12 +9,14 @@
                  [lein-cljsbuild "1.0.3"]
                  [instaparse "1.3.4"]
                  [http-kit "2.1.18"]
-                 [compojure "1.1.8"]
+                 [compojure "1.1.9"]
                  [ring/ring-json "0.3.1"]
                  [cheshire "5.3.1"]
                  [ring/ring-json "0.3.1"]
                  [com.taoensso/timbre "3.3.1"]
                  [expectations "2.0.9"]]
+
+  :plugins [[lein-ring "0.8.11"]]
 
 
   :profiles {:dev {:plugins [[com.cemerick/austin "0.1.5"]
@@ -24,11 +26,11 @@
                                   [ring-mock "0.1.5"]]
 
                    :cljsbuild {:builds [{:source-paths ["src/milestones"]
-                                         :compiler {:output-to "target/classes/public/milestones.js"
+                                         :compiler {:output-to "public/milestones.js"
                                                     :optimizations :simple
                                                     :pretty-print true}}]}}}
 
   :main milestones.core
-  ;;:aot :all
+ ;; :aot :all
   :ring {:handler core/app})
 
