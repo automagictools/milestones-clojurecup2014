@@ -27,16 +27,18 @@
 
 
 
-                   :cljsbuild {:builds [{:source-paths ["src/milestones"]
-                                         :compiler {:output-to "public/milestones.js"
-                                                    :optimizations :simple
-                                                    :pretty-print true}}
-                                        {:source-paths ["src/milestones/cljs/diagram.cljs"]
-                                         :compiler {:output-to "public/js/diagram.js"
-                                                    :optimizations :simple
-                                                    :pretty-print true}}
+                   :cljsbuild {:builds [
+                                         {:source-paths ["src/milestones"]
+                                          :compiler     {:output-to     "public/milestones.js"
+                                                         :optimizations :simple
+                                                         :pretty-print  true}}
+                                         {:source-paths ["src/milestones/cljs/diagram.cljs"]
+                                          :compiler     {:output-to     "resources/public/diagram.js"
+                                                         :optimizations :simple
+                                                         :pretty-print  true}}
 
-                                        ]  }}}
+
+                                         ]  }}}
 
   :main milestones.core
 
