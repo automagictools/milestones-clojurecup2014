@@ -141,6 +141,7 @@ an "almost" natural english, like so:
 >days, depends on tasks 3 & 4 & 10. For task 1 we must create a website, rafik must do that, work done in 5
 >days, but only after that tasks 4 & 10 must be complete. Milestone 1
 >is when 1 & 10 are complete."
+>Task 1 is to design tasks specifier, it is assigned to ibtissem, it lasts 2 days, with a low priority, depends on tasks 1 & 2 & 3
 
 We want to make our little language as natural as possible. If there
 is time, we'll try to offer auto completion for the user, who'll
