@@ -7,8 +7,8 @@
             [ring.middleware.json :as json]
             [ring.util.response :as resp]
             [taoensso.timbre :as timbre]
-            [cheshire.core :refer :all])
- (:gen-class))
+            [cheshire.core :refer :all]))
+;; (:gen-class))
 
 ;;; logging with timbre
 (timbre/refer-timbre)
