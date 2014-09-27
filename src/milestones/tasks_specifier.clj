@@ -37,31 +37,35 @@
 
 ;;Predecessors tasks grammar
 (def predecessors-grammar 
-    "predecessors=[<predecessors-prefix> <whitespace>*]  pred [<whitespace>* ('&'|'and')? <whitespace>* pred  <whitespace>*]* [<predecessors-postfix>]
-     <predecessors-prefix> = (('it' <whitespace>*)? ('depends on tasks below' | 'depends on tasks'))
-     <predecessors-postfix> = 'must be done before' | 'must be completed before' | 'must be ended before'
-    pred = number")
-
+    "predecessors= <predecessors-prefix> number <whitespace>*  (('&'|<whitespace>*|'and')? number)* <predecessors-postfix>?
+     <predecessors-prefix> = <whitespace>* ( ( 'it'? <whitespace>* ('depends on tasks below' | 'depends on tasks') ) |
+                             ('its'? 'predecessors' <whitespace>* 'are'?) ) <whitespace>*
+     <predecessors-postfix> = <whitespace>* ('must be done before' | 'must be completed before' | 'must be ended before') <whitespace>*
+")
+    
 ;;milestone Grammar 
 (def milestone-grammar 
-    "milestone=[<milestone-prefix> <whitespace>]  milestone [<whitespace> <milestone-postfix>]
-    <milestone-prefix> = 'the milestone is'
+    "milestone=<milestone-prefix>? <whitespace>*  milestone-id <whitespace>* <milestone-postfix>?
+    <milestone-prefix> = 'the milestone is' | 'milestone'
     <milestone-postfix> = 'is a milestone'
-    milestone = number")
+    milestone-id = number")
 
 (def tasks-specifier
   (insta/parser
-    (str "S = task <whitespace>* (<point> <whitespace>* task)*
+    (str "S = (task | milestone) <whitespace>* (<point> <whitespace>* (task | milestone)?)*
      <point> = #'\\.+'
-     <word> = #'[a-zA-Z]+'
-     <number> = #'[0-9]+'
+     <word> = #'[a-zA-Z]+'"
+     milestone-grammar
+     "<number> = #'[0-9]+'
      <whitespace> = #'\\s+'
      <constraint-sep> = <whitespace>* #'\\,+' <whitespace>*"
      description-grammar 
      resource-grammar
      duration-grammar
      priority-grammar
-     "task = description <constraint-sep>
-            resource <constraint-sep>
-            duration <constraint-sep>
-            priority <constraint-sep>")))
+     predecessors-grammar
+     "task = description <constraint-sep>?
+            resource <constraint-sep>?
+            duration? <constraint-sep>?
+            priority? <constraint-sep>? predecessors?"
+     )))
