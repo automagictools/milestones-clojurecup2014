@@ -1,0 +1,15 @@
+ h1 {
+  font-family:'AmaticSCBold', Verdana, Geneva, sans-serif;
+  font-size: 53px;
+  font-weight: normal;
+  word-spacing:5px;
+  letter-spacing: 0px;
+  line-height: 55px;
+  color: #404040;
+  margin-top:22px;}
+
+  body {
+
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
