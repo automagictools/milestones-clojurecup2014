@@ -66,8 +66,7 @@ The scheduler basically takes tasks specified as maps like so
 	;; priority : less is higher priority
 	:priority 1
 	;; predecessors : if they are not complete, task cannot be fired.
-	:predecessors [2 4]
-}
+	:predecessors [2 4]}
 
 ## Processing Steps
 
