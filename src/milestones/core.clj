@@ -23,6 +23,9 @@
 
 
 ;; app-routes
+
+
+
 (defroutes app-routes
            (GET "/ver" []
                 (str "MileStones v " version " by tnteam - clojurecup 2014"))
@@ -51,4 +54,5 @@
                                     :port (Integer/parseInt port)})]
     (info
      (str "MileStones Server Started - Listening on " ip ":" port ))
-    fn-stop-server)) ;this function, returned by main, will be used to stop the server.
+    fn-stop-server))
+    ;this function, returned by main, will be used to stop the server.
