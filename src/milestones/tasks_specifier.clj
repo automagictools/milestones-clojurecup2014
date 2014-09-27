@@ -1,3 +1,7 @@
+;;; The natural tasks specifier,
+;;; Basically a set of instaparse grammars to analyze
+;;; task specifications written in "almost" natural english
+
 (ns milestones.tasks_specifier
   (:require [instaparse.core :as insta]))
 
