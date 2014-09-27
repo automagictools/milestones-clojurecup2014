@@ -107,7 +107,7 @@ parametrized)
     each task unit by the tick that was at the origin of its diffusion
     in the channel.
 
-	Though we can reduce (or even deduce the ending time thanks to
+Though we can reduce (or even deduce the ending time thanks to
 	task duration) the bricks in the output schedule, we preferred to
 	keep the fine-grained day by day schedule, as we can change
 	specifications in the future, and have users being able to work on
