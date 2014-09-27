@@ -13,7 +13,20 @@
 ;;;             predecessors [2 4]}
 
 (ns milestones.dyna-scheduler
-  (:require  [clojure.core.async
+  (:require  [clojure.set]
+    [clojure.core.async
               :as async
               :refer [chan go alts! alts!! >! >!! <!! <! close! timeout]]))
+
+(defn gen-work-flow
+  "Given all tasks description vector [{:task-id, ...},{}]
+  and a work-queue [1 2 3],... we generate named task units
+  with as many unit of each task as its duration :
+  [1 1 1 2 2 3 3 3]"
+  [tasks work-queue]
+  (->> work-queue
+       (mapcat  #(let [the-id %
+                       the-task (get tasks %) ]
+                  (repeat (:duration the-task) the-id)))
+  (vec)))
 
