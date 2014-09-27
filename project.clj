@@ -34,7 +34,9 @@
                                           :compiler     {:output-to     "resources/public/js/milestones.js"
                                                          :optimizations :simple
                                                          :pretty-print  true}}
+
                                          ]  }}}
+
 
   :main milestones.core
 
