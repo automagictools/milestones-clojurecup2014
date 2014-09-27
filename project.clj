@@ -31,7 +31,7 @@
                                          :compiler {:output-to "public/milestones.js"
                                                     :optimizations :simple
                                                     :pretty-print true}}
-                                        {:source-paths ["src/milestones/cljs"]
+                                        {:source-paths ["src/milestones/cljs/diagram.cljs"]
                                          :compiler {:output-to "public/js/diagram.js"
                                                     :optimizations :simple
                                                     :pretty-print true}}
