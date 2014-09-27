@@ -1,6 +1,6 @@
 
 ![MileStones Logo][milestones-logo]
-[milestones-logo]: ./resources/milestones-logo.png
+[milestones-logo]: ./resources/public/milestones-logo.png
 
 The intelligent Tasks Scheduler by tnteam - Clojure Cup 2014
 =========================================================================
@@ -126,7 +126,7 @@ As the old saying goes, a picture is worth a thousand words. Here you
 go for the "Dynamic Scheduler" architecture.
 
 ![The Scheduler architecture][sched-archi]
-[sched-archi]: ./resources/scheduler-schema.png "The Scheduler Architecture"
+[sched-archi]: ./resources/public/scheduler-schema.png "The Scheduler Architecture"
 
 The Natural Tasks Specifier : How far can we go ?
 ----------------------------------------------------
