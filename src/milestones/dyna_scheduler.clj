@@ -92,15 +92,11 @@
         (work-in-progress-count work-flow the-task-id)))
 
 
-
-
-
-
 (defn all-predecessors-complete?
-  "a predicate that returns true if ak "
+  "a predicate that returns true if all predecessors have been completed "
   [tasks
-   task-id
-   output-schedule]
+   output-schedule
+  task-id]
 
   (let [the-task (get tasks task-id)
         preds (get the-task :predecessors)]
@@ -109,3 +105,35 @@
                      tasks
                      output-schedule)
             preds)))
+
+(defn find-fireable-tasks
+  [tasks
+   output-schedule]
+  (into []
+        (filter (partial all-predecessors-complete? tasks output-schedule)
+                (keys tasks))))
+
+(defn properties
+  "from the joy of clojure. Knew I was going to use it someday!
+  This yields a function which, applied to each task by sort-by,
+  will generate vector of values used to order the tasks
+  don't forget we have rows with indices, {1 {:order ...}"
+  [property-names]
+  (fn [row-with-index]
+    (into []
+          (mapcat
+            #(map (comp % val) row-with-index )
+            property-names ))))
+
+
+(defn reorder-tasks
+  "sort task by the order of the properties given in the property-names
+  vector. As it is a vector, accessing from right is more effcient. as more
+  proprieatry comes first, i.e on left of the vector, we need to reverse
+  the result to put highest priority to the right.
+  "
+  [tasks
+   property-names]
+  (into [] (reverse
+             (mapcat keys (sort-by (properties property-names)
+                                 (map (fn [[k v]] {k v}) tasks))))))
