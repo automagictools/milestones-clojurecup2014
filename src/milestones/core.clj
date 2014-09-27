@@ -27,6 +27,7 @@
            (GET "/ver" []
                 (str "MileStones v " version " by tnteam - clojurecup 2014"))
            (GET "/" [] (resp/redirect "index.html"))
+           (GET "/specify-tasks" [] (resp/redirect "tasks-specifier.html"))
            (route/not-found "Not Found!"))
 
 
