@@ -16,7 +16,7 @@
                  [com.taoensso/timbre "3.3.1"]
                  [javax.servlet/servlet-api "2.5"]
                  [expectations "2.0.9"]
-                 [om "0.7.3"]]
+                 [cljs-ajax "0.3.0"]]
 
   :plugins [[lein-ring "0.8.11"]
             [lein-cljsbuild "0.3.2"]]
@@ -35,10 +35,7 @@
                                                          :optimizations :simple
                                                          :pretty-print  true}}
 
-                   :cljsbuild {:builds [{:source-paths ["src/milestones"]
-                                         :compiler {:output-to "resources/public/milestones.js"
-                                                    :optimizations :simple
-                                                    :pretty-print true}}]}
+
                                          ]  }}}
 
 

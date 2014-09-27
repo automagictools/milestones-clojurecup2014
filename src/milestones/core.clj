@@ -21,15 +21,16 @@
 (timbre/set-config! [:appenders :spit :enabled?] true )
 (timbre/set-config! [:shared-appender-config :spit-filename] "./milestones.log")
 
-
 ;; app-routes
-
 (defroutes app-routes
            (GET "/ver" []
                 (str "MileStones v " version " by tnteam - clojurecup 2014"))
            (GET "/" [] (resp/redirect "index.html"))
            (GET "/specify-tasks" [] (resp/redirect "tasks-specifier.html"))
            (GET "/diagram" [] (resp/redirect "diagram.html"))
+           (POST "/send-message" [:as rest]
+                 (rest :body))
+           (route/resources "/" {:root "public"})
            (route/not-found "Not Found!"))
 
 (def app
