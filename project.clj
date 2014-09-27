@@ -15,22 +15,36 @@
                  [ring/ring-json "0.3.1"]
                  [com.taoensso/timbre "3.3.1"]
                  [javax.servlet/servlet-api "2.5"]
-                 [expectations "2.0.9"]]
+                 [expectations "2.0.9"]
+                 [om "0.7.3"]]
 
-  :plugins [[lein-ring "0.8.11"]]
-
+  :plugins [[lein-ring "0.8.11"]
+            [lein-cljsbuild "0.3.2"]]
+  
   :profiles {:uberjar {:aot :all}
              :dev {:plugins [[com.cemerick/austin "0.1.5"]
                              [lein-expectations "0.0.8"]]
 
                    :dependencies [[ring-mock "0.1.5"]]
 
+                   :source-paths ["src/milestones"]
+
+                   :cljsbuild {:builds [
+                                         {:source-paths ["src/milestones"]
+                                          :compiler     {:output-to     "resources/public/js/milestones.js"
+                                                         :optimizations :simple
+                                                         :pretty-print  true}}
+
+
 
 
                    :cljsbuild {:builds [{:source-paths ["src/milestones"]
                                          :compiler {:output-to "resources/public/milestones.js"
                                                     :optimizations :simple
-                                                    :pretty-print true}}]}}}
+                                                    :pretty-print true}}]}
+
+                                         ]  }}}
+
 
   :main milestones.core
 

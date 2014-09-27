@@ -23,13 +23,14 @@
 
 
 ;; app-routes
+
 (defroutes app-routes
            (GET "/ver" []
                 (str "MileStones v " version " by tnteam - clojurecup 2014"))
            (GET "/" [] (resp/redirect "index.html"))
+           (GET "/specify-tasks" [] (resp/redirect "tasks-specifier.html"))
+           (GET "/diagram" [] (resp/redirect "diagram.html"))
            (route/not-found "Not Found!"))
-
-
 
 (def app
           (->(handler/site app-routes)
@@ -50,4 +51,5 @@
                                     :port (Integer/parseInt port)})]
     (info
      (str "MileStones Server Started - Listening on " ip ":" port ))
-    fn-stop-server)) ;this function, returned by main, will be used to stop the server.
+    fn-stop-server))
+    ;this function, returned by main, will be used to stop the server.
