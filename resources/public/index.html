@@ -10,11 +10,11 @@
 
 
    
-    <title>Milestones</title>
+    <title>Milestones | Tasks specifier</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-     <link href="css/custom.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
   
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -22,21 +22,33 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
   </head>
-
   <body>
-
-
-  <div class="container">
+  <div class="container" id="my-app">
     <center>
-      <img src="milestones-logo.png">
-      <h1>Coming soon ...</h1>
-      <h2>By tnteam</h2>
+      <img src="milestones-logo.png" >
     </center>
-
-  
+    <div class="form" style="font-family:courier" id="interractive-results">
+	</div>
+    <form class="form" role="form" action="" method="POST">
+	  <div class="form-group">
+	    <label for="tasks" class="col-sm-2 control-label">
+	    	Insert your tasks here <br>(ex: Task 1 is to design tasks specifier, assigned to ibtissem, lasts 2 days, priority low, depends on tasks 1 2 3
+	    </label>
+	    <div class="col-sm-8">
+	    	<textarea class="form-control" rows="3" name="tasks-input" id="tasks-input">value value value 1 2 3</textarea>
+	    </div>
+	  </div>
+	  <div class="form-group">
+    	<div class="col-sm-offset-2 col-sm-10">
+      		<button type="button" disabled name="tasks-save" id="tasks-save" class="btn btn-default">Save</button>
+    	</div>
+      </div>
+	</form>
   </div> <!-- /container -->
 
+  <script src="/js/milestones.js"></script>
 
   </body>
 </html>
