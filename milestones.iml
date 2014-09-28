@@ -6,14 +6,15 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/resources" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/milestones" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/milestones" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="jdk" jdkName="1.7" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Leiningen: cheshire:5.3.1" level="project" />
+    <orderEntry type="library" name="Leiningen: cljs-ajax:0.3.0" level="project" />
     <orderEntry type="library" name="Leiningen: clojure-complete:0.2.3" level="project" />
     <orderEntry type="library" name="Leiningen: com.taoensso/timbre:3.3.1" level="project" />
     <orderEntry type="library" name="Leiningen: compojure:1.1.9" level="project" />
@@ -31,6 +32,10 @@
     <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-core:2.3.1" level="project" />
     <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.dataformat/jackson-dataformat-smile:2.3.1" level="project" />
     <orderEntry type="library" name="Leiningen: tigris:0.1.1" level="project" />
+    <orderEntry type="library" name="Leiningen: com.cognitect/transit-cljs:0.8.182" level="project" />
+    <orderEntry type="library" name="Leiningen: net.colourcoding/poppea:0.1.7" level="project" />
+    <orderEntry type="library" name="Leiningen: com.cognitect/transit-js:0.8.714" level="project" />
+    <orderEntry type="library" name="Leiningen: spyscope:0.1.3" level="project" />
     <orderEntry type="library" name="Leiningen: com.taoensso/encore:1.8.1" level="project" />
     <orderEntry type="library" name="Leiningen: io.aviso/pretty:0.1.12" level="project" />
     <orderEntry type="library" name="Leiningen: clout:1.2.0" level="project" />
