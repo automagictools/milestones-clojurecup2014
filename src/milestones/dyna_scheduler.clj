@@ -26,8 +26,7 @@
 
 (ns milestones.dyna-scheduler
   (:require  [clojure.set]
-    [clojure.core.async
-              :as async
+             [clojure.core.async :as async
               :refer [chan go alts! alts!! >! >!! <!! <! close! timeout]]))
 
 (defn gen-work-flow
@@ -88,8 +87,10 @@
   [tasks
    work-flow
    the-task-id]
-  (not= (get tasks the-task-id :duration)
-        (work-in-progress-count work-flow the-task-id)))
+  (let [wp-count (work-in-progress-count work-flow the-task-id)]
+    (and (> wp-count 0)
+         (not= (get (tasks the-task-id) :duration)
+               wp-count))))
 
 
 (defn all-predecessors-complete?
@@ -130,10 +131,75 @@
   "sort task by the order of the properties given in the property-names
   vector. As it is a vector, accessing from right is more effcient. as more
   proprieatry comes first, i.e on left of the vector, we need to reverse
-  the result to put highest priority to the right.
-  "
+  the result to put highest priority to the right."
   [tasks
    property-names]
   (into [] (reverse
              (mapcat keys (sort-by (properties property-names)
                                  (map (fn [[k v]] {k v}) tasks))))))
+
+
+(defn tasks-for-resource
+  "Given a user-id, give you all tasks for this user (with all infos)"
+  [tasks resource-id]
+  (filter #(= resource-id (:resource-id (val %))) tasks))
+
+
+(defn work-flow-for-resource
+  "given a user,  its current work-queue, tasks and current output schedule,
+   we find his tasks, the fireable ones, reorder all of them (if preemptive)
+   or those non work in propress if not, and issue new work-flow"
+  [current-work-flow
+   tasks
+   resource-id
+   current-output-schedule
+   reordering-properties]
+  (let [
+
+        fireable-tasks-ids (find-fireable-tasks tasks
+                                                current-output-schedule)
+
+
+         fireable-tasks (select-keys tasks fireable-tasks-ids)
+
+         his-fireable-tasks (tasks-for-resource fireable-tasks resource-id)
+
+         his-incomplete-fireable-tasks  (into {} (filter #(not (task-complete?
+                                                                 tasks
+                                                                 current-output-schedule
+                                                                 (key %)))
+                                                         his-fireable-tasks))
+
+         his-incomplete-fireable-tasks-ids (keys his-incomplete-fireable-tasks)
+
+        fireable-id-in-wp (first (filter (partial task-in-work-in-progress?
+                                            tasks
+                                            current-work-flow)
+                                         his-incomplete-fireable-tasks-ids)) ;; id of the task to be kept, work in progress
+
+
+
+        wp-vector (into [] (repeat (work-in-progress-count current-work-flow
+                                                           fireable-id-in-wp)
+                                   fireable-id-in-wp))
+
+
+        fireable-ids-not-in-wp (vec
+                                 (remove #(= % fireable-id-in-wp)
+                                         his-incomplete-fireable-tasks-ids )) ;; [ the part to be reordered and generated]
+
+
+        _ (println "fireable-ids-not-in-wp" fireable-ids-not-in-wp)
+        his-fireable-tasks-not-in-wp (select-keys tasks fireable-ids-not-in-wp)
+
+        _ (println "his-fireable tasks not in wp")
+        his-ordered-tasks-not-in-wp (reorder-tasks his-fireable-tasks-not-in-wp
+                                                   reordering-properties)
+
+        _ (println "his orderd tasks not wp " his-ordered-tasks-not-in-wp)
+
+        his-new-ordered-workflow (gen-work-flow tasks
+                                                his-ordered-tasks-not-in-wp)]
+
+    _ (println "his-new-ordered-workfllow " his-new-ordered-workflow)
+    (into his-new-ordered-workflow wp-vector)))
