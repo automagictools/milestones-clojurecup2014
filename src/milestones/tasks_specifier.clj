@@ -114,7 +114,7 @@
                    (= "high" strpri ) 1))
 
      :predecessors (-> (mapv #(Integer/parseInt %)
-                             (rest preds))) }}))
+                             (rest preds)))}}))
 
 
 
