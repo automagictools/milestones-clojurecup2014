@@ -10,11 +10,17 @@
 
 (defn render-syntax-error 
   [failure]
-  (str "<p class='error'>" (failure "error") "</p>"
+  (let [partial (apply str (interpose "," (failure "partial-reasons")))
+        ;partial (str 
+        full (apply str (interpose "," (failure "full-reasons")))
+        ]
+    (str "<p class='error'>" (failure "error") "</p>"
        "<p class='error'>" (failure "text") "</p>"
        "<label>" (failure "expected-msg") "</label>"
-       "<p>" (apply str (interpose "," (failure "partial-reasons"))) "</p>"
-       "<p>" (apply str (interpose "," (failure "full-reasons"))) "</p>"))
+       "<p>" partial  "</p>"
+       "<p>" full "</p>")
+    )
+  )
  
 (defn handler [response]
   "Ajax POST handler to display an interractive results"
@@ -42,7 +48,7 @@
       (dommy/add-class! div-resuts :alert-success)
       (dommy/remove-class! div-resuts :alert-danger)
       (dommy/set-html! div-resuts "<i class='icon-checked'></i> Tasks scheduled !")
-      (dommy/set-html! (sel1 :#gantt) [:img {:src (response "path")}])
+      (dommy/set-html! (sel1 :#gantt) (str "<img src='" (response "path") "'>"))
       )))
 
 (defn error-handler [{:keys [status status-text]}]

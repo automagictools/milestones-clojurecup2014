@@ -32,7 +32,7 @@
 ;;priority grammar
 (def priority-grammar 
     "priority=[<priority-prefix>] <whitespace>* (number | 'high' | 'medium' | 'low' | 'normal')  <whitespace>* [<priority-postfix>]
-    <priority-prefix> = (  'priority' | 'with' | 'with a' | 'priority is' | 'task priority is' | 'it has a')?
+    <priority-prefix> = ( 'the priority is' | 'priority' | 'with' | 'with a' | 'priority is' | 'task priority is' | 'it has a')?
     <priority-postfix> = ['priority' <whitespace>*]")
 
 ;;Task duration grammar
@@ -44,8 +44,8 @@
 
 ;;Predecessors tasks grammar
 (def predecessors-grammar 
-    "predecessors= <predecessors-prefix> number <whitespace>*  (('&'|<whitespace>*|'and')? number)* <predecessors-postfix>?
-     <predecessors-prefix> = <whitespace>* ( ( 'it'? <whitespace>* ('depends on tasks below' | 'depends on tasks') ) |
+    "predecessors= <predecessors-prefix> number <whitespace>*  (('&'* | <whitespace>* |'and'*)? number)* <predecessors-postfix>?
+     <predecessors-prefix> = <whitespace>* ( ( 'it'? <whitespace>* ('depends on task' | 'depends on'  | 'depends on tasks below' | 'depends on tasks') ) |
                              ('its'? 'predecessors' <whitespace>* 'are'?) ) <whitespace>*
      <predecessors-postfix> = <whitespace>* ('must be done before' | 'must be completed before' | 'must be ended before') <whitespace>*")
     
