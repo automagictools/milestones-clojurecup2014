@@ -47,8 +47,7 @@ At the heart of this project come two interesting modules :
   -maybe one day - to drop in your meeting notes or RFP text into
   MileStones and get a schedule, (then a quote !) for your project.
 
-There's also a module drawing the resulting schedules as GANTT Charts, basically
-through the D3/C3 JS Dataviz libraries.
+There's also a module drawing the resulting schedules as GANTT Charts, using the open source JFreeCharts.
 
 Architecture of the Dynamic Scheduler
 ----------------------------
@@ -216,7 +215,8 @@ programming-like interface might be more handy for more complicated
 use cases.
 
 One point of note though - milestons has some rough edges, and sometimes tasks won't show or 
-the interpreter will be angry at you for no apparent reason. We'll try to fix all of this.
+the interpreter will be angry at you for no apparent reason. We'll try to fix all of this once we open source it.
+The problems were mainly due to translating the data format from instaparse to ours. too bad as the scheduler was really cool a piece of work !
 
 Hope you enjoy it ! - By tnteam
 
