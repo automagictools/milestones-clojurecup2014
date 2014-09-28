@@ -155,8 +155,9 @@
     (if-let [failure? (insta/failure? tasks-list)]
      {:response "error" "error" "syntax" :failure (get-failure tasks-list)}
 
-     (->  tasks-list
-       (all-tasks-to-sched )
-       (dyna-scheduler/schedule! [:priority :duration])
-       (gantt/main )))))
+     {:response "success" 
+      :path (->  tasks-list
+        (all-tasks-to-sched )
+        (dyna-scheduler/schedule! [:priority :duration])
+        (gantt/main ))})))
   
