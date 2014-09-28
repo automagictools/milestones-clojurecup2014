@@ -48,7 +48,7 @@
       (dommy/add-class! div-resuts :alert-success)
       (dommy/remove-class! div-resuts :alert-danger)
       (dommy/set-html! div-resuts "<i class='icon-checked'></i> Tasks scheduled !")
-      (dommy/set-html! (sel1 :#gantt) (str "<img src='" (response "path") "'>"))
+      (dommy/set-html! (sel1 :#gantt) (str "<center><img src='" (response "path") "'></center>"))
       )))
 
 (defn error-handler [{:keys [status status-text]}]
