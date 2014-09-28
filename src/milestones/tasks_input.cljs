@@ -20,7 +20,6 @@
   "Ajax POST handler to display an interractive results"
   (if-let [x (= (response "response") "error")]
     (let [failure (response "failure") div-resuts (sel1 :#interractive-results)]
-      ;(dommy/add-attr! (sel1 :#tasks-save) :disabled)
       (dommy/remove-class! div-resuts :alert-success)
       (dommy/add-class! div-resuts :alert-danger)
       (dommy/set-html! div-resuts (render-syntax-error  failure)))
@@ -42,7 +41,9 @@
     (let [div-resuts (sel1 :#interractive-results)]
       (dommy/add-class! div-resuts :alert-success)
       (dommy/remove-class! div-resuts :alert-danger)
-      (dommy/set-html! div-resuts "<i class='icon-checked'></i> Tasks saved !"))))
+      (dommy/set-html! div-resuts "<i class='icon-checked'></i> Tasks scheduled !")
+      (dommy/set-html! (sel1 :#gantt) [:img {:src (response "path")}])
+      )))
 
 (defn error-handler [{:keys [status status-text]}]
   "Ajax error handler"

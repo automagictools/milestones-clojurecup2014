@@ -58,10 +58,10 @@
 
 (def tasks-specifier
   (insta/parser
-    (str "S = (task | milestone) <whitespace>* (<point> <whitespace>* (task | milestone)?)*
+    (str "S = task  <whitespace>* <point>* (<point>+ <whitespace>* task <point>*)*
      <point> = #'\\.+'
      <word> = #'[a-zA-Z]+'"
-     milestone-grammar
+     ;milestone-grammar
      "<number> = #'[0-9]+'
      <whitespace> = #'\\s+'
      <constraint-sep> = <whitespace>* #'\\,+' <whitespace>*"
@@ -139,9 +139,6 @@
      :predecessors (-> (mapv #(Integer/parseInt %)
                              (rest preds)))}}))
 
-
-
-
 (defn all-tasks-to-sched
   "Self explanatory. Navigate the vector of instatsks
   and generate the final map to be passed to the scheduler"
@@ -153,11 +150,14 @@
   "Check tasks syntax validity. If it is correct then
   pass tasks to schedular else handle error"
   [tasks]
-  (let [tasks-list (tasks-specifier (tasks "tasks"))]
+  (let [tasks-list (tasks-specifier (tasks "tasks"))
+        _ (println "tasks are :" tasks-list )]
     (if-let [failure? (insta/failure? tasks-list)]
      {:response "error" "error" "syntax" :failure (get-failure tasks-list)}
-     (->  tasks-list
-       (all-tasks-to-sched )
-       (dyna-scheduler/schedule! [:priority :duration])
-       (gantt/main )))))
+
+     {:response "success" 
+      :path (->  tasks-list
+        (all-tasks-to-sched )
+        (dyna-scheduler/schedule! [:priority :duration])
+        (gantt/main ))})))
   
