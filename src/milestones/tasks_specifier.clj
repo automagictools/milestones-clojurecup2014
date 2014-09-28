@@ -118,26 +118,26 @@
         preds (insta-task 5)
         task-id (-> desc (get 1) (get 1) )
         task-name (reduce str (interleave (-> desc (get 2) (rest))
-                                          (repeat " ")))
-        ]
+                                          (repeat " ")))]
     {(Integer/parseInt task-id) {
-     :task-name task-name
-     :resource-id (-> resource (get 1) (get 1))
-     ;;TODO  a test to support months, etc...
-     :duration (-> duration (get 1)
-                   (get 1)
-                   (Integer/parseInt))
+                                  :task-name task-name
+                                  :resource-id (try (-> resource (get 1) (get 1)) (catch Exception e 0))
+                                  ;;TODO  a test to support months, etc...
+                                  :duration (try (-> duration (get 1)
+                                                (get 1)
+                                                (Integer/parseInt)) (catch Exception e 0))
 
-     :priority (let [strpri (-> priority (get 1))]
-                 (cond
-                   (= "low" strpri) 4
-                   (= "normal" strpri) 3
-                   (= "medium" strpri) 2
-                   (= "high" strpri ) 1
-                   (not (nil? (re-matches #"(\d+)" strpri))  ) (Integer/parseInt strpri)))
+                                  :priority (try (let [strpri (-> priority (get 1))]
+                                              (cond
+                                                (= "low" strpri) 4
+                                                (= "normal" strpri) 3
+                                                (= "medium" strpri) 2
+                                                (= "high" strpri ) 1
+                                                (not (nil? (re-matches #"(\d+)" strpri))  ) (Integer/parseInt strpri)))
+                                                 (catch Exception e 1 ))
 
-     :predecessors (-> (mapv #(Integer/parseInt %)
-                             (rest preds)))}}))
+                                  :predecessors (try (-> (mapv #(Integer/parseInt %)
+                                                          (rest preds)))(catch Exception e []))}}))
 
 (defn all-tasks-to-sched
   "Self explanatory. Navigate the vector of instatsks
@@ -160,4 +160,3 @@
         (all-tasks-to-sched )
         (dyna-scheduler/schedule! [:priority :duration])
         (gantt/main ))})))
-  

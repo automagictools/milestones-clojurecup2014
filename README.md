@@ -215,6 +215,8 @@ rather limited number of tasks are involved. Besides, the
 programming-like interface might be more handy for more complicated
 use cases.
 
+One point of note though - milestons has some rough edges, and sometimes tasks won't show or 
+the interpreter will be angry at you for no apparent reason. We'll try to fix all of this.
 
 Hope you enjoy it ! - By tnteam
 
