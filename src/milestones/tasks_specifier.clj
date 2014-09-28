@@ -58,10 +58,10 @@
 
 (def tasks-specifier
   (insta/parser
-    (str "S = (task | milestone) <whitespace>* (<point> <whitespace>* (task | milestone)?)*
+    (str "S = task  <whitespace>* <point>* (<point>+ <whitespace>* task <point>*)*
      <point> = #'\\.+'
      <word> = #'[a-zA-Z]+'"
-     milestone-grammar
+     ;milestone-grammar
      "<number> = #'[0-9]+'
      <whitespace> = #'\\s+'
      <constraint-sep> = <whitespace>* #'\\,+' <whitespace>*"
