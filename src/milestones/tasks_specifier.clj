@@ -3,7 +3,9 @@
 ;;; task specifications written in "almost" natural english
 
 (ns milestones.tasks_specifier
-  (:require [instaparse.core :as insta]))
+  (:require [instaparse.core :as insta]
+            [milestones.dyna-scheduler :as dyna-scheduler]
+            [milestones.gantt :as gantt]))
 
 
 (def defaults {:duration 1 :predecessors [] :priority 2})
@@ -120,7 +122,7 @@
         ]
     {(Integer/parseInt task-id) {
      :task-name task-name
-     :resource (-> resource (get 1) (get 1))
+     :resource-id (-> resource (get 1) (get 1))
      ;;TODO  a test to support months, etc...
      :duration (-> duration (get 1)
                    (get 1)
@@ -155,6 +157,8 @@
   (let [tasks-list (tasks-specifier (tasks "tasks"))]
     (if-let [failure? (insta/failure? tasks-list)]
      {:response "error" "error" "syntax" :failure (get-failure tasks-list)}
-     (all-tasks-to-sched tasks-list)
-     )))
+     (->  tasks-list
+       (all-tasks-to-sched )
+       (dyna-scheduler/schedule! [:priority :duration])
+       (gantt/main )))))
   
