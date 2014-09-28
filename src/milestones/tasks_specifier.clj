@@ -149,7 +149,6 @@
   (let [tasks-to-be-processed (rest insta-tasks)]
     (into {} (map task-to-sched tasks-to-be-processed))))
 
-
 (defn save-tasks 
   "Check tasks syntax validity. If it is correct then
   pass tasks to schedular else handle error"

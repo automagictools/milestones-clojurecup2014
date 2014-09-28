@@ -21,14 +21,12 @@
   (if-let [x (= (response "response") "error")]
     (let [failure (response "failure") div-resuts (sel1 :#interractive-results)]
       ;(dommy/add-attr! (sel1 :#tasks-save) :disabled)
-      (dommy/add-class! (sel1 :#tasks-save) :disabled)
       (dommy/remove-class! div-resuts :alert-success)
       (dommy/add-class! div-resuts :alert-danger)
       (dommy/set-html! div-resuts (render-syntax-error  failure)))
     (let [div-resuts (sel1 :#interractive-results)]      
       (dommy/add-class! div-resuts :alert-success)
       (dommy/remove-class! div-resuts :alert-danger)
-      (dommy/add-class! (sel1 :#tasks-save) :enabled)
       (dommy/set-html! div-resuts "<i class='icon-checked'></i> Correct syntax !"))))
 
 
@@ -38,20 +36,19 @@
     (if-let [y (= (response "error") "syntax")]
       (handler response)
 	      (let [error (response "failure") div-resuts (sel1 :#interractive-results)]
-         ;(dommy/add-attr! (sel1 :#tasks-save) :disabled)
-         (dommy/add-class! (sel1 :#tasks-save) :disabled)
          (dommy/remove-class! div-resuts :alert-success)
          (dommy/add-class! div-resuts :alert-danger)
          (dommy/set-html! div-resuts "<i class='icon-remove'></i> Error occured !")))
     (let [div-resuts (sel1 :#interractive-results)]
       (dommy/add-class! div-resuts :alert-success)
       (dommy/remove-class! div-resuts :alert-danger)
-      (dommy/add-class! (sel1 :#tasks-save) :enabled)
       (dommy/set-html! div-resuts "<i class='icon-checked'></i> Tasks saved !"))))
 
 (defn error-handler [{:keys [status status-text]}]
   "Ajax error handler"
-  (.log js/console (str "something bad happened: " status " " status-text)))
+  (dommy/add-class! div-resuts :alert-danger)
+  (dommy/set-html! div-resuts "oops ! something went wrong.")
+  (.log js/console (str "Server " status " " status-text)))
 
 (defn interractive-handler []
   (POST "/check-tasks"
