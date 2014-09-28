@@ -7116,27 +7116,27 @@ cljs.core.not_empty = function(a) {
   return cljs.core.seq.call(null, a) ? a : null;
 };
 cljs.core.nil_iter = function nil_iter() {
-  "undefined" === typeof cljs.core.t139784 && (cljs.core.t139784 = function(b, c) {
+  "undefined" === typeof cljs.core.t171216 && (cljs.core.t171216 = function(b, c) {
     this.nil_iter = b;
-    this.meta139785 = c;
+    this.meta171217 = c;
     this.cljs$lang$protocol_mask$partition1$ = 0;
     this.cljs$lang$protocol_mask$partition0$ = 393216;
-  }, cljs.core.t139784.cljs$lang$type = !0, cljs.core.t139784.cljs$lang$ctorStr = "cljs.core/t139784", cljs.core.t139784.cljs$lang$ctorPrWriter = function(b, c, d) {
-    return cljs.core._write.call(null, c, "cljs.core/t139784");
-  }, cljs.core.t139784.prototype.hasNext = function() {
+  }, cljs.core.t171216.cljs$lang$type = !0, cljs.core.t171216.cljs$lang$ctorStr = "cljs.core/t171216", cljs.core.t171216.cljs$lang$ctorPrWriter = function(b, c, d) {
+    return cljs.core._write.call(null, c, "cljs.core/t171216");
+  }, cljs.core.t171216.prototype.hasNext = function() {
     return!1;
-  }, cljs.core.t139784.prototype.next = function() {
+  }, cljs.core.t171216.prototype.next = function() {
     return Error("No such element");
-  }, cljs.core.t139784.prototype.remove = function() {
+  }, cljs.core.t171216.prototype.remove = function() {
     return Error("Unsupported operation");
-  }, cljs.core.t139784.prototype.cljs$core$IMeta$_meta$arity$1 = function(b) {
-    return this.meta139785;
-  }, cljs.core.t139784.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
-    return new cljs.core.t139784(this.nil_iter, c);
-  }, cljs.core.__GT_t139784 = function(b, c) {
-    return new cljs.core.t139784(b, c);
+  }, cljs.core.t171216.prototype.cljs$core$IMeta$_meta$arity$1 = function(b) {
+    return this.meta171217;
+  }, cljs.core.t171216.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
+    return new cljs.core.t171216(this.nil_iter, c);
+  }, cljs.core.__GT_t171216 = function(b, c) {
+    return new cljs.core.t171216(b, c);
   });
-  return new cljs.core.t139784(nil_iter, null);
+  return new cljs.core.t171216(nil_iter, null);
 };
 cljs.core.StringIter = function(a, b) {
   this.s = a;
@@ -23079,33 +23079,33 @@ cognitect.transit.write_handler = function() {
   }, c = function(b, c, d) {
     return a.call(null, b, c, d, null);
   }, d = function(b, c, d, h) {
-    "undefined" === typeof cognitect.transit.t139320 && (cognitect.transit.t139320 = function(a, b, c, d, e, f) {
+    "undefined" === typeof cognitect.transit.t170752 && (cognitect.transit.t170752 = function(a, b, c, d, e, f) {
       this.verbose_handler_fn = a;
       this.str_rep_fn = b;
       this.rep_fn = c;
       this.tag_fn = d;
       this.write_handler = e;
-      this.meta139321 = f;
+      this.meta170753 = f;
       this.cljs$lang$protocol_mask$partition1$ = 0;
       this.cljs$lang$protocol_mask$partition0$ = 393216;
-    }, cognitect.transit.t139320.cljs$lang$type = !0, cognitect.transit.t139320.cljs$lang$ctorStr = "cognitect.transit/t139320", cognitect.transit.t139320.cljs$lang$ctorPrWriter = function(a, b, c) {
-      return cljs.core._write.call(null, b, "cognitect.transit/t139320");
-    }, cognitect.transit.t139320.prototype.tag = function(a) {
+    }, cognitect.transit.t170752.cljs$lang$type = !0, cognitect.transit.t170752.cljs$lang$ctorStr = "cognitect.transit/t170752", cognitect.transit.t170752.cljs$lang$ctorPrWriter = function(a, b, c) {
+      return cljs.core._write.call(null, b, "cognitect.transit/t170752");
+    }, cognitect.transit.t170752.prototype.tag = function(a) {
       return this.tag_fn.call(null, a);
-    }, cognitect.transit.t139320.prototype.rep = function(a) {
+    }, cognitect.transit.t170752.prototype.rep = function(a) {
       return this.rep_fn.call(null, a);
-    }, cognitect.transit.t139320.prototype.stringRep = function(a) {
+    }, cognitect.transit.t170752.prototype.stringRep = function(a) {
       return cljs.core.truth_(this.str_rep_fn) ? this.str_rep_fn.call(null, a) : null;
-    }, cognitect.transit.t139320.prototype.getVerboseHandler = function() {
+    }, cognitect.transit.t170752.prototype.getVerboseHandler = function() {
       return cljs.core.truth_(this.verbose_handler_fn) ? this.verbose_handler_fn.call(null) : null;
-    }, cognitect.transit.t139320.prototype.cljs$core$IMeta$_meta$arity$1 = function(a) {
-      return this.meta139321;
-    }, cognitect.transit.t139320.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(a, b) {
-      return new cognitect.transit.t139320(this.verbose_handler_fn, this.str_rep_fn, this.rep_fn, this.tag_fn, this.write_handler, b);
-    }, cognitect.transit.__GT_t139320 = function(a, b, c, d, e, f) {
-      return new cognitect.transit.t139320(a, b, c, d, e, f);
+    }, cognitect.transit.t170752.prototype.cljs$core$IMeta$_meta$arity$1 = function(a) {
+      return this.meta170753;
+    }, cognitect.transit.t170752.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(a, b) {
+      return new cognitect.transit.t170752(this.verbose_handler_fn, this.str_rep_fn, this.rep_fn, this.tag_fn, this.write_handler, b);
+    }, cognitect.transit.__GT_t170752 = function(a, b, c, d, e, f) {
+      return new cognitect.transit.t170752(a, b, c, d, e, f);
     });
-    return new cognitect.transit.t139320(h, d, c, b, a, null);
+    return new cognitect.transit.t170752(h, d, c, b, a, null);
   }, a = function(a, f, g, h) {
     switch(arguments.length) {
       case 2:
@@ -25415,40 +25415,40 @@ dommy.core.selector_map = function selector_map(b, c) {
     return function(f) {
       var g = cljs.core.nth.call(null, f, 0, null), h = cljs.core.nth.call(null, f, 1, null);
       return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [g, cljs.core.truth_((new cljs.core.Keyword(null, "live", "live", -1610148039)).cljs$core$IFn$_invoke$arity$1(cljs.core.meta.call(null, h))) ? function() {
-        "undefined" === typeof dommy.core.t140611 && (dommy.core.t140611 = function(b, c, d, e, f, g, h, s, t) {
+        "undefined" === typeof dommy.core.t172043 && (dommy.core.t172043 = function(b, c, d, e, f, g, h, s, t) {
           this.v = b;
           this.k = c;
-          this.vec__140610 = d;
-          this.p__140609 = e;
+          this.vec__172042 = d;
+          this.p__172041 = e;
           this.container = f;
           this.key_selectors_map = g;
           this.template = h;
           this.selector_map = s;
-          this.meta140612 = t;
+          this.meta172044 = t;
           this.cljs$lang$protocol_mask$partition1$ = 0;
           this.cljs$lang$protocol_mask$partition0$ = 425984;
-        }, dommy.core.t140611.cljs$lang$type = !0, dommy.core.t140611.cljs$lang$ctorStr = "dommy.core/t140611", dommy.core.t140611.cljs$lang$ctorPrWriter = function(b, c, d, e) {
+        }, dommy.core.t172043.cljs$lang$type = !0, dommy.core.t172043.cljs$lang$ctorStr = "dommy.core/t172043", dommy.core.t172043.cljs$lang$ctorPrWriter = function(b, c, d, e) {
           return function(b, c, d) {
-            return cljs.core._write.call(null, c, "dommy.core/t140611");
+            return cljs.core._write.call(null, c, "dommy.core/t172043");
           };
-        }(f, g, h, d), dommy.core.t140611.prototype.cljs$core$IDeref$_deref$arity$1 = function(b, c, d, e) {
+        }(f, g, h, d), dommy.core.t172043.prototype.cljs$core$IDeref$_deref$arity$1 = function(b, c, d, e) {
           return function(b) {
             return dommy.utils.__GT_Array.call(null, dommy.template.__GT_node_like.call(null, this.container).querySelectorAll(dommy.core.selector.call(null, this.v)));
           };
-        }(f, g, h, d), dommy.core.t140611.prototype.cljs$core$IMeta$_meta$arity$1 = function(b, c, d, e) {
+        }(f, g, h, d), dommy.core.t172043.prototype.cljs$core$IMeta$_meta$arity$1 = function(b, c, d, e) {
           return function(b) {
-            return this.meta140612;
+            return this.meta172044;
           };
-        }(f, g, h, d), dommy.core.t140611.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c, d, e) {
+        }(f, g, h, d), dommy.core.t172043.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c, d, e) {
           return function(b, c) {
-            return new dommy.core.t140611(this.v, this.k, this.vec__140610, this.p__140609, this.container, this.key_selectors_map, this.template, this.selector_map, c);
+            return new dommy.core.t172043(this.v, this.k, this.vec__172042, this.p__172041, this.container, this.key_selectors_map, this.template, this.selector_map, c);
           };
-        }(f, g, h, d), dommy.core.__GT_t140611 = function(b, c, d, e) {
+        }(f, g, h, d), dommy.core.__GT_t172043 = function(b, c, d, e) {
           return function(b, c, d, e, f, g, h, k, l) {
-            return new dommy.core.t140611(b, c, d, e, f, g, h, k, l);
+            return new dommy.core.t172043(b, c, d, e, f, g, h, k, l);
           };
         }(f, g, h, d));
-        return new dommy.core.t140611(h, g, f, f, d, c, b, selector_map, null);
+        return new dommy.core.t172043(h, g, f, f, d, c, b, selector_map, null);
       }() : dommy.template.__GT_node_like.call(null, d).querySelector(dommy.core.selector.call(null, h))], null);
     };
   }(d), c)));
@@ -25786,20 +25786,21 @@ dommy.core.fire_BANG_ = function() {
 }();
 milestones.tasks_input = {};
 milestones.tasks_input.render_syntax_error = function(a) {
-  return "\x3cp class\x3d'error'\x3e" + cljs.core.str.cljs$core$IFn$_invoke$arity$1(a.call(null, "error")) + "\x3c/p\x3e\x3cp class\x3d'error'\x3e" + cljs.core.str.cljs$core$IFn$_invoke$arity$1(a.call(null, "error")) + "^\x3c/p\x3e";
+  return "\x3cp class\x3d'error'\x3e" + cljs.core.str.cljs$core$IFn$_invoke$arity$1(a.call(null, "error")) + "\x3c/p\x3e\x3cp class\x3d'error'\x3e" + cljs.core.str.cljs$core$IFn$_invoke$arity$1(a.call(null, "text")) + "\x3c/p\x3e\x3clabel\x3e" + cljs.core.str.cljs$core$IFn$_invoke$arity$1(a.call(null, "expected-msg")) + "\x3c/label\x3e\x3cp\x3e" + cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.apply.call(null, cljs.core.str, cljs.core.interpose.call(null, ",", a.call(null, "partial-reasons")))) + 
+  "\x3c/p\x3e\x3cp\x3e" + cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.apply.call(null, cljs.core.str, cljs.core.interpose.call(null, ",", a.call(null, "full-reasons")))) + "\x3c/p\x3e";
 };
 milestones.tasks_input.handler = function(a) {
   if (cljs.core._EQ_.call(null, a.call(null, "response"), "error")) {
     a = a.call(null, "failure");
     var b = document.getElementById("interractive-results");
-    dommy.core.add_attr_BANG_.call(null, document.getElementById("tasks-save"), new cljs.core.Keyword(null, "disabled", "disabled", -1529784218));
     dommy.core.add_class_BANG_.call(null, document.getElementById("tasks-save"), new cljs.core.Keyword(null, "disabled", "disabled", -1529784218));
     dommy.core.remove_class_BANG_.call(null, b, new cljs.core.Keyword(null, "alert-success", "alert-success", -1764385150));
-    return dommy.core.set_html_BANG_.call(null, b, milestones.tasks_input.render_syntax_error.call(null, a.call(null, "error")));
+    dommy.core.add_class_BANG_.call(null, b, new cljs.core.Keyword(null, "alert-danger", "alert-danger", 930758399));
+    return dommy.core.set_html_BANG_.call(null, b, milestones.tasks_input.render_syntax_error.call(null, a));
   }
   b = document.getElementById("interractive-results");
-  dommy.core.remove_attr_BANG_.call(null, document.getElementById("tasks-save"), new cljs.core.Keyword(null, "disabled", "disabled", -1529784218));
   dommy.core.add_class_BANG_.call(null, b, new cljs.core.Keyword(null, "alert-success", "alert-success", -1764385150));
+  dommy.core.remove_class_BANG_.call(null, b, new cljs.core.Keyword(null, "alert-danger", "alert-danger", 930758399));
   dommy.core.add_class_BANG_.call(null, document.getElementById("tasks-save"), new cljs.core.Keyword(null, "enabled", "enabled", 1195909756));
   return dommy.core.set_html_BANG_.call(null, b, "\x3ci class\x3d'icon-checked'\x3e\x3c/i\x3e Correct syntax !");
 };
@@ -25810,15 +25811,14 @@ milestones.tasks_input.save_handler = function(a) {
     }
     a.call(null, "failure");
     a = document.getElementById("interractive-results");
-    dommy.core.add_attr_BANG_.call(null, document.getElementById("tasks-save"), new cljs.core.Keyword(null, "disabled", "disabled", -1529784218));
     dommy.core.add_class_BANG_.call(null, document.getElementById("tasks-save"), new cljs.core.Keyword(null, "disabled", "disabled", -1529784218));
     dommy.core.remove_class_BANG_.call(null, a, new cljs.core.Keyword(null, "alert-success", "alert-success", -1764385150));
-    dommy.core.add_class_BANG_.call(null, a, new cljs.core.Keyword(null, "alert-error", "alert-error", -1621360388));
+    dommy.core.add_class_BANG_.call(null, a, new cljs.core.Keyword(null, "alert-danger", "alert-danger", 930758399));
     return dommy.core.set_html_BANG_.call(null, a, "\x3ci class\x3d'icon-remove'\x3e\x3c/i\x3e Error occured !");
   }
   a = document.getElementById("interractive-results");
-  dommy.core.remove_attr_BANG_.call(null, document.getElementById("tasks-save"), new cljs.core.Keyword(null, "disabled", "disabled", -1529784218));
   dommy.core.add_class_BANG_.call(null, a, new cljs.core.Keyword(null, "alert-success", "alert-success", -1764385150));
+  dommy.core.remove_class_BANG_.call(null, a, new cljs.core.Keyword(null, "alert-danger", "alert-danger", 930758399));
   dommy.core.add_class_BANG_.call(null, document.getElementById("tasks-save"), new cljs.core.Keyword(null, "enabled", "enabled", 1195909756));
   return dommy.core.set_html_BANG_.call(null, a, "\x3ci class\x3d'icon-checked'\x3e\x3c/i\x3e Tasks saved !");
 };

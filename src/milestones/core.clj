@@ -16,7 +16,7 @@
 
 ;;; current version, must be in sync with project.clj
 
-(def version "0.1.0-SNAPSHOT")
+(def version "1.0.0-SNAPSHOT")
 
 ;;; Logging to File enabled
 (timbre/set-config! [:appenders :spit :enabled?] true )
@@ -42,7 +42,7 @@
              (json/wrap-json-body)
              (resource/wrap-resource "/public")))
 
-;;(def ip "31.171.251.104")
+
 (def ip "0.0.0.0")
 (def port "8080")
 

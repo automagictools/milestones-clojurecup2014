@@ -82,7 +82,7 @@
   "Takes an augmented failure object and prints the error message"
   [{:keys [line column text reason]}]
   (let [error (str "Parse error at line " line ", column " column ":\n")
-        text text
+        text (str text "<br>" (apply str (repeat column "&nbsp;")) "^")
         marker column
         full-reasons (mapv str (distinct (map :expecting
                                              (filter :full reason))))

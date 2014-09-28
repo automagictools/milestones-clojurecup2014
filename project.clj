@@ -1,4 +1,4 @@
-(defproject milestones "0.1.0-SNAPSHOT"
+(defproject milestones "1.0.0-SNAPSHOT"
   :description "This is MileStones, the intelligent prject scheduling software, for clojure cup 2014"
   :url "http://milestones.clojurecup.com"
   :license {:name "The BSD 3-Clause License"

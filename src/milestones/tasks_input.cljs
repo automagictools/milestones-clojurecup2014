@@ -11,20 +11,23 @@
 (defn render-syntax-error 
   [failure]
   (str "<p class='error'>" (failure "error") "</p>"
-       "<p class='error'>" (failure "error") "^</p>"
-       ))
-
+       "<p class='error'>" (failure "text") "</p>"
+       "<label>" (failure "expected-msg") "</label>"
+       "<p>" (apply str (interpose "," (failure "partial-reasons"))) "</p>"
+       "<p>" (apply str (interpose "," (failure "full-reasons"))) "</p>"))
+ 
 (defn handler [response]
   "Ajax POST handler to display an interractive results"
   (if-let [x (= (response "response") "error")]
     (let [failure (response "failure") div-resuts (sel1 :#interractive-results)]
-      (dommy/add-attr! (sel1 :#tasks-save) :disabled)
+      ;(dommy/add-attr! (sel1 :#tasks-save) :disabled)
       (dommy/add-class! (sel1 :#tasks-save) :disabled)
       (dommy/remove-class! div-resuts :alert-success)
-      (dommy/set-html! div-resuts (render-syntax-error  (failure "error"))))
+      (dommy/add-class! div-resuts :alert-danger)
+      (dommy/set-html! div-resuts (render-syntax-error  failure)))
     (let [div-resuts (sel1 :#interractive-results)]      
-      (dommy/remove-attr! (sel1 :#tasks-save) :disabled)
       (dommy/add-class! div-resuts :alert-success)
+      (dommy/remove-class! div-resuts :alert-danger)
       (dommy/add-class! (sel1 :#tasks-save) :enabled)
       (dommy/set-html! div-resuts "<i class='icon-checked'></i> Correct syntax !"))))
 
@@ -35,14 +38,14 @@
     (if-let [y (= (response "error") "syntax")]
       (handler response)
 	      (let [error (response "failure") div-resuts (sel1 :#interractive-results)]
-         (dommy/add-attr! (sel1 :#tasks-save) :disabled)
+         ;(dommy/add-attr! (sel1 :#tasks-save) :disabled)
          (dommy/add-class! (sel1 :#tasks-save) :disabled)
          (dommy/remove-class! div-resuts :alert-success)
-         (dommy/add-class! div-resuts :alert-error)
+         (dommy/add-class! div-resuts :alert-danger)
          (dommy/set-html! div-resuts "<i class='icon-remove'></i> Error occured !")))
     (let [div-resuts (sel1 :#interractive-results)]
-      (dommy/remove-attr! (sel1 :#tasks-save) :disabled)
       (dommy/add-class! div-resuts :alert-success)
+      (dommy/remove-class! div-resuts :alert-danger)
       (dommy/add-class! (sel1 :#tasks-save) :enabled)
       (dommy/set-html! div-resuts "<i class='icon-checked'></i> Tasks saved !"))))
 
