@@ -128,6 +128,10 @@ Though we can reduce (or even deduce the ending time thanks to
 
 4. Move to the next tick of the timer, repeat at 1.
 
+There can be an issue with cyclic dependcies, which cause our algorithm to run undefinitely
+ Due to lack of time, we took an heuristic. we terminate if the timer exceeds two times the size the sum of duration
+ of all tasks, thinking that if the tasks aren't shceduled then, we abandon them.
+
 ## A picture, maybe ?
 As the old saying goes, a picture is worth a thousand words. Here you
 go for the "Dynamic Scheduler" architecture.

@@ -52,13 +52,14 @@
   [tasks
    output-schedule
    the-task-id]
-  (let [the-task (get tasks the-task-id)
-        duration (the-task :duration)
-        nb-task-units-in-output (count
-                                  (filter #(= (% :task-id ) the-task-id )
-                                          output-schedule ))]
-    (try (/ nb-task-units-in-output duration)
-         (catch Exception e 1))))
+  (try
+    (let [the-task (get tasks the-task-id)
+          duration (the-task :duration)
+          nb-task-units-in-output (count
+                                    (filter #(= (% :task-id ) the-task-id )
+                                            output-schedule ))]
+      (/ nb-task-units-in-output duration))
+    (catch Exception e 1)))
 
 (defn task-complete?
   "returns true if task is complete"
@@ -288,6 +289,17 @@
 
 
 
+
+(defn total-task-duration
+  "to compute total tasks duration"
+  [tasks]
+  (->> tasks
+       ( vals)
+       (map :duration )
+       (filter (comp not nil?))
+       (reduce +)))
+
+
 (defn run-scheduler!
   "this is the master-mind. runs all of them, collects their inputs,
   and then goes home"
@@ -295,13 +307,16 @@
    reordering-properties]
   (let [c-to-me (chan)
         timer (atom 0)
+        max-time (* 2 (total-task-duration tasks))
         workflows (atom {})
         output-schedule (atom [])
         resources-ids (map :resource-id (vals tasks))]
 
-    (while (not (every? (partial task-complete?
-                                  tasks
-                                  @output-schedule ) (keys tasks)))
+    (while
+        (and (< @timer max-time)
+             (not (every? (partial task-complete?
+                                   tasks
+                                   @output-schedule ) (keys tasks))))
       (swap! timer inc)
       (doseq [resource resources-ids]
         ;; next tick
