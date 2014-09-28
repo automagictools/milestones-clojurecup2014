@@ -16,7 +16,7 @@
 
 (defn createChart [dataset]
   (let [chart (ChartFactory/createGanttChart 
-                "Gantt Chart" ;  // chart title
+                "your schedule !" ;  // chart title
 		            "Task"      ;     // domain axis label
 		            "Date";              // range axis label
 		            dataset;             // data
@@ -39,19 +39,21 @@
 
 
  (defn createDataSet [tasks]
-   (let [s1 (new TaskSeries "Schedular")
+   (let [s1 (new TaskSeries "")
          collection (new TaskSeriesCollection)
          current-date (new Date)
          ]
      
-     (doseq [[k v] tasks] (.add s1 (new Task (str (v :task-name) " : " (v :resource-id))
-                          (new SimpleTimePeriod 
-                          (date current-date (v :begin)) ;; ustiliser (v :begin)
-                          (date current-date (+ (v :begin) (v :duration))) ;; utiliser (v :duration)
-                          ))))
+     (doseq [[k v] tasks] 
+       (if (nil? (v :begin)) false 
+         (.add s1 (new Task (str (v :task-name) " : " (v :resource-id))
+            (new SimpleTimePeriod 
+            (date current-date (v :begin)) ;; ustiliser (v :begin)
+            (date current-date (+ (v :begin) (v :duration))) ;; utiliser (v :duration)
+            )))
+         )
+       )
          
-     (print (.getTasks s1))
-
      (.add collection s1)
      collection))
 
@@ -66,5 +68,5 @@
         file-name (get-random-id 8)
         ]
     (ChartUtilities/saveChartAsPNG (new File (str "resources/public/" file-name ".png")), chart, 800, 800)
-    file-name ".png"
+    (str file-name ".png")
   ))
