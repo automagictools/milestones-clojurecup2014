@@ -1,4 +1,4 @@
-(defproject milestones "0.1.0-SNAPSHOT"
+(defproject milestones "1.0.0-SNAPSHOT"
   :description "This is MileStones, the intelligent prject scheduling software, for clojure cup 2014"
   :url "http://milestones.clojurecup.com"
   :license {:name "The BSD 3-Clause License"
@@ -17,8 +17,9 @@
                  [javax.servlet/servlet-api "2.5"]
                  [expectations "2.0.9"]
                  [cljs-ajax "0.3.0"]
-                 [domina "1.0.2"]
-                 [net.drib/strokes "0.5.1"]]
+                 [prismatic/dommy "0.1.3"]
+                 [jfree/jfreechart "1.0.13"]]
+
 
   :plugins [[lein-ring "0.8.11"]
             [lein-cljsbuild "0.3.2"]]

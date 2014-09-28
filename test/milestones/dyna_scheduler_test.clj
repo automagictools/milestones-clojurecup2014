@@ -9,19 +9,19 @@
                :resource-id 2
                :duration 5
                :priority 1
-               :predecessors [1 5]}
+               :predecessors []}
 
              2 {:task-name "A description about this task"
-              :resource-id 1
+              :resource-id "rafik"
               :duration 5
-              :priority 2
-              :predecessors [1 3 4]}
+              :priority 1
+              :predecessors []}
 
              3 {:task-name "A description about this task"
               :resource-id 4
               :duration 3
               :priority 1
-              :predecessors [2 4]}
+              :predecessors []}
 
              4 {:task-name "A description about this task"
                 :resource-id 4
@@ -30,15 +30,13 @@
 
              5 {:task-name "A description about this task"
                 :resource-id "rafik"
-                :duration 2
-                :priority 1
-                :predecessors [3 4]}
+                :duration 10
+                :priority 4
+                :predecessors [3]}
              })
 
-(def output-schedule [ {:task-id 5 :time 1 :resource-id 1}
-                       {:task-id 5 :time 2 :resource-id 1}
-                       {:task-id 5 :time 2 :resource-id 1}
-                       {:task-id 1 :time 1 :resource-id 1}
+(def output-schedule [
+                      {:task-id 1 :time 1 :resource-id 1}
                       {:task-id 1 :time 2 :resource-id 1}
                       {:task-id 3 :time 1 :resource-id 1}
                       {:task-id 3 :time 2 :resource-id 1}
@@ -63,4 +61,7 @@
 (expect (find-fireable-tasks tasks output-schedule ) [5])
 
 (expect (reorder-tasks tasks [:duration :priority]) [2 1 3 5 4])
+
+(expect (keys (tasks-for-resource tasks "rafik")) '(5) )
+
 

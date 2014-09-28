@@ -8,15 +8,15 @@
             [ring.util.response :as resp]
             [taoensso.timbre :as timbre]
             [cheshire.core :refer :all]
-            [milestones.tasks_specifier :as ts]))
-;; (:gen-class))
+            [milestones.tasks_specifier :as ts])
+ (:gen-class))
 
 ;;; logging with timbre
 (timbre/refer-timbre)
 
 ;;; current version, must be in sync with project.clj
 
-(def version "0.1.0-SNAPSHOT")
+(def version "1.0.0-SNAPSHOT")
 
 ;;; Logging to File enabled
 (timbre/set-config! [:appenders :spit :enabled?] true )
@@ -29,12 +29,11 @@
            (GET "/" [] (resp/redirect "index.html"))
            (GET "/specify-tasks" [] (resp/redirect "tasks-specifier.html"))
            (GET "/diagram" [] (resp/redirect "diagram.html"))
-           
-           (GET "/post" [] "posted")
-           
+           (GET "/post" [] "posted")           
            (POST "/check-tasks" [:as rest]
                 (generate-string (ts/formatted-tasks (rest :body))))
-           
+           (POST "/save-tasks" [:as rest]
+                (generate-string (ts/save-tasks (rest :body))))
            (route/resources "/" {:root "public"})
            (route/not-found "Not Found!"))
 
@@ -43,7 +42,7 @@
              (json/wrap-json-body)
              (resource/wrap-resource "/public")))
 
-;;(def ip "31.171.251.104")
+
 (def ip "0.0.0.0")
 (def port "8080")
 
