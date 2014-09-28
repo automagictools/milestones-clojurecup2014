@@ -167,8 +167,7 @@
 
 
   (let [ [k v] a-task
-         the-tv (task-sched-time-vector output-schedule k)
-         _ (println "the tv" the-tv)]
+         the-tv (task-sched-time-vector output-schedule k)]
 
     (if (not (empty? the-tv))
       [k   (-> v
@@ -238,19 +237,19 @@
                                           his-incomplete-fireable-tasks-ids )) ;; [ the part to be reordered and generated]
 
 
-         _ (println "fireable-ids-not-in-wp" fireable-ids-not-in-wp)
+
          his-fireable-tasks-not-in-wp (select-keys tasks fireable-ids-not-in-wp)
 
-         _ (println "his-fireable tasks not in wp")
+
          his-ordered-tasks-not-in-wp (reorder-tasks his-fireable-tasks-not-in-wp
                                                     reordering-properties)
 
-         _ (println "his orderd tasks not wp " his-ordered-tasks-not-in-wp)
+
 
          his-new-ordered-workflow (gen-work-flow tasks
                                                  his-ordered-tasks-not-in-wp)]
 
-    _ (println "his-new-ordered-workfllow " his-new-ordered-workflow)
+
     (into his-new-ordered-workflow wp-vector)))
 
 ;; will be used to sync the threads, on for each resource
@@ -273,7 +272,7 @@
                                            resource-id
                                            output-schedule
                                            reordering-properties)
-         _ (println resource-id "has workflo " my-workflow)
+
 
         the-task-unit {:task-id (peek my-workflow)
                        :time timer
@@ -284,7 +283,7 @@
             ]
 ;; now I inject the task-unit in the channel
     ;; must be done inside a go block !!
-    (println resource-id "about to put" the-task-unit)
+
     (go (>! chan-to-output the-task-unit))))
 
 
