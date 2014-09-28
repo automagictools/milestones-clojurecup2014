@@ -289,6 +289,17 @@
 
 
 
+
+(defn total-task-duration
+  "to compute total tasks duration"
+  [tasks]
+  (->> tasks
+       ( vals)
+       (map :duration )
+       (filter (comp not nil?))
+       (reduce +)))
+
+
 (defn run-scheduler!
   "this is the master-mind. runs all of them, collects their inputs,
   and then goes home"
@@ -296,14 +307,16 @@
    reordering-properties]
   (let [c-to-me (chan)
         timer (atom 0)
-        maxtime (reduce + (map ))
+        max-time (* 2 (total-task-duration tasks))
         workflows (atom {})
         output-schedule (atom [])
         resources-ids (map :resource-id (vals tasks))]
 
-    (while (not (every? (partial task-complete?
-                                  tasks
-                                  @output-schedule ) (keys tasks)))
+    (while
+        (and (< @timer max-time)
+             (not (every? (partial task-complete?
+                                   tasks
+                                   @output-schedule ) (keys tasks))))
       (swap! timer inc)
       (doseq [resource resources-ids]
         ;; next tick
