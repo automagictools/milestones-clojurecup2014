@@ -29,9 +29,7 @@
            (GET "/" [] (resp/redirect "index.html"))
            (GET "/specify-tasks" [] (resp/redirect "tasks-specifier.html"))
            (GET "/diagram" [] (resp/redirect "diagram.html"))
-           
-           (GET "/post" [] "posted")
-           
+           (GET "/post" [] "posted")           
            (POST "/check-tasks" [:as rest]
                 (generate-string (ts/formatted-tasks (rest :body))))
            
