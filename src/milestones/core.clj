@@ -7,7 +7,8 @@
             [ring.middleware.json :as json]
             [ring.util.response :as resp]
             [taoensso.timbre :as timbre]
-            [cheshire.core :refer :all]))
+            [cheshire.core :refer :all]
+            [milestones.tasks_specifier :as ts]))
 ;; (:gen-class))
 
 ;;; logging with timbre
@@ -28,8 +29,12 @@
            (GET "/" [] (resp/redirect "index.html"))
            (GET "/specify-tasks" [] (resp/redirect "tasks-specifier.html"))
            (GET "/diagram" [] (resp/redirect "diagram.html"))
-           (POST "/send-message" [:as rest]
-                 (rest :body))
+           
+           (GET "/post" [] "posted")
+           
+           (POST "/check-tasks" [:as rest]
+                (generate-string (ts/formatted-tasks (rest :body))))
+           
            (route/resources "/" {:root "public"})
            (route/not-found "Not Found!"))
 
@@ -37,7 +42,6 @@
           (->(handler/site app-routes)
              (json/wrap-json-body)
              (resource/wrap-resource "/public")))
-
 
 ;;(def ip "31.171.251.104")
 (def ip "0.0.0.0")

@@ -16,7 +16,8 @@
                  [com.taoensso/timbre "3.3.1"]
                  [javax.servlet/servlet-api "2.5"]
                  [expectations "2.0.9"]
-                 [cljs-ajax "0.3.0"]]
+                 [cljs-ajax "0.3.0"]
+                 [domina "1.0.2"]]
 
   :plugins [[lein-ring "0.8.11"]
             [lein-cljsbuild "0.3.2"]]

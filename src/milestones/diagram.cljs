@@ -4,4 +4,3 @@
 (defn main []
   (js/alert "try to fix cljs"))
 
-(main)

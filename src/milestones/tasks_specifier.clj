@@ -78,9 +78,10 @@
   tasks-list)
 
 (defn formatted-tasks [tasks]
-  (let [tasks-list (tasks-specifier tasks)]
-    (insta/failure? {:error tasks-list})
-    (formatted-tasks-list tasks-list)))
+  (let [tasks-list (tasks-specifier (tasks "tasks"))]
+    (insta/failure? {:response "error" :error tasks-list})
+    (formatted-tasks-list tasks-list)
+    {:response "success"}))
 
 (defn task-to-sched
   [insta-task]

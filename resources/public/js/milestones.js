@@ -7116,27 +7116,27 @@ cljs.core.not_empty = function(a) {
   return cljs.core.seq.call(null, a) ? a : null;
 };
 cljs.core.nil_iter = function nil_iter() {
-  "undefined" === typeof cljs.core.t21013 && (cljs.core.t21013 = function(b, c) {
+  "undefined" === typeof cljs.core.t17882 && (cljs.core.t17882 = function(b, c) {
     this.nil_iter = b;
-    this.meta21014 = c;
+    this.meta17883 = c;
     this.cljs$lang$protocol_mask$partition1$ = 0;
     this.cljs$lang$protocol_mask$partition0$ = 393216;
-  }, cljs.core.t21013.cljs$lang$type = !0, cljs.core.t21013.cljs$lang$ctorStr = "cljs.core/t21013", cljs.core.t21013.cljs$lang$ctorPrWriter = function(b, c, d) {
-    return cljs.core._write.call(null, c, "cljs.core/t21013");
-  }, cljs.core.t21013.prototype.hasNext = function() {
+  }, cljs.core.t17882.cljs$lang$type = !0, cljs.core.t17882.cljs$lang$ctorStr = "cljs.core/t17882", cljs.core.t17882.cljs$lang$ctorPrWriter = function(b, c, d) {
+    return cljs.core._write.call(null, c, "cljs.core/t17882");
+  }, cljs.core.t17882.prototype.hasNext = function() {
     return!1;
-  }, cljs.core.t21013.prototype.next = function() {
+  }, cljs.core.t17882.prototype.next = function() {
     return Error("No such element");
-  }, cljs.core.t21013.prototype.remove = function() {
+  }, cljs.core.t17882.prototype.remove = function() {
     return Error("Unsupported operation");
-  }, cljs.core.t21013.prototype.cljs$core$IMeta$_meta$arity$1 = function(b) {
-    return this.meta21014;
-  }, cljs.core.t21013.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
-    return new cljs.core.t21013(this.nil_iter, c);
-  }, cljs.core.__GT_t21013 = function(b, c) {
-    return new cljs.core.t21013(b, c);
+  }, cljs.core.t17882.prototype.cljs$core$IMeta$_meta$arity$1 = function(b) {
+    return this.meta17883;
+  }, cljs.core.t17882.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
+    return new cljs.core.t17882(this.nil_iter, c);
+  }, cljs.core.__GT_t17882 = function(b, c) {
+    return new cljs.core.t17882(b, c);
   });
-  return new cljs.core.t21013(nil_iter, null);
+  return new cljs.core.t17882(nil_iter, null);
 };
 cljs.core.StringIter = function(a, b) {
   this.s = a;
@@ -8001,8 +8001,8 @@ cljs.core.fnil = function() {
       }, m = function(k, l, m) {
         return a.call(null, null == k ? b : k, null == l ? c : l, null == m ? d : m);
       }, n = function() {
-        var k = function(k, l, m, q) {
-          return cljs.core.apply.call(null, a, null == k ? b : k, null == l ? c : l, null == m ? d : m, q);
+        var k = function(k, l, m, n) {
+          return cljs.core.apply.call(null, a, null == k ? b : k, null == l ? c : l, null == m ? d : m, n);
         }, l = function(a, b, c, d) {
           var e = null;
           3 < arguments.length && (e = cljs.core.array_seq(Array.prototype.slice.call(arguments, 3), 0));
@@ -16400,7 +16400,6 @@ var milestones = {diagram:{}};
 milestones.diagram.main = function() {
   return alert("try to fix cljs");
 };
-milestones.diagram.main.call(null);
 goog.labs = {};
 goog.labs.userAgent = {};
 goog.labs.userAgent.util = {};
@@ -16431,36 +16430,6 @@ goog.labs.userAgent.util.extractVersionTuples = function(a) {
     c.push([d[1], d[2], d[3] || void 0]);
   }
   return c;
-};
-goog.debug.entryPointRegistry = {};
-goog.debug.EntryPointMonitor = function() {
-};
-goog.debug.entryPointRegistry.refList_ = [];
-goog.debug.entryPointRegistry.monitors_ = [];
-goog.debug.entryPointRegistry.monitorsMayExist_ = !1;
-goog.debug.entryPointRegistry.register = function(a) {
-  goog.debug.entryPointRegistry.refList_[goog.debug.entryPointRegistry.refList_.length] = a;
-  if (goog.debug.entryPointRegistry.monitorsMayExist_) {
-    for (var b = goog.debug.entryPointRegistry.monitors_, c = 0;c < b.length;c++) {
-      a(goog.bind(b[c].wrap, b[c]));
-    }
-  }
-};
-goog.debug.entryPointRegistry.monitorAll = function(a) {
-  goog.debug.entryPointRegistry.monitorsMayExist_ = !0;
-  for (var b = goog.bind(a.wrap, a), c = 0;c < goog.debug.entryPointRegistry.refList_.length;c++) {
-    goog.debug.entryPointRegistry.refList_[c](b);
-  }
-  goog.debug.entryPointRegistry.monitors_.push(a);
-};
-goog.debug.entryPointRegistry.unmonitorAllIfPossible = function(a) {
-  var b = goog.debug.entryPointRegistry.monitors_;
-  goog.asserts.assert(a == b[b.length - 1], "Only the most recent monitor can be unwrapped.");
-  a = goog.bind(a.unwrap, a);
-  for (var c = 0;c < goog.debug.entryPointRegistry.refList_.length;c++) {
-    goog.debug.entryPointRegistry.refList_[c](a);
-  }
-  b.length--;
 };
 goog.labs.userAgent.browser = {};
 goog.labs.userAgent.browser.matchOpera_ = function() {
@@ -16664,6 +16633,38 @@ goog.userAgent.DOCUMENT_MODE = function() {
   var a = goog.global.document;
   return a && goog.userAgent.IE ? goog.userAgent.getDocumentMode_() || ("CSS1Compat" == a.compatMode ? parseInt(goog.userAgent.VERSION, 10) : 5) : void 0;
 }();
+goog.dom.BrowserFeature = {CAN_ADD_NAME_OR_TYPE_ATTRIBUTES:!goog.userAgent.IE || goog.userAgent.isDocumentModeOrHigher(9), CAN_USE_CHILDREN_ATTRIBUTE:!goog.userAgent.GECKO && !goog.userAgent.IE || goog.userAgent.IE && goog.userAgent.isDocumentModeOrHigher(9) || goog.userAgent.GECKO && goog.userAgent.isVersionOrHigher("1.9.1"), CAN_USE_INNER_TEXT:goog.userAgent.IE && !goog.userAgent.isVersionOrHigher("9"), CAN_USE_PARENT_ELEMENT_PROPERTY:goog.userAgent.IE || goog.userAgent.OPERA || goog.userAgent.WEBKIT, 
+INNER_HTML_NEEDS_SCOPED_ELEMENT:goog.userAgent.IE, LEGACY_IE_RANGES:goog.userAgent.IE && !goog.userAgent.isDocumentModeOrHigher(9)};
+goog.debug.entryPointRegistry = {};
+goog.debug.EntryPointMonitor = function() {
+};
+goog.debug.entryPointRegistry.refList_ = [];
+goog.debug.entryPointRegistry.monitors_ = [];
+goog.debug.entryPointRegistry.monitorsMayExist_ = !1;
+goog.debug.entryPointRegistry.register = function(a) {
+  goog.debug.entryPointRegistry.refList_[goog.debug.entryPointRegistry.refList_.length] = a;
+  if (goog.debug.entryPointRegistry.monitorsMayExist_) {
+    for (var b = goog.debug.entryPointRegistry.monitors_, c = 0;c < b.length;c++) {
+      a(goog.bind(b[c].wrap, b[c]));
+    }
+  }
+};
+goog.debug.entryPointRegistry.monitorAll = function(a) {
+  goog.debug.entryPointRegistry.monitorsMayExist_ = !0;
+  for (var b = goog.bind(a.wrap, a), c = 0;c < goog.debug.entryPointRegistry.refList_.length;c++) {
+    goog.debug.entryPointRegistry.refList_[c](b);
+  }
+  goog.debug.entryPointRegistry.monitors_.push(a);
+};
+goog.debug.entryPointRegistry.unmonitorAllIfPossible = function(a) {
+  var b = goog.debug.entryPointRegistry.monitors_;
+  goog.asserts.assert(a == b[b.length - 1], "Only the most recent monitor can be unwrapped.");
+  a = goog.bind(a.unwrap, a);
+  for (var c = 0;c < goog.debug.entryPointRegistry.refList_.length;c++) {
+    goog.debug.entryPointRegistry.refList_[c](a);
+  }
+  b.length--;
+};
 goog.events = {};
 goog.events.BrowserFeature = {HAS_W3C_BUTTON:!goog.userAgent.IE || goog.userAgent.isDocumentModeOrHigher(9), HAS_W3C_EVENT_SUPPORT:!goog.userAgent.IE || goog.userAgent.isDocumentModeOrHigher(9), SET_KEY_CODE_TO_PREVENT_DEFAULT:goog.userAgent.IE && !goog.userAgent.isVersionOrHigher("9"), HAS_NAVIGATOR_ONLINE_PROPERTY:!goog.userAgent.WEBKIT || goog.userAgent.isVersionOrHigher("528"), HAS_HTML5_NETWORK_EVENT_SUPPORT:goog.userAgent.GECKO && goog.userAgent.isVersionOrHigher("1.9b") || goog.userAgent.IE && 
 goog.userAgent.isVersionOrHigher("8") || goog.userAgent.OPERA && goog.userAgent.isVersionOrHigher("9.5") || goog.userAgent.WEBKIT && goog.userAgent.isVersionOrHigher("528"), HTML5_NETWORK_EVENTS_FIRE_ON_BODY:goog.userAgent.GECKO && !goog.userAgent.isVersionOrHigher("8") || goog.userAgent.IE && !goog.userAgent.isVersionOrHigher("9"), TOUCH_ENABLED:"ontouchstart" in goog.global || !!(goog.global.document && document.documentElement && "ontouchstart" in document.documentElement) || !(!goog.global.navigator || 
@@ -23080,33 +23081,33 @@ cognitect.transit.write_handler = function() {
   }, c = function(b, c, d) {
     return a.call(null, b, c, d, null);
   }, d = function(b, c, d, h) {
-    "undefined" === typeof cognitect.transit.t20549 && (cognitect.transit.t20549 = function(a, b, c, d, e, f) {
+    "undefined" === typeof cognitect.transit.t17418 && (cognitect.transit.t17418 = function(a, b, c, d, e, f) {
       this.verbose_handler_fn = a;
       this.str_rep_fn = b;
       this.rep_fn = c;
       this.tag_fn = d;
       this.write_handler = e;
-      this.meta20550 = f;
+      this.meta17419 = f;
       this.cljs$lang$protocol_mask$partition1$ = 0;
       this.cljs$lang$protocol_mask$partition0$ = 393216;
-    }, cognitect.transit.t20549.cljs$lang$type = !0, cognitect.transit.t20549.cljs$lang$ctorStr = "cognitect.transit/t20549", cognitect.transit.t20549.cljs$lang$ctorPrWriter = function(a, b, c) {
-      return cljs.core._write.call(null, b, "cognitect.transit/t20549");
-    }, cognitect.transit.t20549.prototype.tag = function(a) {
+    }, cognitect.transit.t17418.cljs$lang$type = !0, cognitect.transit.t17418.cljs$lang$ctorStr = "cognitect.transit/t17418", cognitect.transit.t17418.cljs$lang$ctorPrWriter = function(a, b, c) {
+      return cljs.core._write.call(null, b, "cognitect.transit/t17418");
+    }, cognitect.transit.t17418.prototype.tag = function(a) {
       return this.tag_fn.call(null, a);
-    }, cognitect.transit.t20549.prototype.rep = function(a) {
+    }, cognitect.transit.t17418.prototype.rep = function(a) {
       return this.rep_fn.call(null, a);
-    }, cognitect.transit.t20549.prototype.stringRep = function(a) {
+    }, cognitect.transit.t17418.prototype.stringRep = function(a) {
       return cljs.core.truth_(this.str_rep_fn) ? this.str_rep_fn.call(null, a) : null;
-    }, cognitect.transit.t20549.prototype.getVerboseHandler = function() {
+    }, cognitect.transit.t17418.prototype.getVerboseHandler = function() {
       return cljs.core.truth_(this.verbose_handler_fn) ? this.verbose_handler_fn.call(null) : null;
-    }, cognitect.transit.t20549.prototype.cljs$core$IMeta$_meta$arity$1 = function(a) {
-      return this.meta20550;
-    }, cognitect.transit.t20549.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(a, b) {
-      return new cognitect.transit.t20549(this.verbose_handler_fn, this.str_rep_fn, this.rep_fn, this.tag_fn, this.write_handler, b);
-    }, cognitect.transit.__GT_t20549 = function(a, b, c, d, e, f) {
-      return new cognitect.transit.t20549(a, b, c, d, e, f);
+    }, cognitect.transit.t17418.prototype.cljs$core$IMeta$_meta$arity$1 = function(a) {
+      return this.meta17419;
+    }, cognitect.transit.t17418.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(a, b) {
+      return new cognitect.transit.t17418(this.verbose_handler_fn, this.str_rep_fn, this.rep_fn, this.tag_fn, this.write_handler, b);
+    }, cognitect.transit.__GT_t17418 = function(a, b, c, d, e, f) {
+      return new cognitect.transit.t17418(a, b, c, d, e, f);
     });
-    return new cognitect.transit.t20549(h, d, c, b, a, null);
+    return new cognitect.transit.t17418(h, d, c, b, a, null);
   }, a = function(a, f, g, h) {
     switch(arguments.length) {
       case 2:
@@ -24513,9 +24514,3028 @@ ajax.core.TRACE = function() {
   b.cljs$core$IFn$_invoke$arity$variadic = a;
   return b;
 }();
+goog.dom.TagName = {A:"A", ABBR:"ABBR", ACRONYM:"ACRONYM", ADDRESS:"ADDRESS", APPLET:"APPLET", AREA:"AREA", ARTICLE:"ARTICLE", ASIDE:"ASIDE", AUDIO:"AUDIO", B:"B", BASE:"BASE", BASEFONT:"BASEFONT", BDI:"BDI", BDO:"BDO", BIG:"BIG", BLOCKQUOTE:"BLOCKQUOTE", BODY:"BODY", BR:"BR", BUTTON:"BUTTON", CANVAS:"CANVAS", CAPTION:"CAPTION", CENTER:"CENTER", CITE:"CITE", CODE:"CODE", COL:"COL", COLGROUP:"COLGROUP", COMMAND:"COMMAND", DATA:"DATA", DATALIST:"DATALIST", DD:"DD", DEL:"DEL", DETAILS:"DETAILS", DFN:"DFN", 
+DIALOG:"DIALOG", DIR:"DIR", DIV:"DIV", DL:"DL", DT:"DT", EM:"EM", EMBED:"EMBED", FIELDSET:"FIELDSET", FIGCAPTION:"FIGCAPTION", FIGURE:"FIGURE", FONT:"FONT", FOOTER:"FOOTER", FORM:"FORM", FRAME:"FRAME", FRAMESET:"FRAMESET", H1:"H1", H2:"H2", H3:"H3", H4:"H4", H5:"H5", H6:"H6", HEAD:"HEAD", HEADER:"HEADER", HGROUP:"HGROUP", HR:"HR", HTML:"HTML", I:"I", IFRAME:"IFRAME", IMG:"IMG", INPUT:"INPUT", INS:"INS", ISINDEX:"ISINDEX", KBD:"KBD", KEYGEN:"KEYGEN", LABEL:"LABEL", LEGEND:"LEGEND", LI:"LI", LINK:"LINK", 
+MAP:"MAP", MARK:"MARK", MATH:"MATH", MENU:"MENU", META:"META", METER:"METER", NAV:"NAV", NOFRAMES:"NOFRAMES", NOSCRIPT:"NOSCRIPT", OBJECT:"OBJECT", OL:"OL", OPTGROUP:"OPTGROUP", OPTION:"OPTION", OUTPUT:"OUTPUT", P:"P", PARAM:"PARAM", PRE:"PRE", PROGRESS:"PROGRESS", Q:"Q", RP:"RP", RT:"RT", RUBY:"RUBY", S:"S", SAMP:"SAMP", SCRIPT:"SCRIPT", SECTION:"SECTION", SELECT:"SELECT", SMALL:"SMALL", SOURCE:"SOURCE", SPAN:"SPAN", STRIKE:"STRIKE", STRONG:"STRONG", STYLE:"STYLE", SUB:"SUB", SUMMARY:"SUMMARY", 
+SUP:"SUP", SVG:"SVG", TABLE:"TABLE", TBODY:"TBODY", TD:"TD", TEXTAREA:"TEXTAREA", TFOOT:"TFOOT", TH:"TH", THEAD:"THEAD", TIME:"TIME", TITLE:"TITLE", TR:"TR", TRACK:"TRACK", TT:"TT", U:"U", UL:"UL", VAR:"VAR", VIDEO:"VIDEO", WBR:"WBR"};
+goog.math.Coordinate = function(a, b) {
+  this.x = goog.isDef(a) ? a : 0;
+  this.y = goog.isDef(b) ? b : 0;
+};
+goog.math.Coordinate.prototype.clone = function() {
+  return new goog.math.Coordinate(this.x, this.y);
+};
+goog.DEBUG && (goog.math.Coordinate.prototype.toString = function() {
+  return "(" + this.x + ", " + this.y + ")";
+});
+goog.math.Coordinate.equals = function(a, b) {
+  return a == b ? !0 : a && b ? a.x == b.x && a.y == b.y : !1;
+};
+goog.math.Coordinate.distance = function(a, b) {
+  var c = a.x - b.x, d = a.y - b.y;
+  return Math.sqrt(c * c + d * d);
+};
+goog.math.Coordinate.magnitude = function(a) {
+  return Math.sqrt(a.x * a.x + a.y * a.y);
+};
+goog.math.Coordinate.azimuth = function(a) {
+  return goog.math.angle(0, 0, a.x, a.y);
+};
+goog.math.Coordinate.squaredDistance = function(a, b) {
+  var c = a.x - b.x, d = a.y - b.y;
+  return c * c + d * d;
+};
+goog.math.Coordinate.difference = function(a, b) {
+  return new goog.math.Coordinate(a.x - b.x, a.y - b.y);
+};
+goog.math.Coordinate.sum = function(a, b) {
+  return new goog.math.Coordinate(a.x + b.x, a.y + b.y);
+};
+goog.math.Coordinate.prototype.ceil = function() {
+  this.x = Math.ceil(this.x);
+  this.y = Math.ceil(this.y);
+  return this;
+};
+goog.math.Coordinate.prototype.floor = function() {
+  this.x = Math.floor(this.x);
+  this.y = Math.floor(this.y);
+  return this;
+};
+goog.math.Coordinate.prototype.round = function() {
+  this.x = Math.round(this.x);
+  this.y = Math.round(this.y);
+  return this;
+};
+goog.math.Coordinate.prototype.translate = function(a, b) {
+  a instanceof goog.math.Coordinate ? (this.x += a.x, this.y += a.y) : (this.x += a, goog.isNumber(b) && (this.y += b));
+  return this;
+};
+goog.math.Coordinate.prototype.scale = function(a, b) {
+  var c = goog.isNumber(b) ? b : a;
+  this.x *= a;
+  this.y *= c;
+  return this;
+};
+goog.math.Coordinate.prototype.rotateRadians = function(a, b) {
+  var c = b || new goog.math.Coordinate(0, 0), d = this.x, e = this.y, f = Math.cos(a), g = Math.sin(a);
+  this.x = (d - c.x) * f - (e - c.y) * g + c.x;
+  this.y = (d - c.x) * g + (e - c.y) * f + c.y;
+};
+goog.math.Coordinate.prototype.rotateDegrees = function(a, b) {
+  this.rotateRadians(goog.math.toRadians(a), b);
+};
+goog.math.Size = function(a, b) {
+  this.width = a;
+  this.height = b;
+};
+goog.math.Size.equals = function(a, b) {
+  return a == b ? !0 : a && b ? a.width == b.width && a.height == b.height : !1;
+};
+goog.math.Size.prototype.clone = function() {
+  return new goog.math.Size(this.width, this.height);
+};
+goog.DEBUG && (goog.math.Size.prototype.toString = function() {
+  return "(" + this.width + " x " + this.height + ")";
+});
+goog.math.Size.prototype.getLongest = function() {
+  return Math.max(this.width, this.height);
+};
+goog.math.Size.prototype.getShortest = function() {
+  return Math.min(this.width, this.height);
+};
+goog.math.Size.prototype.area = function() {
+  return this.width * this.height;
+};
+goog.math.Size.prototype.perimeter = function() {
+  return 2 * (this.width + this.height);
+};
+goog.math.Size.prototype.aspectRatio = function() {
+  return this.width / this.height;
+};
+goog.math.Size.prototype.isEmpty = function() {
+  return!this.area();
+};
+goog.math.Size.prototype.ceil = function() {
+  this.width = Math.ceil(this.width);
+  this.height = Math.ceil(this.height);
+  return this;
+};
+goog.math.Size.prototype.fitsInside = function(a) {
+  return this.width <= a.width && this.height <= a.height;
+};
+goog.math.Size.prototype.floor = function() {
+  this.width = Math.floor(this.width);
+  this.height = Math.floor(this.height);
+  return this;
+};
+goog.math.Size.prototype.round = function() {
+  this.width = Math.round(this.width);
+  this.height = Math.round(this.height);
+  return this;
+};
+goog.math.Size.prototype.scale = function(a, b) {
+  var c = goog.isNumber(b) ? b : a;
+  this.width *= a;
+  this.height *= c;
+  return this;
+};
+goog.math.Size.prototype.scaleToFit = function(a) {
+  a = this.aspectRatio() > a.aspectRatio() ? a.width / this.width : a.height / this.height;
+  return this.scale(a);
+};
+goog.dom.ASSUME_QUIRKS_MODE = !1;
+goog.dom.ASSUME_STANDARDS_MODE = !1;
+goog.dom.COMPAT_MODE_KNOWN_ = goog.dom.ASSUME_QUIRKS_MODE || goog.dom.ASSUME_STANDARDS_MODE;
+goog.dom.getDomHelper = function(a) {
+  return a ? new goog.dom.DomHelper(goog.dom.getOwnerDocument(a)) : goog.dom.defaultDomHelper_ || (goog.dom.defaultDomHelper_ = new goog.dom.DomHelper);
+};
+goog.dom.getDocument = function() {
+  return document;
+};
+goog.dom.getElement = function(a) {
+  return goog.dom.getElementHelper_(document, a);
+};
+goog.dom.getElementHelper_ = function(a, b) {
+  return goog.isString(b) ? a.getElementById(b) : b;
+};
+goog.dom.getRequiredElement = function(a) {
+  return goog.dom.getRequiredElementHelper_(document, a);
+};
+goog.dom.getRequiredElementHelper_ = function(a, b) {
+  goog.asserts.assertString(b);
+  var c = goog.dom.getElementHelper_(a, b);
+  return c = goog.asserts.assertElement(c, "No element found with id: " + b);
+};
+goog.dom.$ = goog.dom.getElement;
+goog.dom.getElementsByTagNameAndClass = function(a, b, c) {
+  return goog.dom.getElementsByTagNameAndClass_(document, a, b, c);
+};
+goog.dom.getElementsByClass = function(a, b) {
+  var c = b || document;
+  return goog.dom.canUseQuerySelector_(c) ? c.querySelectorAll("." + a) : goog.dom.getElementsByTagNameAndClass_(document, "*", a, b);
+};
+goog.dom.getElementByClass = function(a, b) {
+  var c = b || document, d = null;
+  return(d = goog.dom.canUseQuerySelector_(c) ? c.querySelector("." + a) : goog.dom.getElementsByTagNameAndClass_(document, "*", a, b)[0]) || null;
+};
+goog.dom.getRequiredElementByClass = function(a, b) {
+  var c = goog.dom.getElementByClass(a, b);
+  return goog.asserts.assert(c, "No element found with className: " + a);
+};
+goog.dom.canUseQuerySelector_ = function(a) {
+  return!(!a.querySelectorAll || !a.querySelector);
+};
+goog.dom.getElementsByTagNameAndClass_ = function(a, b, c, d) {
+  a = d || a;
+  b = b && "*" != b ? b.toUpperCase() : "";
+  if (goog.dom.canUseQuerySelector_(a) && (b || c)) {
+    return a.querySelectorAll(b + (c ? "." + c : ""));
+  }
+  if (c && a.getElementsByClassName) {
+    a = a.getElementsByClassName(c);
+    if (b) {
+      d = {};
+      for (var e = 0, f = 0, g;g = a[f];f++) {
+        b == g.nodeName && (d[e++] = g);
+      }
+      d.length = e;
+      return d;
+    }
+    return a;
+  }
+  a = a.getElementsByTagName(b || "*");
+  if (c) {
+    d = {};
+    for (f = e = 0;g = a[f];f++) {
+      b = g.className, "function" == typeof b.split && goog.array.contains(b.split(/\s+/), c) && (d[e++] = g);
+    }
+    d.length = e;
+    return d;
+  }
+  return a;
+};
+goog.dom.$$ = goog.dom.getElementsByTagNameAndClass;
+goog.dom.setProperties = function(a, b) {
+  goog.object.forEach(b, function(b, d) {
+    "style" == d ? a.style.cssText = b : "class" == d ? a.className = b : "for" == d ? a.htmlFor = b : d in goog.dom.DIRECT_ATTRIBUTE_MAP_ ? a.setAttribute(goog.dom.DIRECT_ATTRIBUTE_MAP_[d], b) : goog.string.startsWith(d, "aria-") || goog.string.startsWith(d, "data-") ? a.setAttribute(d, b) : a[d] = b;
+  });
+};
+goog.dom.DIRECT_ATTRIBUTE_MAP_ = {cellpadding:"cellPadding", cellspacing:"cellSpacing", colspan:"colSpan", frameborder:"frameBorder", height:"height", maxlength:"maxLength", role:"role", rowspan:"rowSpan", type:"type", usemap:"useMap", valign:"vAlign", width:"width"};
+goog.dom.getViewportSize = function(a) {
+  return goog.dom.getViewportSize_(a || window);
+};
+goog.dom.getViewportSize_ = function(a) {
+  a = a.document;
+  a = goog.dom.isCss1CompatMode_(a) ? a.documentElement : a.body;
+  return new goog.math.Size(a.clientWidth, a.clientHeight);
+};
+goog.dom.getDocumentHeight = function() {
+  return goog.dom.getDocumentHeight_(window);
+};
+goog.dom.getDocumentHeight_ = function(a) {
+  var b = a.document, c = 0;
+  if (b) {
+    var c = b.body, d = b.documentElement;
+    if (!c && !d) {
+      return 0;
+    }
+    a = goog.dom.getViewportSize_(a).height;
+    if (goog.dom.isCss1CompatMode_(b) && d.scrollHeight) {
+      c = d.scrollHeight != a ? d.scrollHeight : d.offsetHeight;
+    } else {
+      var b = d.scrollHeight, e = d.offsetHeight;
+      d.clientHeight != e && (b = c.scrollHeight, e = c.offsetHeight);
+      c = b > a ? b > e ? b : e : b < e ? b : e;
+    }
+  }
+  return c;
+};
+goog.dom.getPageScroll = function(a) {
+  return goog.dom.getDomHelper((a || goog.global || window).document).getDocumentScroll();
+};
+goog.dom.getDocumentScroll = function() {
+  return goog.dom.getDocumentScroll_(document);
+};
+goog.dom.getDocumentScroll_ = function(a) {
+  var b = goog.dom.getDocumentScrollElement_(a);
+  a = goog.dom.getWindow_(a);
+  return goog.userAgent.IE && goog.userAgent.isVersionOrHigher("10") && a.pageYOffset != b.scrollTop ? new goog.math.Coordinate(b.scrollLeft, b.scrollTop) : new goog.math.Coordinate(a.pageXOffset || b.scrollLeft, a.pageYOffset || b.scrollTop);
+};
+goog.dom.getDocumentScrollElement = function() {
+  return goog.dom.getDocumentScrollElement_(document);
+};
+goog.dom.getDocumentScrollElement_ = function(a) {
+  return!goog.userAgent.WEBKIT && goog.dom.isCss1CompatMode_(a) ? a.documentElement : a.body || a.documentElement;
+};
+goog.dom.getWindow = function(a) {
+  return a ? goog.dom.getWindow_(a) : window;
+};
+goog.dom.getWindow_ = function(a) {
+  return a.parentWindow || a.defaultView;
+};
+goog.dom.createDom = function(a, b, c) {
+  return goog.dom.createDom_(document, arguments);
+};
+goog.dom.createDom_ = function(a, b) {
+  var c = b[0], d = b[1];
+  if (!goog.dom.BrowserFeature.CAN_ADD_NAME_OR_TYPE_ATTRIBUTES && d && (d.name || d.type)) {
+    c = ["\x3c", c];
+    d.name && c.push(' name\x3d"', goog.string.htmlEscape(d.name), '"');
+    if (d.type) {
+      c.push(' type\x3d"', goog.string.htmlEscape(d.type), '"');
+      var e = {};
+      goog.object.extend(e, d);
+      delete e.type;
+      d = e;
+    }
+    c.push("\x3e");
+    c = c.join("");
+  }
+  c = a.createElement(c);
+  d && (goog.isString(d) ? c.className = d : goog.isArray(d) ? c.className = d.join(" ") : goog.dom.setProperties(c, d));
+  2 < b.length && goog.dom.append_(a, c, b, 2);
+  return c;
+};
+goog.dom.append_ = function(a, b, c, d) {
+  function e(c) {
+    c && b.appendChild(goog.isString(c) ? a.createTextNode(c) : c);
+  }
+  for (;d < c.length;d++) {
+    var f = c[d];
+    goog.isArrayLike(f) && !goog.dom.isNodeLike(f) ? goog.array.forEach(goog.dom.isNodeList(f) ? goog.array.toArray(f) : f, e) : e(f);
+  }
+};
+goog.dom.$dom = goog.dom.createDom;
+goog.dom.createElement = function(a) {
+  return document.createElement(a);
+};
+goog.dom.createTextNode = function(a) {
+  return document.createTextNode(String(a));
+};
+goog.dom.createTable = function(a, b, c) {
+  return goog.dom.createTable_(document, a, b, !!c);
+};
+goog.dom.createTable_ = function(a, b, c, d) {
+  for (var e = ["\x3ctr\x3e"], f = 0;f < c;f++) {
+    e.push(d ? "\x3ctd\x3e\x26nbsp;\x3c/td\x3e" : "\x3ctd\x3e\x3c/td\x3e");
+  }
+  e.push("\x3c/tr\x3e");
+  e = e.join("");
+  c = ["\x3ctable\x3e"];
+  for (f = 0;f < b;f++) {
+    c.push(e);
+  }
+  c.push("\x3c/table\x3e");
+  a = a.createElement(goog.dom.TagName.DIV);
+  a.innerHTML = c.join("");
+  return a.removeChild(a.firstChild);
+};
+goog.dom.htmlToDocumentFragment = function(a) {
+  return goog.dom.htmlToDocumentFragment_(document, a);
+};
+goog.dom.htmlToDocumentFragment_ = function(a, b) {
+  var c = a.createElement("div");
+  goog.dom.BrowserFeature.INNER_HTML_NEEDS_SCOPED_ELEMENT ? (c.innerHTML = "\x3cbr\x3e" + b, c.removeChild(c.firstChild)) : c.innerHTML = b;
+  if (1 == c.childNodes.length) {
+    return c.removeChild(c.firstChild);
+  }
+  for (var d = a.createDocumentFragment();c.firstChild;) {
+    d.appendChild(c.firstChild);
+  }
+  return d;
+};
+goog.dom.isCss1CompatMode = function() {
+  return goog.dom.isCss1CompatMode_(document);
+};
+goog.dom.isCss1CompatMode_ = function(a) {
+  return goog.dom.COMPAT_MODE_KNOWN_ ? goog.dom.ASSUME_STANDARDS_MODE : "CSS1Compat" == a.compatMode;
+};
+goog.dom.canHaveChildren = function(a) {
+  if (a.nodeType != goog.dom.NodeType.ELEMENT) {
+    return!1;
+  }
+  switch(a.tagName) {
+    case goog.dom.TagName.APPLET:
+    ;
+    case goog.dom.TagName.AREA:
+    ;
+    case goog.dom.TagName.BASE:
+    ;
+    case goog.dom.TagName.BR:
+    ;
+    case goog.dom.TagName.COL:
+    ;
+    case goog.dom.TagName.COMMAND:
+    ;
+    case goog.dom.TagName.EMBED:
+    ;
+    case goog.dom.TagName.FRAME:
+    ;
+    case goog.dom.TagName.HR:
+    ;
+    case goog.dom.TagName.IMG:
+    ;
+    case goog.dom.TagName.INPUT:
+    ;
+    case goog.dom.TagName.IFRAME:
+    ;
+    case goog.dom.TagName.ISINDEX:
+    ;
+    case goog.dom.TagName.KEYGEN:
+    ;
+    case goog.dom.TagName.LINK:
+    ;
+    case goog.dom.TagName.NOFRAMES:
+    ;
+    case goog.dom.TagName.NOSCRIPT:
+    ;
+    case goog.dom.TagName.META:
+    ;
+    case goog.dom.TagName.OBJECT:
+    ;
+    case goog.dom.TagName.PARAM:
+    ;
+    case goog.dom.TagName.SCRIPT:
+    ;
+    case goog.dom.TagName.SOURCE:
+    ;
+    case goog.dom.TagName.STYLE:
+    ;
+    case goog.dom.TagName.TRACK:
+    ;
+    case goog.dom.TagName.WBR:
+      return!1;
+  }
+  return!0;
+};
+goog.dom.appendChild = function(a, b) {
+  a.appendChild(b);
+};
+goog.dom.append = function(a, b) {
+  goog.dom.append_(goog.dom.getOwnerDocument(a), a, arguments, 1);
+};
+goog.dom.removeChildren = function(a) {
+  for (var b;b = a.firstChild;) {
+    a.removeChild(b);
+  }
+};
+goog.dom.insertSiblingBefore = function(a, b) {
+  b.parentNode && b.parentNode.insertBefore(a, b);
+};
+goog.dom.insertSiblingAfter = function(a, b) {
+  b.parentNode && b.parentNode.insertBefore(a, b.nextSibling);
+};
+goog.dom.insertChildAt = function(a, b, c) {
+  a.insertBefore(b, a.childNodes[c] || null);
+};
+goog.dom.removeNode = function(a) {
+  return a && a.parentNode ? a.parentNode.removeChild(a) : null;
+};
+goog.dom.replaceNode = function(a, b) {
+  var c = b.parentNode;
+  c && c.replaceChild(a, b);
+};
+goog.dom.flattenElement = function(a) {
+  var b, c = a.parentNode;
+  if (c && c.nodeType != goog.dom.NodeType.DOCUMENT_FRAGMENT) {
+    if (a.removeNode) {
+      return a.removeNode(!1);
+    }
+    for (;b = a.firstChild;) {
+      c.insertBefore(b, a);
+    }
+    return goog.dom.removeNode(a);
+  }
+};
+goog.dom.getChildren = function(a) {
+  return goog.dom.BrowserFeature.CAN_USE_CHILDREN_ATTRIBUTE && void 0 != a.children ? a.children : goog.array.filter(a.childNodes, function(a) {
+    return a.nodeType == goog.dom.NodeType.ELEMENT;
+  });
+};
+goog.dom.getFirstElementChild = function(a) {
+  return void 0 != a.firstElementChild ? a.firstElementChild : goog.dom.getNextElementNode_(a.firstChild, !0);
+};
+goog.dom.getLastElementChild = function(a) {
+  return void 0 != a.lastElementChild ? a.lastElementChild : goog.dom.getNextElementNode_(a.lastChild, !1);
+};
+goog.dom.getNextElementSibling = function(a) {
+  return void 0 != a.nextElementSibling ? a.nextElementSibling : goog.dom.getNextElementNode_(a.nextSibling, !0);
+};
+goog.dom.getPreviousElementSibling = function(a) {
+  return void 0 != a.previousElementSibling ? a.previousElementSibling : goog.dom.getNextElementNode_(a.previousSibling, !1);
+};
+goog.dom.getNextElementNode_ = function(a, b) {
+  for (;a && a.nodeType != goog.dom.NodeType.ELEMENT;) {
+    a = b ? a.nextSibling : a.previousSibling;
+  }
+  return a;
+};
+goog.dom.getNextNode = function(a) {
+  if (!a) {
+    return null;
+  }
+  if (a.firstChild) {
+    return a.firstChild;
+  }
+  for (;a && !a.nextSibling;) {
+    a = a.parentNode;
+  }
+  return a ? a.nextSibling : null;
+};
+goog.dom.getPreviousNode = function(a) {
+  if (!a) {
+    return null;
+  }
+  if (!a.previousSibling) {
+    return a.parentNode;
+  }
+  for (a = a.previousSibling;a && a.lastChild;) {
+    a = a.lastChild;
+  }
+  return a;
+};
+goog.dom.isNodeLike = function(a) {
+  return goog.isObject(a) && 0 < a.nodeType;
+};
+goog.dom.isElement = function(a) {
+  return goog.isObject(a) && a.nodeType == goog.dom.NodeType.ELEMENT;
+};
+goog.dom.isWindow = function(a) {
+  return goog.isObject(a) && a.window == a;
+};
+goog.dom.getParentElement = function(a) {
+  var b;
+  if (goog.dom.BrowserFeature.CAN_USE_PARENT_ELEMENT_PROPERTY && !(goog.userAgent.IE && goog.userAgent.isVersionOrHigher("9") && !goog.userAgent.isVersionOrHigher("10") && goog.global.SVGElement && a instanceof goog.global.SVGElement) && (b = a.parentElement)) {
+    return b;
+  }
+  b = a.parentNode;
+  return goog.dom.isElement(b) ? b : null;
+};
+goog.dom.contains = function(a, b) {
+  if (a.contains && b.nodeType == goog.dom.NodeType.ELEMENT) {
+    return a == b || a.contains(b);
+  }
+  if ("undefined" != typeof a.compareDocumentPosition) {
+    return a == b || Boolean(a.compareDocumentPosition(b) & 16);
+  }
+  for (;b && a != b;) {
+    b = b.parentNode;
+  }
+  return b == a;
+};
+goog.dom.compareNodeOrder = function(a, b) {
+  if (a == b) {
+    return 0;
+  }
+  if (a.compareDocumentPosition) {
+    return a.compareDocumentPosition(b) & 2 ? 1 : -1;
+  }
+  if (goog.userAgent.IE && !goog.userAgent.isDocumentModeOrHigher(9)) {
+    if (a.nodeType == goog.dom.NodeType.DOCUMENT) {
+      return-1;
+    }
+    if (b.nodeType == goog.dom.NodeType.DOCUMENT) {
+      return 1;
+    }
+  }
+  if ("sourceIndex" in a || a.parentNode && "sourceIndex" in a.parentNode) {
+    var c = a.nodeType == goog.dom.NodeType.ELEMENT, d = b.nodeType == goog.dom.NodeType.ELEMENT;
+    if (c && d) {
+      return a.sourceIndex - b.sourceIndex;
+    }
+    var e = a.parentNode, f = b.parentNode;
+    return e == f ? goog.dom.compareSiblingOrder_(a, b) : !c && goog.dom.contains(e, b) ? -1 * goog.dom.compareParentsDescendantNodeIe_(a, b) : !d && goog.dom.contains(f, a) ? goog.dom.compareParentsDescendantNodeIe_(b, a) : (c ? a.sourceIndex : e.sourceIndex) - (d ? b.sourceIndex : f.sourceIndex);
+  }
+  d = goog.dom.getOwnerDocument(a);
+  c = d.createRange();
+  c.selectNode(a);
+  c.collapse(!0);
+  d = d.createRange();
+  d.selectNode(b);
+  d.collapse(!0);
+  return c.compareBoundaryPoints(goog.global.Range.START_TO_END, d);
+};
+goog.dom.compareParentsDescendantNodeIe_ = function(a, b) {
+  var c = a.parentNode;
+  if (c == b) {
+    return-1;
+  }
+  for (var d = b;d.parentNode != c;) {
+    d = d.parentNode;
+  }
+  return goog.dom.compareSiblingOrder_(d, a);
+};
+goog.dom.compareSiblingOrder_ = function(a, b) {
+  for (var c = b;c = c.previousSibling;) {
+    if (c == a) {
+      return-1;
+    }
+  }
+  return 1;
+};
+goog.dom.findCommonAncestor = function(a) {
+  var b, c = arguments.length;
+  if (!c) {
+    return null;
+  }
+  if (1 == c) {
+    return arguments[0];
+  }
+  var d = [], e = Infinity;
+  for (b = 0;b < c;b++) {
+    for (var f = [], g = arguments[b];g;) {
+      f.unshift(g), g = g.parentNode;
+    }
+    d.push(f);
+    e = Math.min(e, f.length);
+  }
+  f = null;
+  for (b = 0;b < e;b++) {
+    for (var g = d[0][b], h = 1;h < c;h++) {
+      if (g != d[h][b]) {
+        return f;
+      }
+    }
+    f = g;
+  }
+  return f;
+};
+goog.dom.getOwnerDocument = function(a) {
+  goog.asserts.assert(a, "Node cannot be null or undefined.");
+  return a.nodeType == goog.dom.NodeType.DOCUMENT ? a : a.ownerDocument || a.document;
+};
+goog.dom.getFrameContentDocument = function(a) {
+  return a.contentDocument || a.contentWindow.document;
+};
+goog.dom.getFrameContentWindow = function(a) {
+  return a.contentWindow || goog.dom.getWindow(goog.dom.getFrameContentDocument(a));
+};
+goog.dom.setTextContent = function(a, b) {
+  goog.asserts.assert(null != a, "goog.dom.setTextContent expects a non-null value for node");
+  if ("textContent" in a) {
+    a.textContent = b;
+  } else {
+    if (a.nodeType == goog.dom.NodeType.TEXT) {
+      a.data = b;
+    } else {
+      if (a.firstChild && a.firstChild.nodeType == goog.dom.NodeType.TEXT) {
+        for (;a.lastChild != a.firstChild;) {
+          a.removeChild(a.lastChild);
+        }
+        a.firstChild.data = b;
+      } else {
+        goog.dom.removeChildren(a);
+        var c = goog.dom.getOwnerDocument(a);
+        a.appendChild(c.createTextNode(String(b)));
+      }
+    }
+  }
+};
+goog.dom.getOuterHtml = function(a) {
+  if ("outerHTML" in a) {
+    return a.outerHTML;
+  }
+  var b = goog.dom.getOwnerDocument(a).createElement("div");
+  b.appendChild(a.cloneNode(!0));
+  return b.innerHTML;
+};
+goog.dom.findNode = function(a, b) {
+  var c = [];
+  return goog.dom.findNodes_(a, b, c, !0) ? c[0] : void 0;
+};
+goog.dom.findNodes = function(a, b) {
+  var c = [];
+  goog.dom.findNodes_(a, b, c, !1);
+  return c;
+};
+goog.dom.findNodes_ = function(a, b, c, d) {
+  if (null != a) {
+    for (a = a.firstChild;a;) {
+      if (b(a) && (c.push(a), d) || goog.dom.findNodes_(a, b, c, d)) {
+        return!0;
+      }
+      a = a.nextSibling;
+    }
+  }
+  return!1;
+};
+goog.dom.TAGS_TO_IGNORE_ = {SCRIPT:1, STYLE:1, HEAD:1, IFRAME:1, OBJECT:1};
+goog.dom.PREDEFINED_TAG_VALUES_ = {IMG:" ", BR:"\n"};
+goog.dom.isFocusableTabIndex = function(a) {
+  return goog.dom.hasSpecifiedTabIndex_(a) && goog.dom.isTabIndexFocusable_(a);
+};
+goog.dom.setFocusableTabIndex = function(a, b) {
+  b ? a.tabIndex = 0 : (a.tabIndex = -1, a.removeAttribute("tabIndex"));
+};
+goog.dom.isFocusable = function(a) {
+  var b;
+  return(b = goog.dom.nativelySupportsFocus_(a) ? !a.disabled && (!goog.dom.hasSpecifiedTabIndex_(a) || goog.dom.isTabIndexFocusable_(a)) : goog.dom.isFocusableTabIndex(a)) && goog.userAgent.IE ? goog.dom.hasNonZeroBoundingRect_(a) : b;
+};
+goog.dom.hasSpecifiedTabIndex_ = function(a) {
+  a = a.getAttributeNode("tabindex");
+  return goog.isDefAndNotNull(a) && a.specified;
+};
+goog.dom.isTabIndexFocusable_ = function(a) {
+  a = a.tabIndex;
+  return goog.isNumber(a) && 0 <= a && 32768 > a;
+};
+goog.dom.nativelySupportsFocus_ = function(a) {
+  return a.tagName == goog.dom.TagName.A || a.tagName == goog.dom.TagName.INPUT || a.tagName == goog.dom.TagName.TEXTAREA || a.tagName == goog.dom.TagName.SELECT || a.tagName == goog.dom.TagName.BUTTON;
+};
+goog.dom.hasNonZeroBoundingRect_ = function(a) {
+  a = goog.isFunction(a.getBoundingClientRect) ? a.getBoundingClientRect() : {height:a.offsetHeight, width:a.offsetWidth};
+  return goog.isDefAndNotNull(a) && 0 < a.height && 0 < a.width;
+};
+goog.dom.getTextContent = function(a) {
+  if (goog.dom.BrowserFeature.CAN_USE_INNER_TEXT && "innerText" in a) {
+    a = goog.string.canonicalizeNewlines(a.innerText);
+  } else {
+    var b = [];
+    goog.dom.getTextContent_(a, b, !0);
+    a = b.join("");
+  }
+  a = a.replace(/ \xAD /g, " ").replace(/\xAD/g, "");
+  a = a.replace(/\u200B/g, "");
+  goog.dom.BrowserFeature.CAN_USE_INNER_TEXT || (a = a.replace(/ +/g, " "));
+  " " != a && (a = a.replace(/^\s*/, ""));
+  return a;
+};
+goog.dom.getRawTextContent = function(a) {
+  var b = [];
+  goog.dom.getTextContent_(a, b, !1);
+  return b.join("");
+};
+goog.dom.getTextContent_ = function(a, b, c) {
+  if (!(a.nodeName in goog.dom.TAGS_TO_IGNORE_)) {
+    if (a.nodeType == goog.dom.NodeType.TEXT) {
+      c ? b.push(String(a.nodeValue).replace(/(\r\n|\r|\n)/g, "")) : b.push(a.nodeValue);
+    } else {
+      if (a.nodeName in goog.dom.PREDEFINED_TAG_VALUES_) {
+        b.push(goog.dom.PREDEFINED_TAG_VALUES_[a.nodeName]);
+      } else {
+        for (a = a.firstChild;a;) {
+          goog.dom.getTextContent_(a, b, c), a = a.nextSibling;
+        }
+      }
+    }
+  }
+};
+goog.dom.getNodeTextLength = function(a) {
+  return goog.dom.getTextContent(a).length;
+};
+goog.dom.getNodeTextOffset = function(a, b) {
+  for (var c = b || goog.dom.getOwnerDocument(a).body, d = [];a && a != c;) {
+    for (var e = a;e = e.previousSibling;) {
+      d.unshift(goog.dom.getTextContent(e));
+    }
+    a = a.parentNode;
+  }
+  return goog.string.trimLeft(d.join("")).replace(/ +/g, " ").length;
+};
+goog.dom.getNodeAtOffset = function(a, b, c) {
+  a = [a];
+  for (var d = 0, e = null;0 < a.length && d < b;) {
+    if (e = a.pop(), !(e.nodeName in goog.dom.TAGS_TO_IGNORE_)) {
+      if (e.nodeType == goog.dom.NodeType.TEXT) {
+        var f = e.nodeValue.replace(/(\r\n|\r|\n)/g, "").replace(/ +/g, " "), d = d + f.length
+      } else {
+        if (e.nodeName in goog.dom.PREDEFINED_TAG_VALUES_) {
+          d += goog.dom.PREDEFINED_TAG_VALUES_[e.nodeName].length;
+        } else {
+          for (f = e.childNodes.length - 1;0 <= f;f--) {
+            a.push(e.childNodes[f]);
+          }
+        }
+      }
+    }
+  }
+  goog.isObject(c) && (c.remainder = e ? e.nodeValue.length + b - d - 1 : 0, c.node = e);
+  return e;
+};
+goog.dom.isNodeList = function(a) {
+  if (a && "number" == typeof a.length) {
+    if (goog.isObject(a)) {
+      return "function" == typeof a.item || "string" == typeof a.item;
+    }
+    if (goog.isFunction(a)) {
+      return "function" == typeof a.item;
+    }
+  }
+  return!1;
+};
+goog.dom.getAncestorByTagNameAndClass = function(a, b, c) {
+  if (!b && !c) {
+    return null;
+  }
+  var d = b ? b.toUpperCase() : null;
+  return goog.dom.getAncestor(a, function(a) {
+    return(!d || a.nodeName == d) && (!c || goog.isString(a.className) && goog.array.contains(a.className.split(/\s+/), c));
+  }, !0);
+};
+goog.dom.getAncestorByClass = function(a, b) {
+  return goog.dom.getAncestorByTagNameAndClass(a, null, b);
+};
+goog.dom.getAncestor = function(a, b, c, d) {
+  c || (a = a.parentNode);
+  c = null == d;
+  for (var e = 0;a && (c || e <= d);) {
+    if (b(a)) {
+      return a;
+    }
+    a = a.parentNode;
+    e++;
+  }
+  return null;
+};
+goog.dom.getActiveElement = function(a) {
+  try {
+    return a && a.activeElement;
+  } catch (b) {
+  }
+  return null;
+};
+goog.dom.getPixelRatio = goog.functions.cacheReturnValue(function() {
+  var a = goog.dom.getWindow(), b = goog.userAgent.GECKO && goog.userAgent.MOBILE;
+  return goog.isDef(a.devicePixelRatio) && !b ? a.devicePixelRatio : a.matchMedia ? goog.dom.matchesPixelRatio_(.75) || goog.dom.matchesPixelRatio_(1.5) || goog.dom.matchesPixelRatio_(2) || goog.dom.matchesPixelRatio_(3) || 1 : 1;
+});
+goog.dom.matchesPixelRatio_ = function(a) {
+  return goog.dom.getWindow().matchMedia("(-webkit-min-device-pixel-ratio: " + a + "),(min--moz-device-pixel-ratio: " + a + "),(min-resolution: " + a + "dppx)").matches ? a : 0;
+};
+goog.dom.DomHelper = function(a) {
+  this.document_ = a || goog.global.document || document;
+};
+goog.dom.DomHelper.prototype.getDomHelper = goog.dom.getDomHelper;
+goog.dom.DomHelper.prototype.setDocument = function(a) {
+  this.document_ = a;
+};
+goog.dom.DomHelper.prototype.getDocument = function() {
+  return this.document_;
+};
+goog.dom.DomHelper.prototype.getElement = function(a) {
+  return goog.dom.getElementHelper_(this.document_, a);
+};
+goog.dom.DomHelper.prototype.getRequiredElement = function(a) {
+  return goog.dom.getRequiredElementHelper_(this.document_, a);
+};
+goog.dom.DomHelper.prototype.$ = goog.dom.DomHelper.prototype.getElement;
+goog.dom.DomHelper.prototype.getElementsByTagNameAndClass = function(a, b, c) {
+  return goog.dom.getElementsByTagNameAndClass_(this.document_, a, b, c);
+};
+goog.dom.DomHelper.prototype.getElementsByClass = function(a, b) {
+  return goog.dom.getElementsByClass(a, b || this.document_);
+};
+goog.dom.DomHelper.prototype.getElementByClass = function(a, b) {
+  return goog.dom.getElementByClass(a, b || this.document_);
+};
+goog.dom.DomHelper.prototype.getRequiredElementByClass = function(a, b) {
+  return goog.dom.getRequiredElementByClass(a, b || this.document_);
+};
+goog.dom.DomHelper.prototype.$$ = goog.dom.DomHelper.prototype.getElementsByTagNameAndClass;
+goog.dom.DomHelper.prototype.setProperties = goog.dom.setProperties;
+goog.dom.DomHelper.prototype.getViewportSize = function(a) {
+  return goog.dom.getViewportSize(a || this.getWindow());
+};
+goog.dom.DomHelper.prototype.getDocumentHeight = function() {
+  return goog.dom.getDocumentHeight_(this.getWindow());
+};
+goog.dom.DomHelper.prototype.createDom = function(a, b, c) {
+  return goog.dom.createDom_(this.document_, arguments);
+};
+goog.dom.DomHelper.prototype.$dom = goog.dom.DomHelper.prototype.createDom;
+goog.dom.DomHelper.prototype.createElement = function(a) {
+  return this.document_.createElement(a);
+};
+goog.dom.DomHelper.prototype.createTextNode = function(a) {
+  return this.document_.createTextNode(String(a));
+};
+goog.dom.DomHelper.prototype.createTable = function(a, b, c) {
+  return goog.dom.createTable_(this.document_, a, b, !!c);
+};
+goog.dom.DomHelper.prototype.htmlToDocumentFragment = function(a) {
+  return goog.dom.htmlToDocumentFragment_(this.document_, a);
+};
+goog.dom.DomHelper.prototype.isCss1CompatMode = function() {
+  return goog.dom.isCss1CompatMode_(this.document_);
+};
+goog.dom.DomHelper.prototype.getWindow = function() {
+  return goog.dom.getWindow_(this.document_);
+};
+goog.dom.DomHelper.prototype.getDocumentScrollElement = function() {
+  return goog.dom.getDocumentScrollElement_(this.document_);
+};
+goog.dom.DomHelper.prototype.getDocumentScroll = function() {
+  return goog.dom.getDocumentScroll_(this.document_);
+};
+goog.dom.DomHelper.prototype.getActiveElement = function(a) {
+  return goog.dom.getActiveElement(a || this.document_);
+};
+goog.dom.DomHelper.prototype.appendChild = goog.dom.appendChild;
+goog.dom.DomHelper.prototype.append = goog.dom.append;
+goog.dom.DomHelper.prototype.canHaveChildren = goog.dom.canHaveChildren;
+goog.dom.DomHelper.prototype.removeChildren = goog.dom.removeChildren;
+goog.dom.DomHelper.prototype.insertSiblingBefore = goog.dom.insertSiblingBefore;
+goog.dom.DomHelper.prototype.insertSiblingAfter = goog.dom.insertSiblingAfter;
+goog.dom.DomHelper.prototype.insertChildAt = goog.dom.insertChildAt;
+goog.dom.DomHelper.prototype.removeNode = goog.dom.removeNode;
+goog.dom.DomHelper.prototype.replaceNode = goog.dom.replaceNode;
+goog.dom.DomHelper.prototype.flattenElement = goog.dom.flattenElement;
+goog.dom.DomHelper.prototype.getChildren = goog.dom.getChildren;
+goog.dom.DomHelper.prototype.getFirstElementChild = goog.dom.getFirstElementChild;
+goog.dom.DomHelper.prototype.getLastElementChild = goog.dom.getLastElementChild;
+goog.dom.DomHelper.prototype.getNextElementSibling = goog.dom.getNextElementSibling;
+goog.dom.DomHelper.prototype.getPreviousElementSibling = goog.dom.getPreviousElementSibling;
+goog.dom.DomHelper.prototype.getNextNode = goog.dom.getNextNode;
+goog.dom.DomHelper.prototype.getPreviousNode = goog.dom.getPreviousNode;
+goog.dom.DomHelper.prototype.isNodeLike = goog.dom.isNodeLike;
+goog.dom.DomHelper.prototype.isElement = goog.dom.isElement;
+goog.dom.DomHelper.prototype.isWindow = goog.dom.isWindow;
+goog.dom.DomHelper.prototype.getParentElement = goog.dom.getParentElement;
+goog.dom.DomHelper.prototype.contains = goog.dom.contains;
+goog.dom.DomHelper.prototype.compareNodeOrder = goog.dom.compareNodeOrder;
+goog.dom.DomHelper.prototype.findCommonAncestor = goog.dom.findCommonAncestor;
+goog.dom.DomHelper.prototype.getOwnerDocument = goog.dom.getOwnerDocument;
+goog.dom.DomHelper.prototype.getFrameContentDocument = goog.dom.getFrameContentDocument;
+goog.dom.DomHelper.prototype.getFrameContentWindow = goog.dom.getFrameContentWindow;
+goog.dom.DomHelper.prototype.setTextContent = goog.dom.setTextContent;
+goog.dom.DomHelper.prototype.getOuterHtml = goog.dom.getOuterHtml;
+goog.dom.DomHelper.prototype.findNode = goog.dom.findNode;
+goog.dom.DomHelper.prototype.findNodes = goog.dom.findNodes;
+goog.dom.DomHelper.prototype.isFocusableTabIndex = goog.dom.isFocusableTabIndex;
+goog.dom.DomHelper.prototype.setFocusableTabIndex = goog.dom.setFocusableTabIndex;
+goog.dom.DomHelper.prototype.isFocusable = goog.dom.isFocusable;
+goog.dom.DomHelper.prototype.getTextContent = goog.dom.getTextContent;
+goog.dom.DomHelper.prototype.getNodeTextLength = goog.dom.getNodeTextLength;
+goog.dom.DomHelper.prototype.getNodeTextOffset = goog.dom.getNodeTextOffset;
+goog.dom.DomHelper.prototype.getNodeAtOffset = goog.dom.getNodeAtOffset;
+goog.dom.DomHelper.prototype.isNodeList = goog.dom.isNodeList;
+goog.dom.DomHelper.prototype.getAncestorByTagNameAndClass = goog.dom.getAncestorByTagNameAndClass;
+goog.dom.DomHelper.prototype.getAncestorByClass = goog.dom.getAncestorByClass;
+goog.dom.DomHelper.prototype.getAncestor = goog.dom.getAncestor;
+goog.dom.forms = {};
+goog.dom.forms.getFormDataMap = function(a) {
+  var b = new goog.structs.Map;
+  goog.dom.forms.getFormDataHelper_(a, b, goog.dom.forms.addFormDataToMap_);
+  return b;
+};
+goog.dom.forms.getFormDataString = function(a) {
+  var b = [];
+  goog.dom.forms.getFormDataHelper_(a, b, goog.dom.forms.addFormDataToStringBuffer_);
+  return b.join("\x26");
+};
+goog.dom.forms.getFormDataHelper_ = function(a, b, c) {
+  for (var d = a.elements, e, f = 0;e = d[f];f++) {
+    if (e.form == a && !e.disabled && "fieldset" != e.tagName.toLowerCase()) {
+      var g = e.name;
+      switch(e.type.toLowerCase()) {
+        case "file":
+        ;
+        case "submit":
+        ;
+        case "reset":
+        ;
+        case "button":
+          break;
+        case "select-multiple":
+          e = goog.dom.forms.getValue(e);
+          if (null != e) {
+            for (var h, k = 0;h = e[k];k++) {
+              c(b, g, h);
+            }
+          }
+          break;
+        default:
+          h = goog.dom.forms.getValue(e), null != h && c(b, g, h);
+      }
+    }
+  }
+  d = a.getElementsByTagName("input");
+  for (f = 0;e = d[f];f++) {
+    e.form == a && "image" == e.type.toLowerCase() && (g = e.name, c(b, g, e.value), c(b, g + ".x", "0"), c(b, g + ".y", "0"));
+  }
+};
+goog.dom.forms.addFormDataToMap_ = function(a, b, c) {
+  var d = a.get(b);
+  d || (d = [], a.set(b, d));
+  d.push(c);
+};
+goog.dom.forms.addFormDataToStringBuffer_ = function(a, b, c) {
+  a.push(encodeURIComponent(b) + "\x3d" + encodeURIComponent(c));
+};
+goog.dom.forms.hasFileInput = function(a) {
+  a = a.elements;
+  for (var b, c = 0;b = a[c];c++) {
+    if (!b.disabled && b.type && "file" == b.type.toLowerCase()) {
+      return!0;
+    }
+  }
+  return!1;
+};
+goog.dom.forms.setDisabled = function(a, b) {
+  if ("FORM" == a.tagName) {
+    for (var c = a.elements, d = 0;a = c[d];d++) {
+      goog.dom.forms.setDisabled(a, b);
+    }
+  } else {
+    !0 == b && a.blur(), a.disabled = b;
+  }
+};
+goog.dom.forms.focusAndSelect = function(a) {
+  a.focus();
+  a.select && a.select();
+};
+goog.dom.forms.hasValue = function(a) {
+  return!!goog.dom.forms.getValue(a);
+};
+goog.dom.forms.hasValueByName = function(a, b) {
+  return!!goog.dom.forms.getValueByName(a, b);
+};
+goog.dom.forms.getValue = function(a) {
+  var b = a.type;
+  if (!goog.isDef(b)) {
+    return null;
+  }
+  switch(b.toLowerCase()) {
+    case "checkbox":
+    ;
+    case "radio":
+      return goog.dom.forms.getInputChecked_(a);
+    case "select-one":
+      return goog.dom.forms.getSelectSingle_(a);
+    case "select-multiple":
+      return goog.dom.forms.getSelectMultiple_(a);
+    default:
+      return goog.isDef(a.value) ? a.value : null;
+  }
+};
+goog.dom.$F = goog.dom.forms.getValue;
+goog.dom.forms.getValueByName = function(a, b) {
+  var c = a.elements[b];
+  if (c) {
+    if (c.type) {
+      return goog.dom.forms.getValue(c);
+    }
+    for (var d = 0;d < c.length;d++) {
+      var e = goog.dom.forms.getValue(c[d]);
+      if (e) {
+        return e;
+      }
+    }
+  }
+  return null;
+};
+goog.dom.forms.getInputChecked_ = function(a) {
+  return a.checked ? a.value : null;
+};
+goog.dom.forms.getSelectSingle_ = function(a) {
+  var b = a.selectedIndex;
+  return 0 <= b ? a.options[b].value : null;
+};
+goog.dom.forms.getSelectMultiple_ = function(a) {
+  for (var b = [], c, d = 0;c = a.options[d];d++) {
+    c.selected && b.push(c.value);
+  }
+  return b.length ? b : null;
+};
+goog.dom.forms.setValue = function(a, b) {
+  var c = a.type;
+  if (goog.isDef(c)) {
+    switch(c.toLowerCase()) {
+      case "checkbox":
+      ;
+      case "radio":
+        goog.dom.forms.setInputChecked_(a, b);
+        break;
+      case "select-one":
+        goog.dom.forms.setSelectSingle_(a, b);
+        break;
+      case "select-multiple":
+        goog.dom.forms.setSelectMultiple_(a, b);
+        break;
+      default:
+        a.value = goog.isDefAndNotNull(b) ? b : "";
+    }
+  }
+};
+goog.dom.forms.setInputChecked_ = function(a, b) {
+  a.checked = b ? "checked" : null;
+};
+goog.dom.forms.setSelectSingle_ = function(a, b) {
+  a.selectedIndex = -1;
+  if (goog.isString(b)) {
+    for (var c, d = 0;c = a.options[d];d++) {
+      if (c.value == b) {
+        c.selected = !0;
+        break;
+      }
+    }
+  }
+};
+goog.dom.forms.setSelectMultiple_ = function(a, b) {
+  goog.isString(b) && (b = [b]);
+  for (var c, d = 0;c = a.options[d];d++) {
+    if (c.selected = !1, b) {
+      for (var e, f = 0;e = b[f];f++) {
+        c.value == e && (c.selected = !0);
+      }
+    }
+  }
+};
+goog.dom.classes = {};
+goog.dom.classes.set = function(a, b) {
+  a.className = b;
+};
+goog.dom.classes.get = function(a) {
+  a = a.className;
+  return goog.isString(a) && a.match(/\S+/g) || [];
+};
+goog.dom.classes.add = function(a, b) {
+  var c = goog.dom.classes.get(a), d = goog.array.slice(arguments, 1), e = c.length + d.length;
+  goog.dom.classes.add_(c, d);
+  goog.dom.classes.set(a, c.join(" "));
+  return c.length == e;
+};
+goog.dom.classes.remove = function(a, b) {
+  var c = goog.dom.classes.get(a), d = goog.array.slice(arguments, 1), e = goog.dom.classes.getDifference_(c, d);
+  goog.dom.classes.set(a, e.join(" "));
+  return e.length == c.length - d.length;
+};
+goog.dom.classes.add_ = function(a, b) {
+  for (var c = 0;c < b.length;c++) {
+    goog.array.contains(a, b[c]) || a.push(b[c]);
+  }
+};
+goog.dom.classes.getDifference_ = function(a, b) {
+  return goog.array.filter(a, function(a) {
+    return!goog.array.contains(b, a);
+  });
+};
+goog.dom.classes.swap = function(a, b, c) {
+  for (var d = goog.dom.classes.get(a), e = !1, f = 0;f < d.length;f++) {
+    d[f] == b && (goog.array.splice(d, f--, 1), e = !0);
+  }
+  e && (d.push(c), goog.dom.classes.set(a, d.join(" ")));
+  return e;
+};
+goog.dom.classes.addRemove = function(a, b, c) {
+  var d = goog.dom.classes.get(a);
+  goog.isString(b) ? goog.array.remove(d, b) : goog.isArray(b) && (d = goog.dom.classes.getDifference_(d, b));
+  goog.isString(c) && !goog.array.contains(d, c) ? d.push(c) : goog.isArray(c) && goog.dom.classes.add_(d, c);
+  goog.dom.classes.set(a, d.join(" "));
+};
+goog.dom.classes.has = function(a, b) {
+  return goog.array.contains(goog.dom.classes.get(a), b);
+};
+goog.dom.classes.enable = function(a, b, c) {
+  c ? goog.dom.classes.add(a, b) : goog.dom.classes.remove(a, b);
+};
+goog.dom.classes.toggle = function(a, b) {
+  var c = !goog.dom.classes.has(a, b);
+  goog.dom.classes.enable(a, b, c);
+  return c;
+};
+var domina = {support:{}}, div_19082 = document.createElement("div"), test_html_19083 = "   \x3clink/\x3e\x3ctable\x3e\x3c/table\x3e\x3ca href\x3d'/a' style\x3d'top:1px;float:left;opacity:.55;'\x3ea\x3c/a\x3e\x3cinput type\x3d'checkbox'/\x3e";
+div_19082.innerHTML = test_html_19083;
+domina.support.leading_whitespace_QMARK_ = cljs.core._EQ_.call(null, div_19082.firstChild.nodeType, 3);
+domina.support.extraneous_tbody_QMARK_ = cljs.core._EQ_.call(null, div_19082.getElementsByTagName("tbody").length, 0);
+domina.support.unscoped_html_elements_QMARK_ = cljs.core._EQ_.call(null, div_19082.getElementsByTagName("link").length, 0);
+goog.dom.vendor = {};
+goog.dom.vendor.getVendorJsPrefix = function() {
+  return goog.userAgent.WEBKIT ? "Webkit" : goog.userAgent.GECKO ? "Moz" : goog.userAgent.IE ? "ms" : goog.userAgent.OPERA ? "O" : null;
+};
+goog.dom.vendor.getVendorPrefix = function() {
+  return goog.userAgent.WEBKIT ? "-webkit" : goog.userAgent.GECKO ? "-moz" : goog.userAgent.IE ? "-ms" : goog.userAgent.OPERA ? "-o" : null;
+};
+goog.dom.vendor.getPrefixedPropertyName = function(a, b) {
+  if (b && a in b) {
+    return a;
+  }
+  var c = goog.dom.vendor.getVendorJsPrefix();
+  return c ? (c = c.toLowerCase(), c += goog.string.toTitleCase(a), !goog.isDef(b) || c in b ? c : null) : null;
+};
+goog.dom.vendor.getPrefixedEventType = function(a) {
+  return((goog.dom.vendor.getVendorJsPrefix() || "") + a).toLowerCase();
+};
+goog.math.Box = function(a, b, c, d) {
+  this.top = a;
+  this.right = b;
+  this.bottom = c;
+  this.left = d;
+};
+goog.math.Box.boundingBox = function(a) {
+  for (var b = new goog.math.Box(arguments[0].y, arguments[0].x, arguments[0].y, arguments[0].x), c = 1;c < arguments.length;c++) {
+    var d = arguments[c];
+    b.top = Math.min(b.top, d.y);
+    b.right = Math.max(b.right, d.x);
+    b.bottom = Math.max(b.bottom, d.y);
+    b.left = Math.min(b.left, d.x);
+  }
+  return b;
+};
+goog.math.Box.prototype.getWidth = function() {
+  return this.right - this.left;
+};
+goog.math.Box.prototype.getHeight = function() {
+  return this.bottom - this.top;
+};
+goog.math.Box.prototype.clone = function() {
+  return new goog.math.Box(this.top, this.right, this.bottom, this.left);
+};
+goog.DEBUG && (goog.math.Box.prototype.toString = function() {
+  return "(" + this.top + "t, " + this.right + "r, " + this.bottom + "b, " + this.left + "l)";
+});
+goog.math.Box.prototype.contains = function(a) {
+  return goog.math.Box.contains(this, a);
+};
+goog.math.Box.prototype.expand = function(a, b, c, d) {
+  goog.isObject(a) ? (this.top -= a.top, this.right += a.right, this.bottom += a.bottom, this.left -= a.left) : (this.top -= a, this.right += b, this.bottom += c, this.left -= d);
+  return this;
+};
+goog.math.Box.prototype.expandToInclude = function(a) {
+  this.left = Math.min(this.left, a.left);
+  this.top = Math.min(this.top, a.top);
+  this.right = Math.max(this.right, a.right);
+  this.bottom = Math.max(this.bottom, a.bottom);
+};
+goog.math.Box.equals = function(a, b) {
+  return a == b ? !0 : a && b ? a.top == b.top && a.right == b.right && a.bottom == b.bottom && a.left == b.left : !1;
+};
+goog.math.Box.contains = function(a, b) {
+  return a && b ? b instanceof goog.math.Box ? b.left >= a.left && b.right <= a.right && b.top >= a.top && b.bottom <= a.bottom : b.x >= a.left && b.x <= a.right && b.y >= a.top && b.y <= a.bottom : !1;
+};
+goog.math.Box.relativePositionX = function(a, b) {
+  return b.x < a.left ? b.x - a.left : b.x > a.right ? b.x - a.right : 0;
+};
+goog.math.Box.relativePositionY = function(a, b) {
+  return b.y < a.top ? b.y - a.top : b.y > a.bottom ? b.y - a.bottom : 0;
+};
+goog.math.Box.distance = function(a, b) {
+  var c = goog.math.Box.relativePositionX(a, b), d = goog.math.Box.relativePositionY(a, b);
+  return Math.sqrt(c * c + d * d);
+};
+goog.math.Box.intersects = function(a, b) {
+  return a.left <= b.right && b.left <= a.right && a.top <= b.bottom && b.top <= a.bottom;
+};
+goog.math.Box.intersectsWithPadding = function(a, b, c) {
+  return a.left <= b.right + c && b.left <= a.right + c && a.top <= b.bottom + c && b.top <= a.bottom + c;
+};
+goog.math.Box.prototype.ceil = function() {
+  this.top = Math.ceil(this.top);
+  this.right = Math.ceil(this.right);
+  this.bottom = Math.ceil(this.bottom);
+  this.left = Math.ceil(this.left);
+  return this;
+};
+goog.math.Box.prototype.floor = function() {
+  this.top = Math.floor(this.top);
+  this.right = Math.floor(this.right);
+  this.bottom = Math.floor(this.bottom);
+  this.left = Math.floor(this.left);
+  return this;
+};
+goog.math.Box.prototype.round = function() {
+  this.top = Math.round(this.top);
+  this.right = Math.round(this.right);
+  this.bottom = Math.round(this.bottom);
+  this.left = Math.round(this.left);
+  return this;
+};
+goog.math.Box.prototype.translate = function(a, b) {
+  a instanceof goog.math.Coordinate ? (this.left += a.x, this.right += a.x, this.top += a.y, this.bottom += a.y) : (this.left += a, this.right += a, goog.isNumber(b) && (this.top += b, this.bottom += b));
+  return this;
+};
+goog.math.Box.prototype.scale = function(a, b) {
+  var c = goog.isNumber(b) ? b : a;
+  this.left *= a;
+  this.right *= a;
+  this.top *= c;
+  this.bottom *= c;
+  return this;
+};
+goog.math.Rect = function(a, b, c, d) {
+  this.left = a;
+  this.top = b;
+  this.width = c;
+  this.height = d;
+};
+goog.math.Rect.prototype.clone = function() {
+  return new goog.math.Rect(this.left, this.top, this.width, this.height);
+};
+goog.math.Rect.prototype.toBox = function() {
+  return new goog.math.Box(this.top, this.left + this.width, this.top + this.height, this.left);
+};
+goog.math.Rect.createFromBox = function(a) {
+  return new goog.math.Rect(a.left, a.top, a.right - a.left, a.bottom - a.top);
+};
+goog.DEBUG && (goog.math.Rect.prototype.toString = function() {
+  return "(" + this.left + ", " + this.top + " - " + this.width + "w x " + this.height + "h)";
+});
+goog.math.Rect.equals = function(a, b) {
+  return a == b ? !0 : a && b ? a.left == b.left && a.width == b.width && a.top == b.top && a.height == b.height : !1;
+};
+goog.math.Rect.prototype.intersection = function(a) {
+  var b = Math.max(this.left, a.left), c = Math.min(this.left + this.width, a.left + a.width);
+  if (b <= c) {
+    var d = Math.max(this.top, a.top);
+    a = Math.min(this.top + this.height, a.top + a.height);
+    if (d <= a) {
+      return this.left = b, this.top = d, this.width = c - b, this.height = a - d, !0;
+    }
+  }
+  return!1;
+};
+goog.math.Rect.intersection = function(a, b) {
+  var c = Math.max(a.left, b.left), d = Math.min(a.left + a.width, b.left + b.width);
+  if (c <= d) {
+    var e = Math.max(a.top, b.top), f = Math.min(a.top + a.height, b.top + b.height);
+    if (e <= f) {
+      return new goog.math.Rect(c, e, d - c, f - e);
+    }
+  }
+  return null;
+};
+goog.math.Rect.intersects = function(a, b) {
+  return a.left <= b.left + b.width && b.left <= a.left + a.width && a.top <= b.top + b.height && b.top <= a.top + a.height;
+};
+goog.math.Rect.prototype.intersects = function(a) {
+  return goog.math.Rect.intersects(this, a);
+};
+goog.math.Rect.difference = function(a, b) {
+  var c = goog.math.Rect.intersection(a, b);
+  if (!c || !c.height || !c.width) {
+    return[a.clone()];
+  }
+  var c = [], d = a.top, e = a.height, f = a.left + a.width, g = a.top + a.height, h = b.left + b.width, k = b.top + b.height;
+  b.top > a.top && (c.push(new goog.math.Rect(a.left, a.top, a.width, b.top - a.top)), d = b.top, e -= b.top - a.top);
+  k < g && (c.push(new goog.math.Rect(a.left, k, a.width, g - k)), e = k - d);
+  b.left > a.left && c.push(new goog.math.Rect(a.left, d, b.left - a.left, e));
+  h < f && c.push(new goog.math.Rect(h, d, f - h, e));
+  return c;
+};
+goog.math.Rect.prototype.difference = function(a) {
+  return goog.math.Rect.difference(this, a);
+};
+goog.math.Rect.prototype.boundingRect = function(a) {
+  var b = Math.max(this.left + this.width, a.left + a.width), c = Math.max(this.top + this.height, a.top + a.height);
+  this.left = Math.min(this.left, a.left);
+  this.top = Math.min(this.top, a.top);
+  this.width = b - this.left;
+  this.height = c - this.top;
+};
+goog.math.Rect.boundingRect = function(a, b) {
+  if (!a || !b) {
+    return null;
+  }
+  var c = a.clone();
+  c.boundingRect(b);
+  return c;
+};
+goog.math.Rect.prototype.contains = function(a) {
+  return a instanceof goog.math.Rect ? this.left <= a.left && this.left + this.width >= a.left + a.width && this.top <= a.top && this.top + this.height >= a.top + a.height : a.x >= this.left && a.x <= this.left + this.width && a.y >= this.top && a.y <= this.top + this.height;
+};
+goog.math.Rect.prototype.squaredDistance = function(a) {
+  var b = a.x < this.left ? this.left - a.x : Math.max(a.x - (this.left + this.width), 0);
+  a = a.y < this.top ? this.top - a.y : Math.max(a.y - (this.top + this.height), 0);
+  return b * b + a * a;
+};
+goog.math.Rect.prototype.distance = function(a) {
+  return Math.sqrt(this.squaredDistance(a));
+};
+goog.math.Rect.prototype.getSize = function() {
+  return new goog.math.Size(this.width, this.height);
+};
+goog.math.Rect.prototype.getTopLeft = function() {
+  return new goog.math.Coordinate(this.left, this.top);
+};
+goog.math.Rect.prototype.getCenter = function() {
+  return new goog.math.Coordinate(this.left + this.width / 2, this.top + this.height / 2);
+};
+goog.math.Rect.prototype.getBottomRight = function() {
+  return new goog.math.Coordinate(this.left + this.width, this.top + this.height);
+};
+goog.math.Rect.prototype.ceil = function() {
+  this.left = Math.ceil(this.left);
+  this.top = Math.ceil(this.top);
+  this.width = Math.ceil(this.width);
+  this.height = Math.ceil(this.height);
+  return this;
+};
+goog.math.Rect.prototype.floor = function() {
+  this.left = Math.floor(this.left);
+  this.top = Math.floor(this.top);
+  this.width = Math.floor(this.width);
+  this.height = Math.floor(this.height);
+  return this;
+};
+goog.math.Rect.prototype.round = function() {
+  this.left = Math.round(this.left);
+  this.top = Math.round(this.top);
+  this.width = Math.round(this.width);
+  this.height = Math.round(this.height);
+  return this;
+};
+goog.math.Rect.prototype.translate = function(a, b) {
+  a instanceof goog.math.Coordinate ? (this.left += a.x, this.top += a.y) : (this.left += a, goog.isNumber(b) && (this.top += b));
+  return this;
+};
+goog.math.Rect.prototype.scale = function(a, b) {
+  var c = goog.isNumber(b) ? b : a;
+  this.left *= a;
+  this.width *= a;
+  this.top *= c;
+  this.height *= c;
+  return this;
+};
+goog.style = {};
+goog.style.GET_BOUNDING_CLIENT_RECT_ALWAYS_EXISTS = !1;
+goog.style.setStyle = function(a, b, c) {
+  goog.isString(b) ? goog.style.setStyle_(a, c, b) : goog.object.forEach(b, goog.partial(goog.style.setStyle_, a));
+};
+goog.style.setStyle_ = function(a, b, c) {
+  (c = goog.style.getVendorJsStyleName_(a, c)) && (a.style[c] = b);
+};
+goog.style.getVendorJsStyleName_ = function(a, b) {
+  var c = goog.string.toCamelCase(b);
+  if (void 0 === a.style[c]) {
+    var d = goog.dom.vendor.getVendorJsPrefix() + goog.string.toTitleCase(c);
+    if (void 0 !== a.style[d]) {
+      return d;
+    }
+  }
+  return c;
+};
+goog.style.getVendorStyleName_ = function(a, b) {
+  var c = goog.string.toCamelCase(b);
+  return void 0 === a.style[c] && (c = goog.dom.vendor.getVendorJsPrefix() + goog.string.toTitleCase(c), void 0 !== a.style[c]) ? goog.dom.vendor.getVendorPrefix() + "-" + b : b;
+};
+goog.style.getStyle = function(a, b) {
+  var c = a.style[goog.string.toCamelCase(b)];
+  return "undefined" !== typeof c ? c : a.style[goog.style.getVendorJsStyleName_(a, b)] || "";
+};
+goog.style.getComputedStyle = function(a, b) {
+  var c = goog.dom.getOwnerDocument(a);
+  return c.defaultView && c.defaultView.getComputedStyle && (c = c.defaultView.getComputedStyle(a, null)) ? c[b] || c.getPropertyValue(b) || "" : "";
+};
+goog.style.getCascadedStyle = function(a, b) {
+  return a.currentStyle ? a.currentStyle[b] : null;
+};
+goog.style.getStyle_ = function(a, b) {
+  return goog.style.getComputedStyle(a, b) || goog.style.getCascadedStyle(a, b) || a.style && a.style[b];
+};
+goog.style.getComputedBoxSizing = function(a) {
+  return goog.style.getStyle_(a, "boxSizing") || goog.style.getStyle_(a, "MozBoxSizing") || goog.style.getStyle_(a, "WebkitBoxSizing") || null;
+};
+goog.style.getComputedPosition = function(a) {
+  return goog.style.getStyle_(a, "position");
+};
+goog.style.getBackgroundColor = function(a) {
+  return goog.style.getStyle_(a, "backgroundColor");
+};
+goog.style.getComputedOverflowX = function(a) {
+  return goog.style.getStyle_(a, "overflowX");
+};
+goog.style.getComputedOverflowY = function(a) {
+  return goog.style.getStyle_(a, "overflowY");
+};
+goog.style.getComputedZIndex = function(a) {
+  return goog.style.getStyle_(a, "zIndex");
+};
+goog.style.getComputedTextAlign = function(a) {
+  return goog.style.getStyle_(a, "textAlign");
+};
+goog.style.getComputedCursor = function(a) {
+  return goog.style.getStyle_(a, "cursor");
+};
+goog.style.getComputedTransform = function(a) {
+  var b = goog.style.getVendorStyleName_(a, "transform");
+  return goog.style.getStyle_(a, b) || goog.style.getStyle_(a, "transform");
+};
+goog.style.setPosition = function(a, b, c) {
+  var d, e = goog.userAgent.GECKO && (goog.userAgent.MAC || goog.userAgent.X11) && goog.userAgent.isVersionOrHigher("1.9");
+  b instanceof goog.math.Coordinate ? (d = b.x, b = b.y) : (d = b, b = c);
+  a.style.left = goog.style.getPixelStyleValue_(d, e);
+  a.style.top = goog.style.getPixelStyleValue_(b, e);
+};
+goog.style.getPosition = function(a) {
+  return new goog.math.Coordinate(a.offsetLeft, a.offsetTop);
+};
+goog.style.getClientViewportElement = function(a) {
+  a = a ? goog.dom.getOwnerDocument(a) : goog.dom.getDocument();
+  return!goog.userAgent.IE || goog.userAgent.isDocumentModeOrHigher(9) || goog.dom.getDomHelper(a).isCss1CompatMode() ? a.documentElement : a.body;
+};
+goog.style.getViewportPageOffset = function(a) {
+  var b = a.body;
+  a = a.documentElement;
+  return new goog.math.Coordinate(b.scrollLeft || a.scrollLeft, b.scrollTop || a.scrollTop);
+};
+goog.style.getBoundingClientRect_ = function(a) {
+  var b;
+  try {
+    b = a.getBoundingClientRect();
+  } catch (c) {
+    return{left:0, top:0, right:0, bottom:0};
+  }
+  goog.userAgent.IE && a.ownerDocument.body && (a = a.ownerDocument, b.left -= a.documentElement.clientLeft + a.body.clientLeft, b.top -= a.documentElement.clientTop + a.body.clientTop);
+  return b;
+};
+goog.style.getOffsetParent = function(a) {
+  if (goog.userAgent.IE && !goog.userAgent.isDocumentModeOrHigher(8)) {
+    return a.offsetParent;
+  }
+  var b = goog.dom.getOwnerDocument(a), c = goog.style.getStyle_(a, "position"), d = "fixed" == c || "absolute" == c;
+  for (a = a.parentNode;a && a != b;a = a.parentNode) {
+    if (c = goog.style.getStyle_(a, "position"), d = d && "static" == c && a != b.documentElement && a != b.body, !d && (a.scrollWidth > a.clientWidth || a.scrollHeight > a.clientHeight || "fixed" == c || "absolute" == c || "relative" == c)) {
+      return a;
+    }
+  }
+  return null;
+};
+goog.style.getVisibleRectForElement = function(a) {
+  for (var b = new goog.math.Box(0, Infinity, Infinity, 0), c = goog.dom.getDomHelper(a), d = c.getDocument().body, e = c.getDocument().documentElement, f = c.getDocumentScrollElement();a = goog.style.getOffsetParent(a);) {
+    if (!(goog.userAgent.IE && 0 == a.clientWidth || goog.userAgent.WEBKIT && 0 == a.clientHeight && a == d) && a != d && a != e && "visible" != goog.style.getStyle_(a, "overflow")) {
+      var g = goog.style.getPageOffset(a), h = goog.style.getClientLeftTop(a);
+      g.x += h.x;
+      g.y += h.y;
+      b.top = Math.max(b.top, g.y);
+      b.right = Math.min(b.right, g.x + a.clientWidth);
+      b.bottom = Math.min(b.bottom, g.y + a.clientHeight);
+      b.left = Math.max(b.left, g.x);
+    }
+  }
+  d = f.scrollLeft;
+  f = f.scrollTop;
+  b.left = Math.max(b.left, d);
+  b.top = Math.max(b.top, f);
+  c = c.getViewportSize();
+  b.right = Math.min(b.right, d + c.width);
+  b.bottom = Math.min(b.bottom, f + c.height);
+  return 0 <= b.top && 0 <= b.left && b.bottom > b.top && b.right > b.left ? b : null;
+};
+goog.style.getContainerOffsetToScrollInto = function(a, b, c) {
+  var d = goog.style.getPageOffset(a), e = goog.style.getPageOffset(b), f = goog.style.getBorderBox(b), g = d.x - e.x - f.left, d = d.y - e.y - f.top, e = b.clientWidth - a.offsetWidth;
+  a = b.clientHeight - a.offsetHeight;
+  f = b.scrollLeft;
+  b = b.scrollTop;
+  c ? (f += g - e / 2, b += d - a / 2) : (f += Math.min(g, Math.max(g - e, 0)), b += Math.min(d, Math.max(d - a, 0)));
+  return new goog.math.Coordinate(f, b);
+};
+goog.style.scrollIntoContainerView = function(a, b, c) {
+  a = goog.style.getContainerOffsetToScrollInto(a, b, c);
+  b.scrollLeft = a.x;
+  b.scrollTop = a.y;
+};
+goog.style.getClientLeftTop = function(a) {
+  if (goog.userAgent.GECKO && !goog.userAgent.isVersionOrHigher("1.9")) {
+    var b = parseFloat(goog.style.getComputedStyle(a, "borderLeftWidth"));
+    if (goog.style.isRightToLeft(a)) {
+      var c = a.offsetWidth - a.clientWidth - b - parseFloat(goog.style.getComputedStyle(a, "borderRightWidth")), b = b + c
+    }
+    return new goog.math.Coordinate(b, parseFloat(goog.style.getComputedStyle(a, "borderTopWidth")));
+  }
+  return new goog.math.Coordinate(a.clientLeft, a.clientTop);
+};
+goog.style.getPageOffset = function(a) {
+  var b, c = goog.dom.getOwnerDocument(a), d = goog.style.getStyle_(a, "position");
+  goog.asserts.assertObject(a, "Parameter is required");
+  var e = !goog.style.GET_BOUNDING_CLIENT_RECT_ALWAYS_EXISTS && goog.userAgent.GECKO && c.getBoxObjectFor && !a.getBoundingClientRect && "absolute" == d && (b = c.getBoxObjectFor(a)) && (0 > b.screenX || 0 > b.screenY), f = new goog.math.Coordinate(0, 0), g = goog.style.getClientViewportElement(c);
+  if (a == g) {
+    return f;
+  }
+  if (goog.style.GET_BOUNDING_CLIENT_RECT_ALWAYS_EXISTS || a.getBoundingClientRect) {
+    b = goog.style.getBoundingClientRect_(a), a = goog.dom.getDomHelper(c).getDocumentScroll(), f.x = b.left + a.x, f.y = b.top + a.y;
+  } else {
+    if (c.getBoxObjectFor && !e) {
+      b = c.getBoxObjectFor(a), a = c.getBoxObjectFor(g), f.x = b.screenX - a.screenX, f.y = b.screenY - a.screenY;
+    } else {
+      b = a;
+      do {
+        f.x += b.offsetLeft;
+        f.y += b.offsetTop;
+        b != a && (f.x += b.clientLeft || 0, f.y += b.clientTop || 0);
+        if (goog.userAgent.WEBKIT && "fixed" == goog.style.getComputedPosition(b)) {
+          f.x += c.body.scrollLeft;
+          f.y += c.body.scrollTop;
+          break;
+        }
+        b = b.offsetParent;
+      } while (b && b != a);
+      if (goog.userAgent.OPERA || goog.userAgent.WEBKIT && "absolute" == d) {
+        f.y -= c.body.offsetTop;
+      }
+      for (b = a;(b = goog.style.getOffsetParent(b)) && b != c.body && b != g;) {
+        f.x -= b.scrollLeft, goog.userAgent.OPERA && "TR" == b.tagName || (f.y -= b.scrollTop);
+      }
+    }
+  }
+  return f;
+};
+goog.style.getPageOffsetLeft = function(a) {
+  return goog.style.getPageOffset(a).x;
+};
+goog.style.getPageOffsetTop = function(a) {
+  return goog.style.getPageOffset(a).y;
+};
+goog.style.getFramedPageOffset = function(a, b) {
+  var c = new goog.math.Coordinate(0, 0), d = goog.dom.getWindow(goog.dom.getOwnerDocument(a)), e = a;
+  do {
+    var f = d == b ? goog.style.getPageOffset(e) : goog.style.getClientPositionForElement_(goog.asserts.assert(e));
+    c.x += f.x;
+    c.y += f.y;
+  } while (d && d != b && (e = d.frameElement) && (d = d.parent));
+  return c;
+};
+goog.style.translateRectForAnotherFrame = function(a, b, c) {
+  if (b.getDocument() != c.getDocument()) {
+    var d = b.getDocument().body;
+    c = goog.style.getFramedPageOffset(d, c.getWindow());
+    c = goog.math.Coordinate.difference(c, goog.style.getPageOffset(d));
+    goog.userAgent.IE && !b.isCss1CompatMode() && (c = goog.math.Coordinate.difference(c, b.getDocumentScroll()));
+    a.left += c.x;
+    a.top += c.y;
+  }
+};
+goog.style.getRelativePosition = function(a, b) {
+  var c = goog.style.getClientPosition(a), d = goog.style.getClientPosition(b);
+  return new goog.math.Coordinate(c.x - d.x, c.y - d.y);
+};
+goog.style.getClientPositionForElement_ = function(a) {
+  var b;
+  if (goog.style.GET_BOUNDING_CLIENT_RECT_ALWAYS_EXISTS || a.getBoundingClientRect) {
+    b = goog.style.getBoundingClientRect_(a), b = new goog.math.Coordinate(b.left, b.top);
+  } else {
+    b = goog.dom.getDomHelper(a).getDocumentScroll();
+    var c = goog.style.getPageOffset(a);
+    b = new goog.math.Coordinate(c.x - b.x, c.y - b.y);
+  }
+  return goog.userAgent.GECKO && !goog.userAgent.isVersionOrHigher(12) ? goog.math.Coordinate.sum(b, goog.style.getCssTranslation(a)) : b;
+};
+goog.style.getClientPosition = function(a) {
+  goog.asserts.assert(a);
+  if (a.nodeType == goog.dom.NodeType.ELEMENT) {
+    return goog.style.getClientPositionForElement_(a);
+  }
+  var b = goog.isFunction(a.getBrowserEvent), c = a;
+  a.targetTouches ? c = a.targetTouches[0] : b && a.getBrowserEvent().targetTouches && (c = a.getBrowserEvent().targetTouches[0]);
+  return new goog.math.Coordinate(c.clientX, c.clientY);
+};
+goog.style.setPageOffset = function(a, b, c) {
+  var d = goog.style.getPageOffset(a);
+  b instanceof goog.math.Coordinate && (c = b.y, b = b.x);
+  goog.style.setPosition(a, a.offsetLeft + (b - d.x), a.offsetTop + (c - d.y));
+};
+goog.style.setSize = function(a, b, c) {
+  if (b instanceof goog.math.Size) {
+    c = b.height, b = b.width;
+  } else {
+    if (void 0 == c) {
+      throw Error("missing height argument");
+    }
+  }
+  goog.style.setWidth(a, b);
+  goog.style.setHeight(a, c);
+};
+goog.style.getPixelStyleValue_ = function(a, b) {
+  "number" == typeof a && (a = (b ? Math.round(a) : a) + "px");
+  return a;
+};
+goog.style.setHeight = function(a, b) {
+  a.style.height = goog.style.getPixelStyleValue_(b, !0);
+};
+goog.style.setWidth = function(a, b) {
+  a.style.width = goog.style.getPixelStyleValue_(b, !0);
+};
+goog.style.getSize = function(a) {
+  return goog.style.evaluateWithTemporaryDisplay_(goog.style.getSizeWithDisplay_, a);
+};
+goog.style.evaluateWithTemporaryDisplay_ = function(a, b) {
+  if ("none" != goog.style.getStyle_(b, "display")) {
+    return a(b);
+  }
+  var c = b.style, d = c.display, e = c.visibility, f = c.position;
+  c.visibility = "hidden";
+  c.position = "absolute";
+  c.display = "inline";
+  var g = a(b);
+  c.display = d;
+  c.position = f;
+  c.visibility = e;
+  return g;
+};
+goog.style.getSizeWithDisplay_ = function(a) {
+  var b = a.offsetWidth, c = a.offsetHeight, d = goog.userAgent.WEBKIT && !b && !c;
+  return goog.isDef(b) && !d || !a.getBoundingClientRect ? new goog.math.Size(b, c) : (a = goog.style.getBoundingClientRect_(a), new goog.math.Size(a.right - a.left, a.bottom - a.top));
+};
+goog.style.getTransformedSize = function(a) {
+  if (!a.getBoundingClientRect) {
+    return null;
+  }
+  a = goog.style.evaluateWithTemporaryDisplay_(goog.style.getBoundingClientRect_, a);
+  return new goog.math.Size(a.right - a.left, a.bottom - a.top);
+};
+goog.style.getBounds = function(a) {
+  var b = goog.style.getPageOffset(a);
+  a = goog.style.getSize(a);
+  return new goog.math.Rect(b.x, b.y, a.width, a.height);
+};
+goog.style.toCamelCase = function(a) {
+  return goog.string.toCamelCase(String(a));
+};
+goog.style.toSelectorCase = function(a) {
+  return goog.string.toSelectorCase(a);
+};
+goog.style.getOpacity = function(a) {
+  var b = a.style;
+  a = "";
+  "opacity" in b ? a = b.opacity : "MozOpacity" in b ? a = b.MozOpacity : "filter" in b && (b = b.filter.match(/alpha\(opacity=([\d.]+)\)/)) && (a = String(b[1] / 100));
+  return "" == a ? a : Number(a);
+};
+goog.style.setOpacity = function(a, b) {
+  var c = a.style;
+  "opacity" in c ? c.opacity = b : "MozOpacity" in c ? c.MozOpacity = b : "filter" in c && (c.filter = "" === b ? "" : "alpha(opacity\x3d" + 100 * b + ")");
+};
+goog.style.setTransparentBackgroundImage = function(a, b) {
+  var c = a.style;
+  goog.userAgent.IE && !goog.userAgent.isVersionOrHigher("8") ? c.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src\x3d"' + b + '", sizingMethod\x3d"crop")' : (c.backgroundImage = "url(" + b + ")", c.backgroundPosition = "top left", c.backgroundRepeat = "no-repeat");
+};
+goog.style.clearTransparentBackgroundImage = function(a) {
+  a = a.style;
+  "filter" in a ? a.filter = "" : a.backgroundImage = "none";
+};
+goog.style.showElement = function(a, b) {
+  goog.style.setElementShown(a, b);
+};
+goog.style.setElementShown = function(a, b) {
+  a.style.display = b ? "" : "none";
+};
+goog.style.isElementShown = function(a) {
+  return "none" != a.style.display;
+};
+goog.style.installStyles = function(a, b) {
+  var c = goog.dom.getDomHelper(b), d = null, e = c.getDocument();
+  goog.userAgent.IE && e.createStyleSheet ? (d = e.createStyleSheet(), goog.style.setStyles(d, a)) : (e = c.getElementsByTagNameAndClass("head")[0], e || (d = c.getElementsByTagNameAndClass("body")[0], e = c.createDom("head"), d.parentNode.insertBefore(e, d)), d = c.createDom("style"), goog.style.setStyles(d, a), c.appendChild(e, d));
+  return d;
+};
+goog.style.uninstallStyles = function(a) {
+  goog.dom.removeNode(a.ownerNode || a.owningElement || a);
+};
+goog.style.setStyles = function(a, b) {
+  goog.userAgent.IE && goog.isDef(a.cssText) ? a.cssText = b : a.innerHTML = b;
+};
+goog.style.setPreWrap = function(a) {
+  a = a.style;
+  goog.userAgent.IE && !goog.userAgent.isVersionOrHigher("8") ? (a.whiteSpace = "pre", a.wordWrap = "break-word") : a.whiteSpace = goog.userAgent.GECKO ? "-moz-pre-wrap" : "pre-wrap";
+};
+goog.style.setInlineBlock = function(a) {
+  a = a.style;
+  a.position = "relative";
+  goog.userAgent.IE && !goog.userAgent.isVersionOrHigher("8") ? (a.zoom = "1", a.display = "inline") : a.display = goog.userAgent.GECKO ? goog.userAgent.isVersionOrHigher("1.9a") ? "inline-block" : "-moz-inline-box" : "inline-block";
+};
+goog.style.isRightToLeft = function(a) {
+  return "rtl" == goog.style.getStyle_(a, "direction");
+};
+goog.style.unselectableStyle_ = goog.userAgent.GECKO ? "MozUserSelect" : goog.userAgent.WEBKIT ? "WebkitUserSelect" : null;
+goog.style.isUnselectable = function(a) {
+  return goog.style.unselectableStyle_ ? "none" == a.style[goog.style.unselectableStyle_].toLowerCase() : goog.userAgent.IE || goog.userAgent.OPERA ? "on" == a.getAttribute("unselectable") : !1;
+};
+goog.style.setUnselectable = function(a, b, c) {
+  c = c ? null : a.getElementsByTagName("*");
+  var d = goog.style.unselectableStyle_;
+  if (d) {
+    if (b = b ? "none" : "", a.style[d] = b, c) {
+      a = 0;
+      for (var e;e = c[a];a++) {
+        e.style[d] = b;
+      }
+    }
+  } else {
+    if (goog.userAgent.IE || goog.userAgent.OPERA) {
+      if (b = b ? "on" : "", a.setAttribute("unselectable", b), c) {
+        for (a = 0;e = c[a];a++) {
+          e.setAttribute("unselectable", b);
+        }
+      }
+    }
+  }
+};
+goog.style.getBorderBoxSize = function(a) {
+  return new goog.math.Size(a.offsetWidth, a.offsetHeight);
+};
+goog.style.setBorderBoxSize = function(a, b) {
+  var c = goog.dom.getOwnerDocument(a), d = goog.dom.getDomHelper(c).isCss1CompatMode();
+  if (!goog.userAgent.IE || d && goog.userAgent.isVersionOrHigher("8")) {
+    goog.style.setBoxSizingSize_(a, b, "border-box");
+  } else {
+    if (c = a.style, d) {
+      var d = goog.style.getPaddingBox(a), e = goog.style.getBorderBox(a);
+      c.pixelWidth = b.width - e.left - d.left - d.right - e.right;
+      c.pixelHeight = b.height - e.top - d.top - d.bottom - e.bottom;
+    } else {
+      c.pixelWidth = b.width, c.pixelHeight = b.height;
+    }
+  }
+};
+goog.style.getContentBoxSize = function(a) {
+  var b = goog.dom.getOwnerDocument(a), c = goog.userAgent.IE && a.currentStyle;
+  if (c && goog.dom.getDomHelper(b).isCss1CompatMode() && "auto" != c.width && "auto" != c.height && !c.boxSizing) {
+    return b = goog.style.getIePixelValue_(a, c.width, "width", "pixelWidth"), a = goog.style.getIePixelValue_(a, c.height, "height", "pixelHeight"), new goog.math.Size(b, a);
+  }
+  c = goog.style.getBorderBoxSize(a);
+  b = goog.style.getPaddingBox(a);
+  a = goog.style.getBorderBox(a);
+  return new goog.math.Size(c.width - a.left - b.left - b.right - a.right, c.height - a.top - b.top - b.bottom - a.bottom);
+};
+goog.style.setContentBoxSize = function(a, b) {
+  var c = goog.dom.getOwnerDocument(a), d = goog.dom.getDomHelper(c).isCss1CompatMode();
+  if (!goog.userAgent.IE || d && goog.userAgent.isVersionOrHigher("8")) {
+    goog.style.setBoxSizingSize_(a, b, "content-box");
+  } else {
+    if (c = a.style, d) {
+      c.pixelWidth = b.width, c.pixelHeight = b.height;
+    } else {
+      var d = goog.style.getPaddingBox(a), e = goog.style.getBorderBox(a);
+      c.pixelWidth = b.width + e.left + d.left + d.right + e.right;
+      c.pixelHeight = b.height + e.top + d.top + d.bottom + e.bottom;
+    }
+  }
+};
+goog.style.setBoxSizingSize_ = function(a, b, c) {
+  a = a.style;
+  goog.userAgent.GECKO ? a.MozBoxSizing = c : goog.userAgent.WEBKIT ? a.WebkitBoxSizing = c : a.boxSizing = c;
+  a.width = Math.max(b.width, 0) + "px";
+  a.height = Math.max(b.height, 0) + "px";
+};
+goog.style.getIePixelValue_ = function(a, b, c, d) {
+  if (/^\d+px?$/.test(b)) {
+    return parseInt(b, 10);
+  }
+  var e = a.style[c], f = a.runtimeStyle[c];
+  a.runtimeStyle[c] = a.currentStyle[c];
+  a.style[c] = b;
+  b = a.style[d];
+  a.style[c] = e;
+  a.runtimeStyle[c] = f;
+  return b;
+};
+goog.style.getIePixelDistance_ = function(a, b) {
+  var c = goog.style.getCascadedStyle(a, b);
+  return c ? goog.style.getIePixelValue_(a, c, "left", "pixelLeft") : 0;
+};
+goog.style.getBox_ = function(a, b) {
+  if (goog.userAgent.IE) {
+    var c = goog.style.getIePixelDistance_(a, b + "Left"), d = goog.style.getIePixelDistance_(a, b + "Right"), e = goog.style.getIePixelDistance_(a, b + "Top"), f = goog.style.getIePixelDistance_(a, b + "Bottom");
+    return new goog.math.Box(e, d, f, c);
+  }
+  c = goog.style.getComputedStyle(a, b + "Left");
+  d = goog.style.getComputedStyle(a, b + "Right");
+  e = goog.style.getComputedStyle(a, b + "Top");
+  f = goog.style.getComputedStyle(a, b + "Bottom");
+  return new goog.math.Box(parseFloat(e), parseFloat(d), parseFloat(f), parseFloat(c));
+};
+goog.style.getPaddingBox = function(a) {
+  return goog.style.getBox_(a, "padding");
+};
+goog.style.getMarginBox = function(a) {
+  return goog.style.getBox_(a, "margin");
+};
+goog.style.ieBorderWidthKeywords_ = {thin:2, medium:4, thick:6};
+goog.style.getIePixelBorder_ = function(a, b) {
+  if ("none" == goog.style.getCascadedStyle(a, b + "Style")) {
+    return 0;
+  }
+  var c = goog.style.getCascadedStyle(a, b + "Width");
+  return c in goog.style.ieBorderWidthKeywords_ ? goog.style.ieBorderWidthKeywords_[c] : goog.style.getIePixelValue_(a, c, "left", "pixelLeft");
+};
+goog.style.getBorderBox = function(a) {
+  if (goog.userAgent.IE && !goog.userAgent.isDocumentModeOrHigher(9)) {
+    var b = goog.style.getIePixelBorder_(a, "borderLeft"), c = goog.style.getIePixelBorder_(a, "borderRight"), d = goog.style.getIePixelBorder_(a, "borderTop");
+    a = goog.style.getIePixelBorder_(a, "borderBottom");
+    return new goog.math.Box(d, c, a, b);
+  }
+  b = goog.style.getComputedStyle(a, "borderLeftWidth");
+  c = goog.style.getComputedStyle(a, "borderRightWidth");
+  d = goog.style.getComputedStyle(a, "borderTopWidth");
+  a = goog.style.getComputedStyle(a, "borderBottomWidth");
+  return new goog.math.Box(parseFloat(d), parseFloat(c), parseFloat(a), parseFloat(b));
+};
+goog.style.getFontFamily = function(a) {
+  var b = goog.dom.getOwnerDocument(a), c = "";
+  if (b.body.createTextRange && goog.dom.contains(b, a)) {
+    b = b.body.createTextRange();
+    b.moveToElementText(a);
+    try {
+      c = b.queryCommandValue("FontName");
+    } catch (d) {
+      c = "";
+    }
+  }
+  c || (c = goog.style.getStyle_(a, "fontFamily"));
+  a = c.split(",");
+  1 < a.length && (c = a[0]);
+  return goog.string.stripQuotes(c, "\"'");
+};
+goog.style.lengthUnitRegex_ = /[^\d]+$/;
+goog.style.getLengthUnits = function(a) {
+  return(a = a.match(goog.style.lengthUnitRegex_)) && a[0] || null;
+};
+goog.style.ABSOLUTE_CSS_LENGTH_UNITS_ = {cm:1, "in":1, mm:1, pc:1, pt:1};
+goog.style.CONVERTIBLE_RELATIVE_CSS_UNITS_ = {em:1, ex:1};
+goog.style.getFontSize = function(a) {
+  var b = goog.style.getStyle_(a, "fontSize"), c = goog.style.getLengthUnits(b);
+  if (b && "px" == c) {
+    return parseInt(b, 10);
+  }
+  if (goog.userAgent.IE) {
+    if (c in goog.style.ABSOLUTE_CSS_LENGTH_UNITS_) {
+      return goog.style.getIePixelValue_(a, b, "left", "pixelLeft");
+    }
+    if (a.parentNode && a.parentNode.nodeType == goog.dom.NodeType.ELEMENT && c in goog.style.CONVERTIBLE_RELATIVE_CSS_UNITS_) {
+      return a = a.parentNode, c = goog.style.getStyle_(a, "fontSize"), goog.style.getIePixelValue_(a, b == c ? "1em" : b, "left", "pixelLeft");
+    }
+  }
+  c = goog.dom.createDom("span", {style:"visibility:hidden;position:absolute;line-height:0;padding:0;margin:0;border:0;height:1em;"});
+  goog.dom.appendChild(a, c);
+  b = c.offsetHeight;
+  goog.dom.removeNode(c);
+  return b;
+};
+goog.style.parseStyleAttribute = function(a) {
+  var b = {};
+  goog.array.forEach(a.split(/\s*;\s*/), function(a) {
+    a = a.split(/\s*:\s*/);
+    2 == a.length && (b[goog.string.toCamelCase(a[0].toLowerCase())] = a[1]);
+  });
+  return b;
+};
+goog.style.toStyleAttribute = function(a) {
+  var b = [];
+  goog.object.forEach(a, function(a, d) {
+    b.push(goog.string.toSelectorCase(d), ":", a, ";");
+  });
+  return b.join("");
+};
+goog.style.setFloat = function(a, b) {
+  a.style[goog.userAgent.IE ? "styleFloat" : "cssFloat"] = b;
+};
+goog.style.getFloat = function(a) {
+  return a.style[goog.userAgent.IE ? "styleFloat" : "cssFloat"] || "";
+};
+goog.style.getScrollbarWidth = function(a) {
+  var b = goog.dom.createElement("div");
+  a && (b.className = a);
+  b.style.cssText = "overflow:auto;position:absolute;top:0;width:100px;height:100px";
+  a = goog.dom.createElement("div");
+  goog.style.setSize(a, "200px", "200px");
+  b.appendChild(a);
+  goog.dom.appendChild(goog.dom.getDocument().body, b);
+  a = b.offsetWidth - b.clientWidth;
+  goog.dom.removeNode(b);
+  return a;
+};
+goog.style.MATRIX_TRANSLATION_REGEX_ = /matrix\([0-9\.\-]+, [0-9\.\-]+, [0-9\.\-]+, [0-9\.\-]+, ([0-9\.\-]+)p?x?, ([0-9\.\-]+)p?x?\)/;
+goog.style.getCssTranslation = function(a) {
+  a = goog.style.getComputedTransform(a);
+  return a ? (a = a.match(goog.style.MATRIX_TRANSLATION_REGEX_)) ? new goog.math.Coordinate(parseFloat(a[1]), parseFloat(a[2])) : new goog.math.Coordinate(0, 0) : new goog.math.Coordinate(0, 0);
+};
+goog.dom.xml = {};
+goog.dom.xml.MAX_XML_SIZE_KB = 2048;
+goog.dom.xml.MAX_ELEMENT_DEPTH = 256;
+goog.dom.xml.createDocument = function(a, b) {
+  if (b && !a) {
+    throw Error("Can't create document with namespace and no root tag");
+  }
+  if (document.implementation && document.implementation.createDocument) {
+    return document.implementation.createDocument(b || "", a || "", null);
+  }
+  if ("undefined" != typeof ActiveXObject) {
+    var c = goog.dom.xml.createMsXmlDocument_();
+    if (c) {
+      return a && c.appendChild(c.createNode(goog.dom.NodeType.ELEMENT, a, b || "")), c;
+    }
+  }
+  throw Error("Your browser does not support creating new documents");
+};
+goog.dom.xml.loadXml = function(a) {
+  if ("undefined" != typeof DOMParser) {
+    return(new DOMParser).parseFromString(a, "application/xml");
+  }
+  if ("undefined" != typeof ActiveXObject) {
+    var b = goog.dom.xml.createMsXmlDocument_();
+    b.loadXML(a);
+    return b;
+  }
+  throw Error("Your browser does not support loading xml documents");
+};
+goog.dom.xml.serialize = function(a) {
+  if ("undefined" != typeof XMLSerializer) {
+    return(new XMLSerializer).serializeToString(a);
+  }
+  if (a = a.xml) {
+    return a;
+  }
+  throw Error("Your browser does not support serializing XML documents");
+};
+goog.dom.xml.selectSingleNode = function(a, b) {
+  if ("undefined" != typeof a.selectSingleNode) {
+    var c = goog.dom.getOwnerDocument(a);
+    "undefined" != typeof c.setProperty && c.setProperty("SelectionLanguage", "XPath");
+    return a.selectSingleNode(b);
+  }
+  if (document.implementation.hasFeature("XPath", "3.0")) {
+    var c = goog.dom.getOwnerDocument(a), d = c.createNSResolver(c.documentElement);
+    return c.evaluate(b, a, d, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  }
+  return null;
+};
+goog.dom.xml.selectNodes = function(a, b) {
+  if ("undefined" != typeof a.selectNodes) {
+    var c = goog.dom.getOwnerDocument(a);
+    "undefined" != typeof c.setProperty && c.setProperty("SelectionLanguage", "XPath");
+    return a.selectNodes(b);
+  }
+  if (document.implementation.hasFeature("XPath", "3.0")) {
+    for (var c = goog.dom.getOwnerDocument(a), d = c.createNSResolver(c.documentElement), c = c.evaluate(b, a, d, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null), d = [], e = c.snapshotLength, f = 0;f < e;f++) {
+      d.push(c.snapshotItem(f));
+    }
+    return d;
+  }
+  return[];
+};
+goog.dom.xml.setAttributes = function(a, b) {
+  for (var c in b) {
+    b.hasOwnProperty(c) && a.setAttribute(c, b[c]);
+  }
+};
+goog.dom.xml.createMsXmlDocument_ = function() {
+  var a = new ActiveXObject("MSXML2.DOMDocument");
+  if (a) {
+    a.resolveExternals = !1;
+    a.validateOnParse = !1;
+    try {
+      a.setProperty("ProhibitDTD", !0), a.setProperty("MaxXMLSize", goog.dom.xml.MAX_XML_SIZE_KB), a.setProperty("MaxElementDepth", goog.dom.xml.MAX_ELEMENT_DEPTH);
+    } catch (b) {
+    }
+  }
+  return a;
+};
+domina.re_html = /<|&#?\w+;/;
+domina.re_leading_whitespace = /^\s+/;
+domina.re_xhtml_tag = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/i;
+domina.re_tag_name = /<([\w:]+)/;
+domina.re_no_inner_html = /<(?:script|style)/i;
+domina.re_tbody = /<tbody/i;
+var opt_wrapper_18632 = new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [1, "\x3cselect multiple\x3d'multiple'\x3e", "\x3c/select\x3e"], null), table_section_wrapper_18633 = new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [1, "\x3ctable\x3e", "\x3c/table\x3e"], null), cell_wrapper_18634 = new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [3, "\x3ctable\x3e\x3ctbody\x3e\x3ctr\x3e", "\x3c/tr\x3e\x3c/tbody\x3e\x3c/table\x3e"], 
+null);
+domina.wrap_map = cljs.core.PersistentHashMap.fromArrays(["td", "optgroup", "tfoot", "tr", "area", new cljs.core.Keyword(null, "default", "default", -1987822328), "option", "legend", "thead", "col", "caption", "th", "colgroup", "tbody"], [cell_wrapper_18634, opt_wrapper_18632, table_section_wrapper_18633, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [2, "\x3ctable\x3e\x3ctbody\x3e", "\x3c/tbody\x3e\x3c/table\x3e"], null), new cljs.core.PersistentVector(null, 3, 
+5, cljs.core.PersistentVector.EMPTY_NODE, [1, "\x3cmap\x3e", "\x3c/map\x3e"], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [0, "", ""], null), opt_wrapper_18632, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [1, "\x3cfieldset\x3e", "\x3c/fieldset\x3e"], null), table_section_wrapper_18633, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [2, "\x3ctable\x3e\x3ctbody\x3e\x3c/tbody\x3e\x3ccolgroup\x3e", 
+"\x3c/colgroup\x3e\x3c/table\x3e"], null), table_section_wrapper_18633, cell_wrapper_18634, table_section_wrapper_18633, table_section_wrapper_18633]);
+domina.remove_extraneous_tbody_BANG_ = function(a, b, c, d) {
+  b = cljs.core.not.call(null, cljs.core.re_find.call(null, domina.re_tbody, b));
+  cljs.core._EQ_.call(null, c, "table") && b ? (c = a.firstChild, a = cljs.core.truth_(c) ? a.firstChild.childNodes : c) : a = cljs.core._EQ_.call(null, d, "\x3ctable\x3e") && b ? a.childNodes : cljs.core.PersistentVector.EMPTY;
+  a = cljs.core.seq.call(null, a);
+  c = null;
+  for (var e = b = 0;;) {
+    if (e < b) {
+      d = cljs.core._nth.call(null, c, e), cljs.core._EQ_.call(null, d.nodeName, "tbody") && cljs.core._EQ_.call(null, d.childNodes.length, 0) && d.parentNode.removeChild(d), e += 1;
+    } else {
+      if (a = cljs.core.seq.call(null, a)) {
+        c = a, cljs.core.chunked_seq_QMARK_.call(null, c) ? (a = cljs.core.chunk_first.call(null, c), b = cljs.core.chunk_rest.call(null, c), c = a, d = cljs.core.count.call(null, a), a = b, b = d) : (d = cljs.core.first.call(null, c), cljs.core._EQ_.call(null, d.nodeName, "tbody") && cljs.core._EQ_.call(null, d.childNodes.length, 0) && d.parentNode.removeChild(d), a = cljs.core.next.call(null, c), c = null, b = 0), e = 0;
+      } else {
+        return null;
+      }
+    }
+  }
+};
+domina.restore_leading_whitespace_BANG_ = function(a, b) {
+  return a.insertBefore(document.createTextNode(cljs.core.first.call(null, cljs.core.re_find.call(null, domina.re_leading_whitespace, b))), a.firstChild);
+};
+domina.html_to_dom = function(a) {
+  var b = clojure.string.replace.call(null, a, domina.re_xhtml_tag, "\x3c$1\x3e\x3c/$2\x3e");
+  a = ("" + cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.second.call(null, cljs.core.re_find.call(null, domina.re_tag_name, b)))).toLowerCase();
+  var c = cljs.core.get.call(null, domina.wrap_map, a, (new cljs.core.Keyword(null, "default", "default", -1987822328)).cljs$core$IFn$_invoke$arity$1(domina.wrap_map)), d = cljs.core.nth.call(null, c, 0, null), e = cljs.core.nth.call(null, c, 1, null), f = cljs.core.nth.call(null, c, 2, null), c = function() {
+    var a;
+    a = document.createElement("div");
+    a.innerHTML = "" + cljs.core.str.cljs$core$IFn$_invoke$arity$1(e) + cljs.core.str.cljs$core$IFn$_invoke$arity$1(b) + cljs.core.str.cljs$core$IFn$_invoke$arity$1(f);
+    for (var c = d;;) {
+      if (0 < c) {
+        c -= 1, a = a.lastChild;
+      } else {
+        return a;
+      }
+    }
+  }();
+  cljs.core.truth_(domina.support.extraneous_tbody_QMARK_) && domina.remove_extraneous_tbody_BANG_.call(null, c, b, a, e);
+  cljs.core.truth_(function() {
+    var a = cljs.core.not.call(null, domina.support.leading_whitespace_QMARK_);
+    return a ? cljs.core.re_find.call(null, domina.re_leading_whitespace, b) : a;
+  }()) && domina.restore_leading_whitespace_BANG_.call(null, c, b);
+  return c.childNodes;
+};
+domina.string_to_dom = function(a) {
+  return cljs.core.truth_(cljs.core.re_find.call(null, domina.re_html, a)) ? domina.html_to_dom.call(null, a) : document.createTextNode(a);
+};
+domina.DomContent = function() {
+  return{};
+}();
+domina.nodes = function(a) {
+  if (a ? a.domina$DomContent$nodes$arity$1 : a) {
+    return a.domina$DomContent$nodes$arity$1(a);
+  }
+  var b;
+  b = domina.nodes[goog.typeOf(null == a ? null : a)];
+  if (!b && (b = domina.nodes._, !b)) {
+    throw cljs.core.missing_protocol.call(null, "DomContent.nodes", a);
+  }
+  return b.call(null, a);
+};
+domina.single_node = function(a) {
+  if (a ? a.domina$DomContent$single_node$arity$1 : a) {
+    return a.domina$DomContent$single_node$arity$1(a);
+  }
+  var b;
+  b = domina.single_node[goog.typeOf(null == a ? null : a)];
+  if (!b && (b = domina.single_node._, !b)) {
+    throw cljs.core.missing_protocol.call(null, "DomContent.single-node", a);
+  }
+  return b.call(null, a);
+};
+domina._STAR_debug_STAR_ = !0;
+domina.log_debug = function() {
+  var a = function(a) {
+    return cljs.core.truth_(function() {
+      var a = domina._STAR_debug_STAR_;
+      return cljs.core.truth_(a) ? !cljs.core._EQ_.call(null, window.console, void 0) : a;
+    }()) ? console.log(cljs.core.apply.call(null, cljs.core.str, a)) : null;
+  }, b = function(b) {
+    var d = null;
+    0 < arguments.length && (d = cljs.core.array_seq(Array.prototype.slice.call(arguments, 0), 0));
+    return a.call(this, d);
+  };
+  b.cljs$lang$maxFixedArity = 0;
+  b.cljs$lang$applyTo = function(b) {
+    b = cljs.core.seq(b);
+    return a(b);
+  };
+  b.cljs$core$IFn$_invoke$arity$variadic = a;
+  return b;
+}();
+domina.log = function() {
+  var a = function(a) {
+    return cljs.core.truth_(window.console) ? console.log(cljs.core.apply.call(null, cljs.core.str, a)) : null;
+  }, b = function(b) {
+    var d = null;
+    0 < arguments.length && (d = cljs.core.array_seq(Array.prototype.slice.call(arguments, 0), 0));
+    return a.call(this, d);
+  };
+  b.cljs$lang$maxFixedArity = 0;
+  b.cljs$lang$applyTo = function(b) {
+    b = cljs.core.seq(b);
+    return a(b);
+  };
+  b.cljs$core$IFn$_invoke$arity$variadic = a;
+  return b;
+}();
+domina.by_id = function(a) {
+  return goog.dom.getElement(cljs.core.name.call(null, a));
+};
+domina.by_class = function(a) {
+  return domina.normalize_seq.call(null, goog.dom.getElementsByClass(cljs.core.name.call(null, a)));
+};
+domina.children = function(a) {
+  return cljs.core.doall.call(null, cljs.core.mapcat.call(null, goog.dom.getChildren, domina.nodes.call(null, a)));
+};
+domina.common_ancestor = function() {
+  var a = function(a) {
+    return cljs.core.apply.call(null, goog.dom.findCommonAncestor, cljs.core.map.call(null, domina.single_node, a));
+  }, b = function(b) {
+    var d = null;
+    0 < arguments.length && (d = cljs.core.array_seq(Array.prototype.slice.call(arguments, 0), 0));
+    return a.call(this, d);
+  };
+  b.cljs$lang$maxFixedArity = 0;
+  b.cljs$lang$applyTo = function(b) {
+    b = cljs.core.seq(b);
+    return a(b);
+  };
+  b.cljs$core$IFn$_invoke$arity$variadic = a;
+  return b;
+}();
+domina.ancestor_QMARK_ = function(a, b) {
+  return cljs.core._EQ_.call(null, domina.common_ancestor.call(null, a, b), domina.single_node.call(null, a));
+};
+domina.clone = function(a) {
+  return cljs.core.map.call(null, function(a) {
+    return a.cloneNode(!0);
+  }, domina.nodes.call(null, a));
+};
+domina.append_BANG_ = function(a, b) {
+  domina.apply_with_cloning.call(null, goog.dom.appendChild, a, b);
+  return a;
+};
+domina.insert_BANG_ = function(a, b, c) {
+  domina.apply_with_cloning.call(null, function(a, b) {
+    return goog.dom.insertChildAt(a, b, c);
+  }, a, b);
+  return a;
+};
+domina.prepend_BANG_ = function(a, b) {
+  domina.insert_BANG_.call(null, a, b, 0);
+  return a;
+};
+domina.insert_before_BANG_ = function(a, b) {
+  domina.apply_with_cloning.call(null, function(a, b) {
+    return goog.dom.insertSiblingBefore(b, a);
+  }, a, b);
+  return a;
+};
+domina.insert_after_BANG_ = function(a, b) {
+  domina.apply_with_cloning.call(null, function(a, b) {
+    return goog.dom.insertSiblingAfter(b, a);
+  }, a, b);
+  return a;
+};
+domina.swap_content_BANG_ = function(a, b) {
+  domina.apply_with_cloning.call(null, function(a, b) {
+    return goog.dom.replaceNode(b, a);
+  }, a, b);
+  return a;
+};
+domina.detach_BANG_ = function(a) {
+  return cljs.core.doall.call(null, cljs.core.map.call(null, goog.dom.removeNode, domina.nodes.call(null, a)));
+};
+domina.destroy_BANG_ = function(a) {
+  return cljs.core.dorun.call(null, cljs.core.map.call(null, goog.dom.removeNode, domina.nodes.call(null, a)));
+};
+domina.destroy_children_BANG_ = function(a) {
+  cljs.core.dorun.call(null, cljs.core.map.call(null, goog.dom.removeChildren, domina.nodes.call(null, a)));
+  return a;
+};
+domina.style = function(a, b) {
+  var c = goog.style.getStyle(domina.single_node.call(null, a), cljs.core.name.call(null, b));
+  return cljs.core.truth_(clojure.string.blank_QMARK_.call(null, c)) ? null : c;
+};
+domina.attr = function(a, b) {
+  return domina.single_node.call(null, a).getAttribute(cljs.core.name.call(null, b));
+};
+domina.set_style_BANG_ = function() {
+  var a = function(a, b, e) {
+    for (var f = cljs.core.seq.call(null, domina.nodes.call(null, a)), g = null, h = 0, k = 0;;) {
+      if (k < h) {
+        var l = cljs.core._nth.call(null, g, k);
+        goog.style.setStyle(l, cljs.core.name.call(null, b), cljs.core.apply.call(null, cljs.core.str, e));
+        k += 1;
+      } else {
+        if (f = cljs.core.seq.call(null, f)) {
+          g = f, cljs.core.chunked_seq_QMARK_.call(null, g) ? (f = cljs.core.chunk_first.call(null, g), k = cljs.core.chunk_rest.call(null, g), g = f, h = cljs.core.count.call(null, f), f = k) : (f = cljs.core.first.call(null, g), goog.style.setStyle(f, cljs.core.name.call(null, b), cljs.core.apply.call(null, cljs.core.str, e)), f = cljs.core.next.call(null, g), g = null, h = 0), k = 0;
+        } else {
+          break;
+        }
+      }
+    }
+    return a;
+  }, b = function(b, d, e) {
+    var f = null;
+    2 < arguments.length && (f = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2), 0));
+    return a.call(this, b, d, f);
+  };
+  b.cljs$lang$maxFixedArity = 2;
+  b.cljs$lang$applyTo = function(b) {
+    var d = cljs.core.first(b);
+    b = cljs.core.next(b);
+    var e = cljs.core.first(b);
+    b = cljs.core.rest(b);
+    return a(d, e, b);
+  };
+  b.cljs$core$IFn$_invoke$arity$variadic = a;
+  return b;
+}();
+domina.set_attr_BANG_ = function() {
+  var a = function(a, b, e) {
+    for (var f = cljs.core.seq.call(null, domina.nodes.call(null, a)), g = null, h = 0, k = 0;;) {
+      if (k < h) {
+        cljs.core._nth.call(null, g, k).setAttribute(cljs.core.name.call(null, b), cljs.core.apply.call(null, cljs.core.str, e)), k += 1;
+      } else {
+        if (f = cljs.core.seq.call(null, f)) {
+          g = f, cljs.core.chunked_seq_QMARK_.call(null, g) ? (f = cljs.core.chunk_first.call(null, g), k = cljs.core.chunk_rest.call(null, g), g = f, h = cljs.core.count.call(null, f), f = k) : (cljs.core.first.call(null, g).setAttribute(cljs.core.name.call(null, b), cljs.core.apply.call(null, cljs.core.str, e)), f = cljs.core.next.call(null, g), g = null, h = 0), k = 0;
+        } else {
+          break;
+        }
+      }
+    }
+    return a;
+  }, b = function(b, d, e) {
+    var f = null;
+    2 < arguments.length && (f = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2), 0));
+    return a.call(this, b, d, f);
+  };
+  b.cljs$lang$maxFixedArity = 2;
+  b.cljs$lang$applyTo = function(b) {
+    var d = cljs.core.first(b);
+    b = cljs.core.next(b);
+    var e = cljs.core.first(b);
+    b = cljs.core.rest(b);
+    return a(d, e, b);
+  };
+  b.cljs$core$IFn$_invoke$arity$variadic = a;
+  return b;
+}();
+domina.remove_attr_BANG_ = function(a, b) {
+  for (var c = cljs.core.seq.call(null, domina.nodes.call(null, a)), d = null, e = 0, f = 0;;) {
+    if (f < e) {
+      cljs.core._nth.call(null, d, f).removeAttribute(cljs.core.name.call(null, b)), f += 1;
+    } else {
+      if (c = cljs.core.seq.call(null, c)) {
+        d = c, cljs.core.chunked_seq_QMARK_.call(null, d) ? (c = cljs.core.chunk_first.call(null, d), f = cljs.core.chunk_rest.call(null, d), d = c, e = cljs.core.count.call(null, c), c = f) : (cljs.core.first.call(null, d).removeAttribute(cljs.core.name.call(null, b)), c = cljs.core.next.call(null, d), d = null, e = 0), f = 0;
+      } else {
+        break;
+      }
+    }
+  }
+  return a;
+};
+domina.parse_style_attributes = function(a) {
+  return cljs.core.reduce.call(null, function(a, c) {
+    var d = c.split(/\s*:\s*/), e = cljs.core.nth.call(null, d, 0, null), d = cljs.core.nth.call(null, d, 1, null);
+    return cljs.core.truth_(cljs.core.truth_(e) ? d : e) ? cljs.core.assoc.call(null, a, cljs.core.keyword.call(null, e.toLowerCase()), d) : a;
+  }, cljs.core.PersistentArrayMap.EMPTY, a.split(/\s*;\s*/));
+};
+domina.styles = function(a) {
+  a = domina.attr.call(null, a, "style");
+  return "string" === typeof a ? domina.parse_style_attributes.call(null, a) : null == a ? cljs.core.PersistentArrayMap.EMPTY : cljs.core.truth_(a.cssText) ? domina.parse_style_attributes.call(null, a.cssText) : cljs.core.PersistentArrayMap.EMPTY;
+};
+domina.attrs = function(a) {
+  a = domina.single_node.call(null, a);
+  var b = a.attributes;
+  return cljs.core.reduce.call(null, cljs.core.conj, cljs.core.filter.call(null, cljs.core.complement.call(null, cljs.core.nil_QMARK_), cljs.core.map.call(null, function(a, b) {
+    return function(a) {
+      a = b.item(a);
+      var c = a.nodeValue;
+      return cljs.core.not_EQ_.call(null, null, c) && cljs.core.not_EQ_.call(null, "", c) ? new cljs.core.PersistentArrayMap.fromArray([cljs.core.keyword.call(null, a.nodeName.toLowerCase()), a.nodeValue], !0, !1) : null;
+    };
+  }(a, b), cljs.core.range.call(null, b.length))));
+};
+domina.set_styles_BANG_ = function(a, b) {
+  for (var c = cljs.core.seq.call(null, b), d = null, e = 0, f = 0;;) {
+    if (f < e) {
+      var g = cljs.core._nth.call(null, d, f), h = cljs.core.nth.call(null, g, 0, null), g = cljs.core.nth.call(null, g, 1, null);
+      domina.set_style_BANG_.call(null, a, h, g);
+      f += 1;
+    } else {
+      if (c = cljs.core.seq.call(null, c)) {
+        cljs.core.chunked_seq_QMARK_.call(null, c) ? (e = cljs.core.chunk_first.call(null, c), c = cljs.core.chunk_rest.call(null, c), d = e, e = cljs.core.count.call(null, e)) : (e = cljs.core.first.call(null, c), d = cljs.core.nth.call(null, e, 0, null), e = cljs.core.nth.call(null, e, 1, null), domina.set_style_BANG_.call(null, a, d, e), c = cljs.core.next.call(null, c), d = null, e = 0), f = 0;
+      } else {
+        break;
+      }
+    }
+  }
+  return a;
+};
+domina.set_attrs_BANG_ = function(a, b) {
+  for (var c = cljs.core.seq.call(null, b), d = null, e = 0, f = 0;;) {
+    if (f < e) {
+      var g = cljs.core._nth.call(null, d, f), h = cljs.core.nth.call(null, g, 0, null), g = cljs.core.nth.call(null, g, 1, null);
+      domina.set_attr_BANG_.call(null, a, h, g);
+      f += 1;
+    } else {
+      if (c = cljs.core.seq.call(null, c)) {
+        cljs.core.chunked_seq_QMARK_.call(null, c) ? (e = cljs.core.chunk_first.call(null, c), c = cljs.core.chunk_rest.call(null, c), d = e, e = cljs.core.count.call(null, e)) : (e = cljs.core.first.call(null, c), d = cljs.core.nth.call(null, e, 0, null), e = cljs.core.nth.call(null, e, 1, null), domina.set_attr_BANG_.call(null, a, d, e), c = cljs.core.next.call(null, c), d = null, e = 0), f = 0;
+      } else {
+        break;
+      }
+    }
+  }
+  return a;
+};
+domina.has_class_QMARK_ = function(a, b) {
+  return goog.dom.classes.has(domina.single_node.call(null, a), b);
+};
+domina.add_class_BANG_ = function(a, b) {
+  for (var c = cljs.core.seq.call(null, domina.nodes.call(null, a)), d = null, e = 0, f = 0;;) {
+    if (f < e) {
+      var g = cljs.core._nth.call(null, d, f);
+      goog.dom.classes.add(g, b);
+      f += 1;
+    } else {
+      if (c = cljs.core.seq.call(null, c)) {
+        d = c, cljs.core.chunked_seq_QMARK_.call(null, d) ? (c = cljs.core.chunk_first.call(null, d), f = cljs.core.chunk_rest.call(null, d), d = c, e = cljs.core.count.call(null, c), c = f) : (c = cljs.core.first.call(null, d), goog.dom.classes.add(c, b), c = cljs.core.next.call(null, d), d = null, e = 0), f = 0;
+      } else {
+        break;
+      }
+    }
+  }
+  return a;
+};
+domina.remove_class_BANG_ = function(a, b) {
+  for (var c = cljs.core.seq.call(null, domina.nodes.call(null, a)), d = null, e = 0, f = 0;;) {
+    if (f < e) {
+      var g = cljs.core._nth.call(null, d, f);
+      goog.dom.classes.remove(g, b);
+      f += 1;
+    } else {
+      if (c = cljs.core.seq.call(null, c)) {
+        d = c, cljs.core.chunked_seq_QMARK_.call(null, d) ? (c = cljs.core.chunk_first.call(null, d), f = cljs.core.chunk_rest.call(null, d), d = c, e = cljs.core.count.call(null, c), c = f) : (c = cljs.core.first.call(null, d), goog.dom.classes.remove(c, b), c = cljs.core.next.call(null, d), d = null, e = 0), f = 0;
+      } else {
+        break;
+      }
+    }
+  }
+  return a;
+};
+domina.toggle_class_BANG_ = function(a, b) {
+  for (var c = cljs.core.seq.call(null, domina.nodes.call(null, a)), d = null, e = 0, f = 0;;) {
+    if (f < e) {
+      var g = cljs.core._nth.call(null, d, f);
+      goog.dom.classes.toggle(g, b);
+      f += 1;
+    } else {
+      if (c = cljs.core.seq.call(null, c)) {
+        d = c, cljs.core.chunked_seq_QMARK_.call(null, d) ? (c = cljs.core.chunk_first.call(null, d), f = cljs.core.chunk_rest.call(null, d), d = c, e = cljs.core.count.call(null, c), c = f) : (c = cljs.core.first.call(null, d), goog.dom.classes.toggle(c, b), c = cljs.core.next.call(null, d), d = null, e = 0), f = 0;
+      } else {
+        break;
+      }
+    }
+  }
+  return a;
+};
+domina.classes = function(a) {
+  return cljs.core.seq.call(null, goog.dom.classes.get(domina.single_node.call(null, a)));
+};
+domina.set_classes_BANG_ = function(a, b) {
+  for (var c = cljs.core.coll_QMARK_.call(null, b) ? clojure.string.join.call(null, " ", b) : b, d = cljs.core.seq.call(null, domina.nodes.call(null, a)), e = null, f = 0, g = 0;;) {
+    if (g < f) {
+      var h = cljs.core._nth.call(null, e, g);
+      goog.dom.classes.set(h, c);
+      g += 1;
+    } else {
+      if (d = cljs.core.seq.call(null, d)) {
+        e = d, cljs.core.chunked_seq_QMARK_.call(null, e) ? (d = cljs.core.chunk_first.call(null, e), g = cljs.core.chunk_rest.call(null, e), e = d, f = cljs.core.count.call(null, d), d = g) : (d = cljs.core.first.call(null, e), goog.dom.classes.set(d, c), d = cljs.core.next.call(null, e), e = null, f = 0), g = 0;
+      } else {
+        break;
+      }
+    }
+  }
+  return a;
+};
+domina.text = function(a) {
+  return goog.string.trim(goog.dom.getTextContent(domina.single_node.call(null, a)));
+};
+domina.set_text_BANG_ = function(a, b) {
+  for (var c = cljs.core.seq.call(null, domina.nodes.call(null, a)), d = null, e = 0, f = 0;;) {
+    if (f < e) {
+      var g = cljs.core._nth.call(null, d, f);
+      goog.dom.setTextContent(g, b);
+      f += 1;
+    } else {
+      if (c = cljs.core.seq.call(null, c)) {
+        d = c, cljs.core.chunked_seq_QMARK_.call(null, d) ? (c = cljs.core.chunk_first.call(null, d), f = cljs.core.chunk_rest.call(null, d), d = c, e = cljs.core.count.call(null, c), c = f) : (c = cljs.core.first.call(null, d), goog.dom.setTextContent(c, b), c = cljs.core.next.call(null, d), d = null, e = 0), f = 0;
+      } else {
+        break;
+      }
+    }
+  }
+  return a;
+};
+domina.value = function(a) {
+  return goog.dom.forms.getValue(domina.single_node.call(null, a));
+};
+domina.set_value_BANG_ = function(a, b) {
+  for (var c = cljs.core.seq.call(null, domina.nodes.call(null, a)), d = null, e = 0, f = 0;;) {
+    if (f < e) {
+      var g = cljs.core._nth.call(null, d, f);
+      goog.dom.forms.setValue(g, b);
+      f += 1;
+    } else {
+      if (c = cljs.core.seq.call(null, c)) {
+        d = c, cljs.core.chunked_seq_QMARK_.call(null, d) ? (c = cljs.core.chunk_first.call(null, d), f = cljs.core.chunk_rest.call(null, d), d = c, e = cljs.core.count.call(null, c), c = f) : (c = cljs.core.first.call(null, d), goog.dom.forms.setValue(c, b), c = cljs.core.next.call(null, d), d = null, e = 0), f = 0;
+      } else {
+        break;
+      }
+    }
+  }
+  return a;
+};
+domina.html = function(a) {
+  return domina.single_node.call(null, a).innerHTML;
+};
+domina.replace_children_BANG_ = function(a, b) {
+  return domina.append_BANG_.call(null, domina.destroy_children_BANG_.call(null, a), b);
+};
+domina.set_inner_html_BANG_ = function(a, b) {
+  var c = cljs.core.not.call(null, cljs.core.re_find.call(null, domina.re_no_inner_html, b)), d = cljs.core.re_find.call(null, domina.re_leading_whitespace, b), e = ("" + cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.second.call(null, cljs.core.re_find.call(null, domina.re_tag_name, b)))).toLowerCase(), f = cljs.core.contains_QMARK_.call(null, domina.wrap_map, e);
+  if (cljs.core.truth_(function() {
+    if (c) {
+      var a;
+      a = domina.support.leading_whitespace_QMARK_;
+      a = cljs.core.truth_(a) ? a : cljs.core.not.call(null, d);
+      return cljs.core.truth_(a) ? !f : a;
+    }
+    return c;
+  }())) {
+    e = clojure.string.replace.call(null, b, domina.re_xhtml_tag, "\x3c$1\x3e\x3c/$2\x3e");
+    try {
+      for (var g = cljs.core.seq.call(null, domina.nodes.call(null, a)), h = null, k = 0, l = 0;;) {
+        if (l < k) {
+          cljs.core._nth.call(null, h, l).innerHTML = e, l += 1;
+        } else {
+          var m = cljs.core.seq.call(null, g);
+          if (m) {
+            var n = m;
+            if (cljs.core.chunked_seq_QMARK_.call(null, n)) {
+              var p = cljs.core.chunk_first.call(null, n), q = cljs.core.chunk_rest.call(null, n), n = p, r = cljs.core.count.call(null, p), g = q, h = n, k = r
+            } else {
+              cljs.core.first.call(null, n).innerHTML = e, g = cljs.core.next.call(null, n), h = null, k = 0;
+            }
+            l = 0;
+          } else {
+            break;
+          }
+        }
+      }
+    } catch (s) {
+      if (s instanceof Error) {
+        domina.replace_children_BANG_.call(null, a, e);
+      } else {
+        throw s;
+      }
+    }
+  } else {
+    domina.replace_children_BANG_.call(null, a, b);
+  }
+  return a;
+};
+domina.set_html_BANG_ = function(a, b) {
+  return "string" === typeof b ? domina.set_inner_html_BANG_.call(null, a, b) : domina.replace_children_BANG_.call(null, a, b);
+};
+domina.get_data = function() {
+  var a = null, b = function(b, c) {
+    return a.call(null, b, c, !1);
+  }, c = function(b, c, f) {
+    var g = domina.single_node.call(null, b).__domina_data, g = cljs.core.truth_(g) ? cljs.core.get.call(null, g, c) : null;
+    return cljs.core.truth_(cljs.core.truth_(f) ? null == g : f) ? (b = domina.single_node.call(null, b).parentNode, cljs.core.truth_(b) ? a.call(null, b, c, !0) : null) : g;
+  }, a = function(a, e, f) {
+    switch(arguments.length) {
+      case 2:
+        return b.call(this, a, e);
+      case 3:
+        return c.call(this, a, e, f);
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$core$IFn$_invoke$arity$2 = b;
+  a.cljs$core$IFn$_invoke$arity$3 = c;
+  return a;
+}();
+domina.set_data_BANG_ = function(a, b, c) {
+  var d;
+  d = domina.single_node.call(null, a).__domina_data;
+  d = cljs.core.truth_(d) ? d : cljs.core.PersistentArrayMap.EMPTY;
+  return domina.single_node.call(null, a).__domina_data = cljs.core.assoc.call(null, d, b, c);
+};
+domina.apply_with_cloning = function(a, b, c) {
+  b = domina.nodes.call(null, b);
+  var d = domina.nodes.call(null, c);
+  c = function() {
+    for (var a = document.createDocumentFragment(), b = cljs.core.seq.call(null, d), c = null, e = 0, l = 0;;) {
+      if (l < e) {
+        var m = cljs.core._nth.call(null, c, l);
+        a.appendChild(m);
+        l += 1;
+      } else {
+        if (b = cljs.core.seq.call(null, b)) {
+          c = b, cljs.core.chunked_seq_QMARK_.call(null, c) ? (b = cljs.core.chunk_first.call(null, c), l = cljs.core.chunk_rest.call(null, c), c = b, e = cljs.core.count.call(null, b), b = l) : (b = cljs.core.first.call(null, c), a.appendChild(b), b = cljs.core.next.call(null, c), c = null, e = 0), l = 0;
+        } else {
+          break;
+        }
+      }
+    }
+    return a;
+  }();
+  var e = cljs.core.doall.call(null, cljs.core.repeatedly.call(null, cljs.core.count.call(null, b) - 1, function(a, b, c) {
+    return function() {
+      return c.cloneNode(!0);
+    };
+  }(b, d, c)));
+  return cljs.core.seq.call(null, b) ? (a.call(null, cljs.core.first.call(null, b), c), cljs.core.doall.call(null, cljs.core.map.call(null, function(b, c, d, e) {
+    return function(b, c) {
+      return a.call(null, b, c);
+    };
+  }(b, d, c, e), cljs.core.rest.call(null, b), e))) : null;
+};
+domina.lazy_nl_via_item = function() {
+  var a = null, b = function(b) {
+    return a.call(null, b, 0);
+  }, c = function(b, c) {
+    return c < b.length ? new cljs.core.LazySeq(null, function() {
+      return cljs.core.cons.call(null, b.item(c), a.call(null, b, c + 1));
+    }, null, null) : null;
+  }, a = function(a, e) {
+    switch(arguments.length) {
+      case 1:
+        return b.call(this, a);
+      case 2:
+        return c.call(this, a, e);
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$core$IFn$_invoke$arity$1 = b;
+  a.cljs$core$IFn$_invoke$arity$2 = c;
+  return a;
+}();
+domina.lazy_nl_via_array_ref = function() {
+  var a = null, b = function(b) {
+    return a.call(null, b, 0);
+  }, c = function(b, c) {
+    return c < b.length ? new cljs.core.LazySeq(null, function() {
+      return cljs.core.cons.call(null, b[c], a.call(null, b, c + 1));
+    }, null, null) : null;
+  }, a = function(a, e) {
+    switch(arguments.length) {
+      case 1:
+        return b.call(this, a);
+      case 2:
+        return c.call(this, a, e);
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$core$IFn$_invoke$arity$1 = b;
+  a.cljs$core$IFn$_invoke$arity$2 = c;
+  return a;
+}();
+domina.lazy_nodelist = function(a) {
+  return cljs.core.truth_(a.item) ? domina.lazy_nl_via_item.call(null, a) : domina.lazy_nl_via_array_ref.call(null, a);
+};
+domina.array_like_QMARK_ = function(a) {
+  if (cljs.core.truth_(a)) {
+    var b = cljs.core.not.call(null, a.nodeName);
+    return b ? a.length : b;
+  }
+  return a;
+};
+domina.normalize_seq = function(a) {
+  return null == a ? cljs.core.List.EMPTY : (a ? a.cljs$lang$protocol_mask$partition0$ & 8388608 || a.cljs$core$ISeqable$ || (a.cljs$lang$protocol_mask$partition0$ ? 0 : cljs.core.native_satisfies_QMARK_.call(null, cljs.core.ISeqable, a)) : cljs.core.native_satisfies_QMARK_.call(null, cljs.core.ISeqable, a)) ? cljs.core.seq.call(null, a) : cljs.core.truth_(domina.array_like_QMARK_.call(null, a)) ? domina.lazy_nodelist.call(null, a) : cljs.core.seq.call(null, new cljs.core.PersistentVector(null, 1, 
+  5, cljs.core.PersistentVector.EMPTY_NODE, [a], null));
+};
+domina.DomContent._ = !0;
+domina.nodes._ = function(a) {
+  return null == a ? cljs.core.List.EMPTY : (a ? a.cljs$lang$protocol_mask$partition0$ & 8388608 || a.cljs$core$ISeqable$ || (a.cljs$lang$protocol_mask$partition0$ ? 0 : cljs.core.native_satisfies_QMARK_.call(null, cljs.core.ISeqable, a)) : cljs.core.native_satisfies_QMARK_.call(null, cljs.core.ISeqable, a)) ? cljs.core.seq.call(null, a) : cljs.core.truth_(domina.array_like_QMARK_.call(null, a)) ? domina.lazy_nodelist.call(null, a) : cljs.core.seq.call(null, new cljs.core.PersistentVector(null, 1, 
+  5, cljs.core.PersistentVector.EMPTY_NODE, [a], null));
+};
+domina.single_node._ = function(a) {
+  return null == a ? null : (a ? a.cljs$lang$protocol_mask$partition0$ & 8388608 || a.cljs$core$ISeqable$ || (a.cljs$lang$protocol_mask$partition0$ ? 0 : cljs.core.native_satisfies_QMARK_.call(null, cljs.core.ISeqable, a)) : cljs.core.native_satisfies_QMARK_.call(null, cljs.core.ISeqable, a)) ? cljs.core.first.call(null, a) : cljs.core.truth_(domina.array_like_QMARK_.call(null, a)) ? a.item(0) : a;
+};
+domina.DomContent.string = !0;
+domina.nodes.string = function(a) {
+  return cljs.core.doall.call(null, domina.nodes.call(null, domina.string_to_dom.call(null, a)));
+};
+domina.single_node.string = function(a) {
+  return domina.single_node.call(null, domina.string_to_dom.call(null, a));
+};
+cljs.core.truth_("undefined" != typeof NodeList) && (NodeList.prototype.cljs$core$ISeqable$ = !0, NodeList.prototype.cljs$core$ISeqable$_seq$arity$1 = function(a) {
+  return domina.lazy_nodelist.call(null, this);
+}, NodeList.prototype.cljs$core$IIndexed$ = !0, NodeList.prototype.cljs$core$IIndexed$_nth$arity$2 = function(a, b) {
+  return this.item(b);
+}, NodeList.prototype.cljs$core$IIndexed$_nth$arity$3 = function(a, b, c) {
+  return this.length <= b ? c : cljs.core.nth.call(null, this, b);
+}, NodeList.prototype.cljs$core$ICounted$ = !0, NodeList.prototype.cljs$core$ICounted$_count$arity$1 = function(a) {
+  return this.length;
+});
+cljs.core.truth_("undefined" != typeof StaticNodeList) && (StaticNodeList.prototype.cljs$core$ISeqable$ = !0, StaticNodeList.prototype.cljs$core$ISeqable$_seq$arity$1 = function(a) {
+  return domina.lazy_nodelist.call(null, this);
+}, StaticNodeList.prototype.cljs$core$IIndexed$ = !0, StaticNodeList.prototype.cljs$core$IIndexed$_nth$arity$2 = function(a, b) {
+  return this.item(b);
+}, StaticNodeList.prototype.cljs$core$IIndexed$_nth$arity$3 = function(a, b, c) {
+  return this.length <= b ? c : cljs.core.nth.call(null, this, b);
+}, StaticNodeList.prototype.cljs$core$ICounted$ = !0, StaticNodeList.prototype.cljs$core$ICounted$_count$arity$1 = function(a) {
+  return this.length;
+});
+cljs.core.truth_("undefined" != typeof HTMLCollection) && (HTMLCollection.prototype.cljs$core$ISeqable$ = !0, HTMLCollection.prototype.cljs$core$ISeqable$_seq$arity$1 = function(a) {
+  return domina.lazy_nodelist.call(null, this);
+}, HTMLCollection.prototype.cljs$core$IIndexed$ = !0, HTMLCollection.prototype.cljs$core$IIndexed$_nth$arity$2 = function(a, b) {
+  return this.item(b);
+}, HTMLCollection.prototype.cljs$core$IIndexed$_nth$arity$3 = function(a, b, c) {
+  return this.length <= b ? c : cljs.core.nth.call(null, this, b);
+}, HTMLCollection.prototype.cljs$core$ICounted$ = !0, HTMLCollection.prototype.cljs$core$ICounted$_count$arity$1 = function(a) {
+  return this.length;
+});
+domina.events = {};
+domina.events.Event = function() {
+  return{};
+}();
+domina.events.prevent_default = function(a) {
+  if (a ? a.domina$events$Event$prevent_default$arity$1 : a) {
+    return a.domina$events$Event$prevent_default$arity$1(a);
+  }
+  var b;
+  b = domina.events.prevent_default[goog.typeOf(null == a ? null : a)];
+  if (!b && (b = domina.events.prevent_default._, !b)) {
+    throw cljs.core.missing_protocol.call(null, "Event.prevent-default", a);
+  }
+  return b.call(null, a);
+};
+domina.events.stop_propagation = function(a) {
+  if (a ? a.domina$events$Event$stop_propagation$arity$1 : a) {
+    return a.domina$events$Event$stop_propagation$arity$1(a);
+  }
+  var b;
+  b = domina.events.stop_propagation[goog.typeOf(null == a ? null : a)];
+  if (!b && (b = domina.events.stop_propagation._, !b)) {
+    throw cljs.core.missing_protocol.call(null, "Event.stop-propagation", a);
+  }
+  return b.call(null, a);
+};
+domina.events.target = function(a) {
+  if (a ? a.domina$events$Event$target$arity$1 : a) {
+    return a.domina$events$Event$target$arity$1(a);
+  }
+  var b;
+  b = domina.events.target[goog.typeOf(null == a ? null : a)];
+  if (!b && (b = domina.events.target._, !b)) {
+    throw cljs.core.missing_protocol.call(null, "Event.target", a);
+  }
+  return b.call(null, a);
+};
+domina.events.current_target = function(a) {
+  if (a ? a.domina$events$Event$current_target$arity$1 : a) {
+    return a.domina$events$Event$current_target$arity$1(a);
+  }
+  var b;
+  b = domina.events.current_target[goog.typeOf(null == a ? null : a)];
+  if (!b && (b = domina.events.current_target._, !b)) {
+    throw cljs.core.missing_protocol.call(null, "Event.current-target", a);
+  }
+  return b.call(null, a);
+};
+domina.events.event_type = function(a) {
+  if (a ? a.domina$events$Event$event_type$arity$1 : a) {
+    return a.domina$events$Event$event_type$arity$1(a);
+  }
+  var b;
+  b = domina.events.event_type[goog.typeOf(null == a ? null : a)];
+  if (!b && (b = domina.events.event_type._, !b)) {
+    throw cljs.core.missing_protocol.call(null, "Event.event-type", a);
+  }
+  return b.call(null, a);
+};
+domina.events.raw_event = function(a) {
+  if (a ? a.domina$events$Event$raw_event$arity$1 : a) {
+    return a.domina$events$Event$raw_event$arity$1(a);
+  }
+  var b;
+  b = domina.events.raw_event[goog.typeOf(null == a ? null : a)];
+  if (!b && (b = domina.events.raw_event._, !b)) {
+    throw cljs.core.missing_protocol.call(null, "Event.raw-event", a);
+  }
+  return b.call(null, a);
+};
+domina.events.root_element = window.document.documentElement;
+domina.events.create_listener_function = function create_listener_function(b) {
+  return function(c) {
+    b.call(null, function() {
+      "undefined" === typeof domina.events.t10069 && (domina.events.t10069 = function(b, c, f, g) {
+        this.evt = b;
+        this.f = c;
+        this.create_listener_function = f;
+        this.meta10070 = g;
+        this.cljs$lang$protocol_mask$partition1$ = 0;
+        this.cljs$lang$protocol_mask$partition0$ = 393472;
+      }, domina.events.t10069.cljs$lang$type = !0, domina.events.t10069.cljs$lang$ctorStr = "domina.events/t10069", domina.events.t10069.cljs$lang$ctorPrWriter = function(b, c, f) {
+        return cljs.core._write.call(null, c, "domina.events/t10069");
+      }, domina.events.t10069.prototype.cljs$core$ILookup$_lookup$arity$2 = function(b, c) {
+        var f = this.evt[c];
+        return cljs.core.truth_(f) ? f : this.evt[cljs.core.name.call(null, c)];
+      }, domina.events.t10069.prototype.cljs$core$ILookup$_lookup$arity$3 = function(b, c, f) {
+        b = cljs.core._lookup.call(null, this, c);
+        return cljs.core.truth_(b) ? b : f;
+      }, domina.events.t10069.prototype.domina$events$Event$ = !0, domina.events.t10069.prototype.domina$events$Event$prevent_default$arity$1 = function(b) {
+        return this.evt.preventDefault();
+      }, domina.events.t10069.prototype.domina$events$Event$stop_propagation$arity$1 = function(b) {
+        return this.evt.stopPropagation();
+      }, domina.events.t10069.prototype.domina$events$Event$target$arity$1 = function(b) {
+        return this.evt.target;
+      }, domina.events.t10069.prototype.domina$events$Event$current_target$arity$1 = function(b) {
+        return this.evt.currentTarget;
+      }, domina.events.t10069.prototype.domina$events$Event$event_type$arity$1 = function(b) {
+        return this.evt.type;
+      }, domina.events.t10069.prototype.domina$events$Event$raw_event$arity$1 = function(b) {
+        return this.evt;
+      }, domina.events.t10069.prototype.cljs$core$IMeta$_meta$arity$1 = function(b) {
+        return this.meta10070;
+      }, domina.events.t10069.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
+        return new domina.events.t10069(this.evt, this.f, this.create_listener_function, c);
+      }, domina.events.__GT_t10069 = function(b, c, f, g) {
+        return new domina.events.t10069(b, c, f, g);
+      });
+      return new domina.events.t10069(c, b, create_listener_function, null);
+    }());
+    return!0;
+  };
+};
+domina.events.listen_internal_BANG_ = function(a, b, c, d, e) {
+  var f = domina.events.create_listener_function.call(null, c), g = cljs.core.name.call(null, b);
+  return cljs.core.doall.call(null, function() {
+    return function(a, b) {
+      return function m(c) {
+        return new cljs.core.LazySeq(null, function(a, b) {
+          return function() {
+            for (;;) {
+              var f = cljs.core.seq.call(null, c);
+              if (f) {
+                if (cljs.core.chunked_seq_QMARK_.call(null, f)) {
+                  var g = cljs.core.chunk_first.call(null, f), h = cljs.core.count.call(null, g), k = cljs.core.chunk_buffer.call(null, h);
+                  a: {
+                    for (var v = 0;;) {
+                      if (v < h) {
+                        var w = cljs.core._nth.call(null, g, v);
+                        cljs.core.chunk_append.call(null, k, cljs.core.truth_(e) ? goog.events.listenOnce(w, b, a, d) : goog.events.listen(w, b, a, d));
+                        v += 1;
+                      } else {
+                        g = !0;
+                        break a;
+                      }
+                    }
+                    g = void 0;
+                  }
+                  return g ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, k), m.call(null, cljs.core.chunk_rest.call(null, f))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, k), null);
+                }
+                k = cljs.core.first.call(null, f);
+                return cljs.core.cons.call(null, cljs.core.truth_(e) ? goog.events.listenOnce(k, b, a, d) : goog.events.listen(k, b, a, d), m.call(null, cljs.core.rest.call(null, f)));
+              }
+              return null;
+            }
+          };
+        }(a, b), null, null);
+      };
+    }(f, g).call(null, domina.nodes.call(null, a));
+  }());
+};
+domina.events.listen_BANG_ = function() {
+  var a = null, b = function(b, c) {
+    return a.call(null, domina.events.root_element, b, c);
+  }, c = function(a, b, c) {
+    return domina.events.listen_internal_BANG_.call(null, a, b, c, !1, !1);
+  }, a = function(a, e, f) {
+    switch(arguments.length) {
+      case 2:
+        return b.call(this, a, e);
+      case 3:
+        return c.call(this, a, e, f);
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$core$IFn$_invoke$arity$2 = b;
+  a.cljs$core$IFn$_invoke$arity$3 = c;
+  return a;
+}();
+domina.events.capture_BANG_ = function() {
+  var a = null, b = function(b, c) {
+    return a.call(null, domina.events.root_element, b, c);
+  }, c = function(a, b, c) {
+    return domina.events.listen_internal_BANG_.call(null, a, b, c, !0, !1);
+  }, a = function(a, e, f) {
+    switch(arguments.length) {
+      case 2:
+        return b.call(this, a, e);
+      case 3:
+        return c.call(this, a, e, f);
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$core$IFn$_invoke$arity$2 = b;
+  a.cljs$core$IFn$_invoke$arity$3 = c;
+  return a;
+}();
+domina.events.listen_once_BANG_ = function() {
+  var a = null, b = function(b, c) {
+    return a.call(null, domina.events.root_element, b, c);
+  }, c = function(a, b, c) {
+    return domina.events.listen_internal_BANG_.call(null, a, b, c, !1, !0);
+  }, a = function(a, e, f) {
+    switch(arguments.length) {
+      case 2:
+        return b.call(this, a, e);
+      case 3:
+        return c.call(this, a, e, f);
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$core$IFn$_invoke$arity$2 = b;
+  a.cljs$core$IFn$_invoke$arity$3 = c;
+  return a;
+}();
+domina.events.capture_once_BANG_ = function() {
+  var a = null, b = function(b, c) {
+    return a.call(null, domina.events.root_element, b, c);
+  }, c = function(a, b, c) {
+    return domina.events.listen_internal_BANG_.call(null, a, b, c, !0, !0);
+  }, a = function(a, e, f) {
+    switch(arguments.length) {
+      case 2:
+        return b.call(this, a, e);
+      case 3:
+        return c.call(this, a, e, f);
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$core$IFn$_invoke$arity$2 = b;
+  a.cljs$core$IFn$_invoke$arity$3 = c;
+  return a;
+}();
+domina.events.unlisten_BANG_ = function() {
+  var a = null, b = function() {
+    return a.call(null, domina.events.root_element);
+  }, c = function(a) {
+    a = cljs.core.seq.call(null, domina.nodes.call(null, a));
+    for (var b = null, c = 0, d = 0;;) {
+      if (d < c) {
+        var k = cljs.core._nth.call(null, b, d);
+        goog.events.removeAll(k);
+        d += 1;
+      } else {
+        if (a = cljs.core.seq.call(null, a)) {
+          b = a, cljs.core.chunked_seq_QMARK_.call(null, b) ? (a = cljs.core.chunk_first.call(null, b), c = cljs.core.chunk_rest.call(null, b), b = a, k = cljs.core.count.call(null, a), a = c, c = k) : (k = cljs.core.first.call(null, b), goog.events.removeAll(k), a = cljs.core.next.call(null, b), b = null, c = 0), d = 0;
+        } else {
+          return null;
+        }
+      }
+    }
+  }, d = function(a, b) {
+    for (var c = cljs.core.name.call(null, b), d = cljs.core.seq.call(null, domina.nodes.call(null, a)), k = null, l = 0, m = 0;;) {
+      if (m < l) {
+        var n = cljs.core._nth.call(null, k, m);
+        goog.events.removeAll(n, c);
+        m += 1;
+      } else {
+        if (d = cljs.core.seq.call(null, d)) {
+          k = d, cljs.core.chunked_seq_QMARK_.call(null, k) ? (d = cljs.core.chunk_first.call(null, k), l = cljs.core.chunk_rest.call(null, k), k = d, n = cljs.core.count.call(null, d), d = l, l = n) : (n = cljs.core.first.call(null, k), goog.events.removeAll(n, c), d = cljs.core.next.call(null, k), k = null, l = 0), m = 0;
+        } else {
+          return null;
+        }
+      }
+    }
+  }, a = function(a, f) {
+    switch(arguments.length) {
+      case 0:
+        return b.call(this);
+      case 1:
+        return c.call(this, a);
+      case 2:
+        return d.call(this, a, f);
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$core$IFn$_invoke$arity$0 = b;
+  a.cljs$core$IFn$_invoke$arity$1 = c;
+  a.cljs$core$IFn$_invoke$arity$2 = d;
+  return a;
+}();
+domina.events.ancestor_nodes = function() {
+  var a = null, b = function(b) {
+    return a.call(null, b, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [b], null));
+  }, c = function(a, b) {
+    for (;;) {
+      var c = a.parentNode;
+      if (cljs.core.truth_(c)) {
+        var g = c, c = g, g = cljs.core.cons.call(null, g, b);
+        a = c;
+        b = g;
+      } else {
+        return b;
+      }
+    }
+  }, a = function(a, e) {
+    switch(arguments.length) {
+      case 1:
+        return b.call(this, a);
+      case 2:
+        return c.call(this, a, e);
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$core$IFn$_invoke$arity$1 = b;
+  a.cljs$core$IFn$_invoke$arity$2 = c;
+  return a;
+}();
+domina.events.dispatch_browser_BANG_ = function(a, b) {
+  for (var c = domina.events.ancestor_nodes.call(null, domina.single_node.call(null, a)), d = cljs.core.seq.call(null, c), e = null, f = 0, g = 0;;) {
+    if (g < f) {
+      var h = cljs.core._nth.call(null, e, g);
+      cljs.core.truth_(b.propagationStopped_) || (b.currentTarget = h, goog.events.fireListeners(h, b.type, !0, b));
+      g += 1;
+    } else {
+      if (d = cljs.core.seq.call(null, d)) {
+        e = d, cljs.core.chunked_seq_QMARK_.call(null, e) ? (d = cljs.core.chunk_first.call(null, e), g = cljs.core.chunk_rest.call(null, e), e = d, f = cljs.core.count.call(null, d), d = g) : (d = cljs.core.first.call(null, e), cljs.core.truth_(b.propagationStopped_) || (b.currentTarget = d, goog.events.fireListeners(d, b.type, !0, b)), d = cljs.core.next.call(null, e), e = null, f = 0), g = 0;
+      } else {
+        break;
+      }
+    }
+  }
+  c = cljs.core.seq.call(null, cljs.core.reverse.call(null, c));
+  d = null;
+  for (f = e = 0;;) {
+    if (f < e) {
+      g = cljs.core._nth.call(null, d, f), cljs.core.truth_(b.propagationStopped_) || (b.currentTarget = g, goog.events.fireListeners(g, b.type, !1, b)), f += 1;
+    } else {
+      if (c = cljs.core.seq.call(null, c)) {
+        d = c, cljs.core.chunked_seq_QMARK_.call(null, d) ? (c = cljs.core.chunk_first.call(null, d), f = cljs.core.chunk_rest.call(null, d), d = c, e = cljs.core.count.call(null, c), c = f) : (c = cljs.core.first.call(null, d), cljs.core.truth_(b.propagationStopped_) || (b.currentTarget = c, goog.events.fireListeners(c, b.type, !1, b)), c = cljs.core.next.call(null, d), d = null, e = 0), f = 0;
+      } else {
+        break;
+      }
+    }
+  }
+  return b.returnValue_;
+};
+domina.events.dispatch_event_target_BANG_ = function(a, b) {
+  return goog.events.dispatchEvent(a, b);
+};
+domina.events.is_event_target_QMARK_ = function(a) {
+  var b = a.getParentEventTarget;
+  return cljs.core.truth_(b) ? a.dispatchEvent : b;
+};
+domina.events.dispatch_BANG_ = function() {
+  var a = null, b = function(b, c) {
+    return a.call(null, domina.events.root_element, b, c);
+  }, c = function(a, b, c) {
+    b = new goog.events.Event(cljs.core.name.call(null, b));
+    c = cljs.core.seq.call(null, c);
+    for (var g = null, h = 0, k = 0;;) {
+      if (k < h) {
+        var l = cljs.core._nth.call(null, g, k), m = cljs.core.nth.call(null, l, 0, null), l = cljs.core.nth.call(null, l, 1, null);
+        b[m] = l;
+        k += 1;
+      } else {
+        if (c = cljs.core.seq.call(null, c)) {
+          cljs.core.chunked_seq_QMARK_.call(null, c) ? (h = cljs.core.chunk_first.call(null, c), c = cljs.core.chunk_rest.call(null, c), g = h, h = cljs.core.count.call(null, h)) : (h = cljs.core.first.call(null, c), g = cljs.core.nth.call(null, h, 0, null), h = cljs.core.nth.call(null, h, 1, null), b[g] = h, c = cljs.core.next.call(null, c), g = null, h = 0), k = 0;
+        } else {
+          break;
+        }
+      }
+    }
+    return cljs.core.truth_(domina.events.is_event_target_QMARK_.call(null, a)) ? domina.events.dispatch_event_target_BANG_.call(null, a, b) : domina.events.dispatch_browser_BANG_.call(null, a, b);
+  }, a = function(a, e, f) {
+    switch(arguments.length) {
+      case 2:
+        return b.call(this, a, e);
+      case 3:
+        return c.call(this, a, e, f);
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$core$IFn$_invoke$arity$2 = b;
+  a.cljs$core$IFn$_invoke$arity$3 = c;
+  return a;
+}();
+domina.events.unlisten_by_key_BANG_ = function(a) {
+  return goog.events.unlistenByKey(a);
+};
+domina.events.get_listeners = function(a, b) {
+  var c = cljs.core.name.call(null, b);
+  return cljs.core.mapcat.call(null, function(a) {
+    return function(b) {
+      return goog.events.getListeners(b, a, !1);
+    };
+  }(c), domina.nodes.call(null, a));
+};
 milestones.tasks_input = {};
 milestones.tasks_input.handler = function(a) {
-  return console.log("" + cljs.core.str.cljs$core$IFn$_invoke$arity$1(a));
+  return cljs.core._EQ_.call(null, a.call(null, "response"), "success") ? domina.remove_class_BANG_.call(null, domina.by_id.call(null, "submit-tasks"), "disabled") : domina.add_class_BANG_.call(null, domina.by_id.call(null, "submit-tasks"), "disabled");
 };
 milestones.tasks_input.error_handler = function(a) {
   var b = cljs.core.seq_QMARK_.call(null, a) ? cljs.core.apply.call(null, cljs.core.hash_map, a) : a;
@@ -24523,5 +27543,17 @@ milestones.tasks_input.error_handler = function(a) {
   b = cljs.core.get.call(null, b, new cljs.core.Keyword(null, "status", "status", -1997798413));
   return console.log("something bad happened: " + cljs.core.str.cljs$core$IFn$_invoke$arity$1(b) + " " + cljs.core.str.cljs$core$IFn$_invoke$arity$1(a));
 };
-ajax.core.POST.call(null, "/send-message", new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null, "params", "params", 710516235), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "message", "message", -406056002), "Hello World", new cljs.core.Keyword(null, "user", "user", 1532431356), "Bob"], null), new cljs.core.Keyword(null, "handler", "handler", -195596612), milestones.tasks_input.handler, new cljs.core.Keyword(null, "error-handler", "error-handler", -484945776), 
-milestones.tasks_input.error_handler], null));
+milestones.tasks_input.tasks = "Task 1 is to design tasks specifier, assigned to ibtissem, lasts 2 days, priority low, depends on tasks 1 2";
+milestones.tasks_input.interractive_handler = function() {
+  return ajax.core.POST.call(null, "/check-tasks", new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null, "params", "params", 710516235), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "tasks", "tasks", -1754368880), domina.value.call(null, domina.by_id.call(null, "tasks-input"))], null), new cljs.core.Keyword(null, "handler", "handler", -195596612), milestones.tasks_input.handler, new cljs.core.Keyword(null, "error-handler", "error-handler", -484945776), milestones.tasks_input.error_handler, 
+  new cljs.core.Keyword(null, "format", "format", -1306924766), new cljs.core.Keyword(null, "json", "json", 1279968570), new cljs.core.Keyword(null, "response-format", "response-format", 1664465322), new cljs.core.Keyword(null, "json", "json", 1279968570)], null));
+};
+domina.events.listen_BANG_.call(null, domina.by_id.call(null, "tasks-input"), new cljs.core.Keyword(null, "keyup", "keyup", -794526927), function(a) {
+  return milestones.tasks_input.interractive_handler.call(null);
+});
+domina.events.listen_BANG_.call(null, domina.by_id.call(null, "tasks-input"), new cljs.core.Keyword(null, "change", "change", -1163046502), function(a) {
+  return milestones.tasks_input.interractive_handler.call(null);
+});
+domina.events.listen_BANG_.call(null, domina.by_id.call(null, "tasks-save"), new cljs.core.Keyword(null, "click", "click", 1912301393), function(a) {
+  return milestones.tasks_input.interractive_handler.call(null);
+});
