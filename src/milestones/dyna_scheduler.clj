@@ -187,8 +187,8 @@
     we find start-time, completion rate for each task and then we return
     a scheduled version of tasks. {1 {:begin 2 :completion-rate 2/5....})
     "
-  [tasks
-   output-schedule]
+  [output-schedule
+    tasks]
   (into {} (map (partial format-a-task-in-output-schedule output-schedule)
                 tasks)))
 
@@ -317,3 +317,13 @@
           (swap! output-schedule conj (<!! (go (<! c-to-me))))))
 
     @output-schedule))
+
+
+(defn schedule!
+  "the real over-master-uber-function to call. Gives you tasks with :begin,
+  just like you'd exepct"
+  [tasks
+   reordering-properties]
+  (-> tasks
+      (run-scheduler! reordering-properties  )
+      (format-tasks-in-output-schedule tasks)))

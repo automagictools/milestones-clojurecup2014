@@ -162,8 +162,17 @@ delimit predecessors. If we do not specify priority, the task takes 2,
 high priority gives the task a priority of 1, and low priority gives
 it the priority 3.
 
-Besides our "almost" natural english, a little more programming-like
-syntax can be used to inject tasks to the scheduler.
+We can't tell that we support every and each possible way to specify projects in english, but we think we have a good start
+for a proof of concept. Just keep in mind that due to lack of time, we only support
+a certain order in your sentence :
+1. description : task id , name (task 1 is, task 2 is about, etc...)
+2. resource : some sentence to describe the resource (must be done by,...)
+3. duration : 2 days, before 2 days,
+4. Priority :optional, high, low, 1, 2 (less is higher priority)
+5. predecessors : optional
+
+Hopefully, our state of the art error checker might be helpful !
+
 
 Further Work and Noteworthy (maybe?)
 ------------------------------------
@@ -201,6 +210,7 @@ small web agencies dealing with a great deal of projects where a
 rather limited number of tasks are involved. Besides, the
 programming-like interface might be more handy for more complicated
 use cases.
+
 
 Hope you enjoy it ! - By tnteam
 

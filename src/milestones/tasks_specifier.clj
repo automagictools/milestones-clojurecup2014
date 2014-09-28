@@ -131,7 +131,8 @@
                    (= "low" strpri) 4
                    (= "normal" strpri) 3
                    (= "medium" strpri) 2
-                   (= "high" strpri ) 1))
+                   (= "high" strpri ) 1
+                   (not (nil? (re-matches #"(\d+)" strpri))  ) (Integer/parseInt strpri)))
 
      :predecessors (-> (mapv #(Integer/parseInt %)
                              (rest preds)))}}))

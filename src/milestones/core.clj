@@ -8,8 +8,8 @@
             [ring.util.response :as resp]
             [taoensso.timbre :as timbre]
             [cheshire.core :refer :all]
-            [milestones.tasks_specifier :as ts]))
-;; (:gen-class))
+            [milestones.tasks_specifier :as ts])
+ (:gen-class))
 
 ;;; logging with timbre
 (timbre/refer-timbre)
