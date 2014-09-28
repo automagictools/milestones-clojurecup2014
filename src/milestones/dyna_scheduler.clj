@@ -145,64 +145,7 @@
   (filter #(= resource-id (:resource-id (val %))) tasks))
 
 
-(defn work-flow-for-resource
-  "given a user,  its current work-queue, tasks and current output schedule,
-   we find his tasks, the fireable ones, reorder all of them (if preemptive)
-   or those non work in propress if not, and issue new work-flow"
-  [current-work-flow
-   tasks
-   resource-id
-   current-output-schedule
-   reordering-properties]
-  (let [
 
-        fireable-tasks-ids (find-fireable-tasks tasks
-                                                current-output-schedule)
-
-
-         fireable-tasks (select-keys tasks fireable-tasks-ids)
-
-         his-fireable-tasks (tasks-for-resource fireable-tasks resource-id)
-
-         his-incomplete-fireable-tasks  (into {} (filter #(not (task-complete?
-                                                                 tasks
-                                                                 current-output-schedule
-                                                                 (key %)))
-                                                         his-fireable-tasks))
-
-         his-incomplete-fireable-tasks-ids (keys his-incomplete-fireable-tasks)
-
-        fireable-id-in-wp (first (filter (partial task-in-work-in-progress?
-                                            tasks
-                                            current-work-flow)
-                                         his-incomplete-fireable-tasks-ids)) ;; id of the task to be kept, work in progress
-
-
-
-        wp-vector (into [] (repeat (work-in-progress-count current-work-flow
-                                                           fireable-id-in-wp)
-                                   fireable-id-in-wp))
-
-
-        fireable-ids-not-in-wp (vec
-                                 (remove #(= % fireable-id-in-wp)
-                                         his-incomplete-fireable-tasks-ids )) ;; [ the part to be reordered and generated]
-
-
-        _ (println "fireable-ids-not-in-wp" fireable-ids-not-in-wp)
-        his-fireable-tasks-not-in-wp (select-keys tasks fireable-ids-not-in-wp)
-
-        _ (println "his-fireable tasks not in wp")
-        his-ordered-tasks-not-in-wp (reorder-tasks his-fireable-tasks-not-in-wp
-                                                   reordering-properties)
-
-        _ (println "his orderd tasks not wp " his-ordered-tasks-not-in-wp)
-
-        his-new-ordered-workflow (gen-work-flow tasks
-                                                his-ordered-tasks-not-in-wp)]
-
-    _ (println "his-new-ordered-workfllow " his-new-ordered-workflow)
-    (into his-new-ordered-workflow wp-vector)))
 
 (defn task-sched-time-vector
   "given an output-schedule, and a task-id
@@ -249,3 +192,129 @@
    output-schedule]
   (into {} (map (partial format-a-task-in-output-schedule output-schedule)
                 tasks)))
+
+
+(defn work-flow-for-resource
+  "given a user,  its current work-queue, tasks and current output schedule,
+   we find his tasks, the fireable ones, reorder all of them (if preemptive)
+   or those non work in propress if not, and issue new work-flow"
+  [current-work-flow
+   tasks
+   resource-id
+   current-output-schedule
+   reordering-properties]
+  (let [
+
+         fireable-tasks-ids (find-fireable-tasks tasks
+                                                 current-output-schedule)
+
+
+         fireable-tasks (select-keys tasks fireable-tasks-ids)
+
+         his-fireable-tasks (tasks-for-resource fireable-tasks resource-id)
+
+         his-incomplete-fireable-tasks  (into {} (filter #(not (task-complete?
+                                                                 tasks
+                                                                 current-output-schedule
+                                                                 (key %)))
+                                                         his-fireable-tasks))
+
+         his-incomplete-fireable-tasks-ids (keys his-incomplete-fireable-tasks)
+
+         fireable-id-in-wp (first (filter (partial task-in-work-in-progress?
+                                                   tasks
+                                                   current-work-flow)
+                                          his-incomplete-fireable-tasks-ids)) ;; id of the task to be kept, work in progress
+
+
+
+         wp-vector (into [] (repeat (work-in-progress-count current-work-flow
+                                                            fireable-id-in-wp)
+                                    fireable-id-in-wp))
+
+
+         fireable-ids-not-in-wp (vec
+                                  (remove #(= % fireable-id-in-wp)
+                                          his-incomplete-fireable-tasks-ids )) ;; [ the part to be reordered and generated]
+
+
+         _ (println "fireable-ids-not-in-wp" fireable-ids-not-in-wp)
+         his-fireable-tasks-not-in-wp (select-keys tasks fireable-ids-not-in-wp)
+
+         _ (println "his-fireable tasks not in wp")
+         his-ordered-tasks-not-in-wp (reorder-tasks his-fireable-tasks-not-in-wp
+                                                    reordering-properties)
+
+         _ (println "his orderd tasks not wp " his-ordered-tasks-not-in-wp)
+
+         his-new-ordered-workflow (gen-work-flow tasks
+                                                 his-ordered-tasks-not-in-wp)]
+
+    _ (println "his-new-ordered-workfllow " his-new-ordered-workflow)
+    (into his-new-ordered-workflow wp-vector)))
+
+;; will be used to sync the threads, on for each resource
+
+
+(defn run-scheduler-for-resource!
+  "This runs a thread for the resource-id, connects to a channel,
+  and waits to process a task-unit / timer tick, until the channel is closed"
+  [timer
+   resource-id
+   tasks
+   output-schedule
+   workflows
+   reordering-properties
+   chan-to-output]
+
+  (let [ current-flow-for-resource (@workflows resource-id)
+         my-workflow (work-flow-for-resource current-flow-for-resource
+                                           tasks
+                                           resource-id
+                                           output-schedule
+                                           reordering-properties)
+         _ (println resource-id "has workflo " my-workflow)
+
+        the-task-unit {:task-id (peek my-workflow)
+                       :time timer
+                       :resource-id resource-id}
+
+        _ (if (not (empty? my-workflow))
+                   (swap! workflows assoc resource-id (pop my-workflow)))
+            ]
+;; now I inject the task-unit in the channel
+    ;; must be done inside a go block !!
+    (println resource-id "about to put" the-task-unit)
+    (go (>! chan-to-output the-task-unit))))
+
+
+
+(defn run-scheduler!
+  "this is the master-mind. runs all of them, collects their inputs,
+  and then goes home"
+  [tasks
+   reordering-properties]
+  (let [c-to-me (chan)
+        timer (atom 0)
+        workflows (atom {})
+        output-schedule (atom [])
+        resources-ids (map :resource-id (vals tasks))]
+
+    (while (not (every? (partial task-complete?
+                                  tasks
+                                  @output-schedule ) (keys tasks)))
+      (swap! timer inc)
+      (doseq [resource resources-ids]
+        ;; next tick
+        ;; I fire their schedules
+        (run-scheduler-for-resource! @timer
+                                     resource
+                                     tasks
+                                     @output-schedule
+                                     workflows
+                                     reordering-properties
+                                     c-to-me))
+      (dotimes [_ (count resources-ids)]
+          (swap! output-schedule conj (<!! (go (<! c-to-me))))))
+
+    @output-schedule))

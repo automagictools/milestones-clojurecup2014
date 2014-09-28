@@ -9,19 +9,19 @@
                :resource-id 2
                :duration 5
                :priority 1
-               :predecessors [1 5]}
+               :predecessors []}
 
              2 {:task-name "A description about this task"
               :resource-id "rafik"
               :duration 5
               :priority 1
-              :predecessors [3]}
+              :predecessors []}
 
              3 {:task-name "A description about this task"
               :resource-id 4
               :duration 3
               :priority 1
-              :predecessors [2 4]}
+              :predecessors []}
 
              4 {:task-name "A description about this task"
                 :resource-id 4
