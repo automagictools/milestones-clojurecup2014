@@ -17,7 +17,8 @@
                  [javax.servlet/servlet-api "2.5"]
                  [expectations "2.0.9"]
                  [cljs-ajax "0.3.0"]
-                 [prismatic/dommy "0.1.3"]]
+                 [prismatic/dommy "0.1.3"]
+                 [jfree/jfreechart "1.0.13"]]
 
   :plugins [[lein-ring "0.8.11"]
             [lein-cljsbuild "0.3.2"]]
