@@ -20,7 +20,6 @@
   "Ajax POST handler to display an interractive results"
   (if-let [x (= (response "response") "error")]
     (let [failure (response "failure") div-resuts (sel1 :#interractive-results)]
-      ;(dommy/add-attr! (sel1 :#tasks-save) :disabled)
       (dommy/remove-class! div-resuts :alert-success)
       (dommy/add-class! div-resuts :alert-danger)
       (dommy/set-html! div-resuts (render-syntax-error  failure)))
