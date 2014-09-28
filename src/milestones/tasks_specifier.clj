@@ -77,11 +77,31 @@
 (defn formatted-tasks-list  [tasks-list]
   tasks-list)
 
+
+(defn get-failure
+  "Takes an augmented failure object and prints the error message"
+  [{:keys [line column text reason]}]
+  (let [error (str "Parse error at line " line ", column " column ":\n")
+        text text
+        marker column
+        full-reasons (mapv str (distinct (map :expecting
+                                             (filter :full reason))))
+        partial-reasons (mapv str  (distinct (map :expecting
+                                        (filter (complement :full) reason))))
+        total (+ (count full-reasons) (count partial-reasons)) 
+        expected-msg (cond (zero? total) nil
+          (= 1 total) "Expected:"
+          :else "Expected one of:")]
+    {:error error :total total :expected-msg expected-msg :text text :marker marker :full-reasons full-reasons :partial-reasons partial-reasons}
+    ))
+
+
 (defn formatted-tasks [tasks]
   (let [tasks-list (tasks-specifier (tasks "tasks"))]
-    (insta/failure? {:response "error" :error tasks-list})
-    (formatted-tasks-list tasks-list)
-    {:response "success"}))
+    (if-let [failure? (insta/failure? tasks-list)]
+     {:response "error" :failure (get-failure tasks-list)}
+     {:response "success" :tasks (formatted-tasks-list tasks-list)}
+     )))
 
 (defn task-to-sched
   [insta-task]
@@ -125,3 +145,15 @@
   [insta-tasks]
   (let [tasks-to-be-processed (rest insta-tasks)]
     (into {} (map task-to-sched tasks-to-be-processed))))
+
+
+(defn save-tasks 
+  "Check tasks syntax validity. If it is correct then
+  pass tasks to schedular else handle error"
+  [tasks]
+  (let [tasks-list (tasks-specifier (tasks "tasks"))]
+    (if-let [failure? (insta/failure? tasks-list)]
+     {:response "error" "error" "syntax" :failure (get-failure tasks-list)}
+     (all-tasks-to-sched tasks-list)
+     )))
+  

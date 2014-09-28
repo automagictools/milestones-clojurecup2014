@@ -32,7 +32,8 @@
            (GET "/post" [] "posted")           
            (POST "/check-tasks" [:as rest]
                 (generate-string (ts/formatted-tasks (rest :body))))
-           
+           (POST "/save-tasks" [:as rest]
+                (generate-string (ts/save-tasks (rest :body))))
            (route/resources "/" {:root "public"})
            (route/not-found "Not Found!"))
 

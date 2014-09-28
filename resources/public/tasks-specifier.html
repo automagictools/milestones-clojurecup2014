@@ -24,12 +24,13 @@
     <![endif]-->
     
   </head>
-
   <body>
   <div class="container" id="my-app">
     <center>
       <img src="milestones-logo.png" >
     </center>
+    <div class="form" id="interractive-results">
+	</div>
     <form class="form" role="form" action="" method="POST">
 	  <div class="form-group">
 	    <label for="tasks" class="col-sm-2 control-label">
@@ -38,12 +39,10 @@
 	    <div class="col-sm-8">
 	    	<textarea class="form-control" rows="3" name="tasks-input" id="tasks-input">value value value 1 2 3</textarea>
 	    </div>
-	    <div class="col-sm-4 alert" id="interractive-results">
-	    </div>
 	  </div>
 	  <div class="form-group">
     	<div class="col-sm-offset-2 col-sm-10">
-      		<button type="button" name="tasks-save" id="tasks-save" class="btn btn-default">Save</button>
+      		<button type="button" disabled name="tasks-save" id="tasks-save" class="btn btn-default">Save</button>
     	</div>
       </div>
 	</form>
