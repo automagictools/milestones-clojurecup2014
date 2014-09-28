@@ -203,3 +203,49 @@
 
     _ (println "his-new-ordered-workfllow " his-new-ordered-workflow)
     (into his-new-ordered-workflow wp-vector)))
+
+(defn task-sched-time-vector
+  "given an output-schedule, and a task-id
+  you get a time-vector of the task as present in the output schedule"
+  [output-schedule
+   task-id]
+(->> output-schedule
+    (group-by :task-id)
+    (#(get %1 task-id))
+    (map :time)
+    (vec)))
+
+
+(defn format-a-task-in-output-schedule
+  "given a task, we compute its current time vector
+  and inject begin-time and completion ratio in it"
+  [output-schedule
+    a-task]
+
+
+  (let [ [k v] a-task
+         the-tv (task-sched-time-vector output-schedule k)
+         _ (println "the tv" the-tv)]
+
+    (if (not (empty? the-tv))
+      [k   (-> v
+                            (assoc :begin (apply min the-tv))
+                            (assoc :completed (count the-tv)))]
+      a-task)))
+
+
+(defn format-tasks-in-output-schedule
+  "
+  given an output schedule :
+  [{:task-id 1 :time 1 :resource-id 1}
+  {:task-id 3 :time 1 :resource-id 1}
+  {:task-id 1 :time 2 :resource-id 1}
+  {:task-id 3 :time 2 :resource-id 1}
+    {:task-id 3 :time 3 :resource-id 1}]
+    we find start-time, completion rate for each task and then we return
+    a scheduled version of tasks. {1 {:begin 2 :completion-rate 2/5....})
+    "
+  [tasks
+   output-schedule]
+  (into {} (map (partial format-a-task-in-output-schedule output-schedule)
+                tasks)))
