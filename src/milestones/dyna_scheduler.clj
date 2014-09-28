@@ -52,13 +52,14 @@
   [tasks
    output-schedule
    the-task-id]
-  (let [the-task (get tasks the-task-id)
-        duration (the-task :duration)
-        nb-task-units-in-output (count
-                                  (filter #(= (% :task-id ) the-task-id )
-                                          output-schedule ))]
-    (try (/ nb-task-units-in-output duration)
-         (catch Exception e 1))))
+  (try
+    (let [the-task (get tasks the-task-id)
+          duration (the-task :duration)
+          nb-task-units-in-output (count
+                                    (filter #(= (% :task-id ) the-task-id )
+                                            output-schedule ))]
+      (/ nb-task-units-in-output duration))
+    (catch Exception e 1)))
 
 (defn task-complete?
   "returns true if task is complete"
@@ -295,6 +296,7 @@
    reordering-properties]
   (let [c-to-me (chan)
         timer (atom 0)
+        maxtime (reduce + (map ))
         workflows (atom {})
         output-schedule (atom [])
         resources-ids (map :resource-id (vals tasks))]
