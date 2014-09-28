@@ -216,7 +216,7 @@ use cases.
 
 One point of note though - milestons has some rough edges, and sometimes tasks won't show or 
 the interpreter will be angry at you for no apparent reason. We'll try to fix all of this once we open source it.
-The problems were mainly due to translating the data format from instaparse to ours. too bad as the scheduler was really cool a piece of work !
+The problems were mainly due to translating the data format from instaparse to ours. Too bad as the scheduler was really cool a piece of work !
 
 Hope you enjoy it ! - By tnteam
 
